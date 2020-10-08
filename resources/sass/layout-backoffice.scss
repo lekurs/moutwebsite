@@ -450,3 +450,32 @@ div.page-wrapper {
         }
     }
 }
+
+.modal-content {
+    border-radius: 10px;
+}
+
+.custom-modal .modal-header {
+    border: 0;
+    justify-content: center;
+    padding: 30px 30px 0;
+
+    & .modal-title {
+        font-size: 22px;
+    }
+
+    & h5.add-client-title {
+        font-size: 1.125rem;
+    }
+}
+
+div.modal-body {
+
+    & div.col-contact {
+        display: none;
+    }
+}
+
+.mout--regular {
+    font-family: $mout-font;
+}

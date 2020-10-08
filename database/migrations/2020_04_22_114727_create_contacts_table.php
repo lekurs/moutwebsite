@@ -22,6 +22,8 @@ class CreateContactsTable extends Migration
             $table->string('phone', 20)->unique();
             $table->string('slug', 255)->unique();
             $table->integer('client_id')->unsigned();
+            $table->string('fonction', 255)->nullable();
+            $table->string('picture_path', 255)->nullable();
             $table->timestamps();
             $table->foreign('client_id')->references('id')->on('clients')
 

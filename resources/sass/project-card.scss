@@ -1,0 +1,57 @@
+div.card-body {
+    font-size: .9375rem;
+    position: relative;
+
+    & H4 {
+        font-size: 1.125rem;
+    }
+
+    & span.bolder {
+        font-weight: bold;
+    }
+
+    & p.subtitle {
+        margin-bottom: 5px;
+        font-weight: 700;
+        line-height: 14px;
+
+        & + p.text-muted {
+            margin-bottom: 10px;
+            font-size: 12px;
+        }
+    }
+
+    & div.img-portfolio-container {
+        position: relative;
+        margin-bottom: 15px;
+
+        & span.portfolio-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 10px;
+            height: 10px;
+        }
+    }
+}
+
+
+//& div.reverse-portfolio {
+//    width: 100%;
+//    padding: 20px;
+//
+//    & img {
+//        margin-bottom: 2em;
+//    }
+//
+//    & H4.project-name {
+//        font-size: 17px;
+//        font-weight: 700;
+//        color: #ffffff;
+//    }
+//
+//    & p.project-description {
+//        color: #ffffff;
+//
+//    }
+//}

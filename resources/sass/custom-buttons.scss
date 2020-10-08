@@ -7,3 +7,19 @@
     font-weight: 500 !important;
     min-width: 140px;
 }
+
+.btn-white {
+    background-color: #fff !important;
+    border: 1px solid #ccc !important;
+    color: #333 !important;
+
+    &:hover {
+        background-color: #f7f7f7 !important;
+    }
+}
+
+.filter-row .btn {
+    min-height: 50px;
+    padding: 12px;
+    text-transform: uppercase;
+}

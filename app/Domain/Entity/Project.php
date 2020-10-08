@@ -5,6 +5,7 @@ namespace App\Domain\Entity;
 
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Project extends Model
@@ -32,5 +33,10 @@ class Project extends Model
     public function services(): BelongsToMany
     {
         return $this->belongsToMany(Service::class, 'projects_services');
+    }
+
+    public function client(): BelongsTo
+    {
+        return $this->belongsTo(Client::class, 'client_id');
     }
 }

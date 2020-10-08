@@ -13,7 +13,7 @@ class ProjectRepository
 {
     public function getAll(): Collection
     {
-        return Project::with('client', 'imagesProjects')->get();
+        return Project::with('client')->get();
     }
 
     public function getOneBySlug(string $slug): Project

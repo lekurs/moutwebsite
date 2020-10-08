@@ -137,6 +137,20 @@ label.float {
   height: auto;
 }
 
+.relative-label {
+    font-size: .85rem;
+    font-weight: bold;
+}
+
+.datetimepicker {
+    margin-top: 0 !important;
+    padding: .375rem .75rem !important;
+}
+
+.input-group-text {
+    background-color: transparent !important;
+}
+
 /* highlighter */
 .highlight {
   position:absolute;

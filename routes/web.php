@@ -1,7 +1,13 @@
 <?php
 
+use App\UI\Action\Admin\Clients\ClientCreationAction;
+use App\UI\Action\Admin\Clients\ClientEditFormAction;
+use App\UI\Action\Admin\Clients\ClientEditStoreAction;
+use App\UI\Action\Admin\Clients\ClientShowAllAction;
+use App\UI\Action\Admin\Clients\ClientShowOneAction;
+use App\UI\Action\Admin\Contacts\ContactCreationAction;
 use App\UI\Action\Admin\HomeAdminAction;
-use App\UI\Action\Admin\Projects\ShowProjectsAction;
+use App\UI\Action\Admin\Projects\ProjectsShowAction;
 use App\UI\Action\Pub\IndexAction;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +29,17 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/', HomeAdminAction::class)->name('homeAdmin');
 
     Route::group(['prefix' => 'projets'], function () {
-       Route::get('/', ShowProjectsAction::class)->name('showProjects');
+       Route::get('/', ProjectsShowAction::class)->name('showProjects');
+    });
+
+    Route::group(['prefix' => 'clients'], function () {
+       Route::get('/', ClientShowAllAction::class)->name('clientShowAll');
+       Route::get('/voir/{clientSlug}', ClientShowOneAction::class)->name('clientShowOne');
+       Route::get('/edit/{clientSlug}', ClientEditFormAction::class)->name('clientEditForm');
+       Route::post('/ajouter', ClientCreationAction::class)->name('clientAdd');
+       Route::post('/edit/{clientSlug}/store', ClientEditStoreAction::class)->name('clientEditStore');
+
+       Route::post('/{clientSlug}/contact/store', ContactCreationAction::class)->name('contactAdd');
     });
 });
 

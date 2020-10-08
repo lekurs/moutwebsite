@@ -5,10 +5,10 @@ namespace App\UI\Action\Admin\Projects;
 
 
 use App\Domain\Repository\ProjectRepository;
-use App\UI\Responder\Admin\Projects\ShowProjectsResponder;
+use App\UI\Responder\Admin\Projects\ProjectsShowResponder;
 use Illuminate\Contracts\View\View;
 
-class ShowProjectsAction
+class ProjectsShowAction
 {
     private ProjectRepository $projectRepository;
 
@@ -21,7 +21,7 @@ class ShowProjectsAction
         $this->projectRepository = $projectRepository;
     }
 
-    public function __invoke(ShowProjectsResponder $responder): View
+    public function __invoke(ProjectsShowResponder $responder): View
     {
         $projects = $this->projectRepository->getAll();
 

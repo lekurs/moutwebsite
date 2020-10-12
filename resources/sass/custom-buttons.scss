@@ -23,3 +23,9 @@
     padding: 12px;
     text-transform: uppercase;
 }
+
+//links
+.page-item.active .page-link {
+    background-color: #ff9b44 !important;
+    border-color: #ff9b44 !important;
+}

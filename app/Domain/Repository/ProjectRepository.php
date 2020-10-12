@@ -23,7 +23,7 @@ class ProjectRepository
 
     public function getAllWithMediasOrderByNewer(): Collection
     {
-        return Project::with('client', 'imagesProjects')
+        return Project::with('client', 'mediaProjects')
             ->orderBy('endProject')
             ->get();
     }
@@ -32,13 +32,13 @@ class ProjectRepository
     {
         $project = new Project();
         $project->title = $datas['project-title'];
-        $project->mission = $datas['project-mission'];
-        $project->result = $datas['project-result'];
-        $project->imagePortfolioProjectPath = $datas['imagePortfolio']->getClientOriginalName();
+        $project->endProject = date('Y-m-d', strtotime($datas['project-end']));
+        $project->mission = $datas['project-description-mission'];
+        $project->result = $datas['project-result-mission'];
+        $project->mediaPortfolioProjectPath = $datas['project-img-portfolio']->getClientOriginalName();
         $project->colorProject = $datas['project-color'];
-        $project->endProjectDate = $datas['project-end'];
         $project->slug = Str::slug($datas['project-title']);
-        $project->client_id = $datas['service-client'];
+        $project->client_id = $datas['client-id'];
 
         $project->save();
 
@@ -53,7 +53,7 @@ class ProjectRepository
         if (isset($datas['image']) && !is_null($datas['image'])) {
             foreach ($datas['image'] as $key => $file) {
                 $mediaProject = new MediaProject();
-                $mediaProject->imageProjectPath = $file->getClientOriginalName();
+                $mediaProject->mediaProjectPath = $file->getClientOriginalName();
                 $mediaProject->project_id = $lastId;
 
                 $mediaProject->save();

@@ -25,7 +25,7 @@
         <div class="col-sm-12 col-md-6">
             <div class="form-group form-focus">
                 <input type="text" id="project-name" name="project-name" class="form-control floating-input" placeholder=" ">
-                <label for="project-name" class="float">Nom du projet</label>
+                <label for="project-name" class="float">Nom du client</label>
             </div>
         </div>
         <div class="col-sm-12 col-md-6">
@@ -145,6 +145,6 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('plugins/dropdown-mout/dropdown-mout.js') }}"></script>
-    <script src="{{ asset('js/admin/addcontact/addcontact.js') }}"></script>
+{{--    <script src="{{ asset('plugins/dropdown-mout/dropdown-mout.js') }}"></script>--}}
+{{--    <script src="{{ asset('js/admin/addcontact/addcontact.js') }}"></script>--}}
 @endsection

@@ -7,7 +7,13 @@ use App\UI\Action\Admin\Clients\ClientShowAllAction;
 use App\UI\Action\Admin\Clients\ClientShowOneAction;
 use App\UI\Action\Admin\Contacts\ContactCreationAction;
 use App\UI\Action\Admin\HomeAdminAction;
+use App\UI\Action\Admin\Projects\ProjectCreationAction;
 use App\UI\Action\Admin\Projects\ProjectsShowAction;
+use App\UI\Action\Admin\Services\ServiceCreationAction;
+use App\UI\Action\Admin\Services\ServiceEditFormAction;
+use App\UI\Action\Admin\Services\ServiceEditStoreAction;
+use App\UI\Action\Admin\Services\ServiceShowAllAction;
+use App\UI\Action\Admin\Services\ServiceShowOneAction;
 use App\UI\Action\Pub\IndexAction;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +36,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::group(['prefix' => 'projets'], function () {
        Route::get('/', ProjectsShowAction::class)->name('showProjects');
+       Route::post('/ajouter', ProjectCreationAction::class)->name('projectAdd');
     });
 
     Route::group(['prefix' => 'clients'], function () {
@@ -40,6 +47,14 @@ Route::group(['prefix' => 'admin'], function () {
        Route::post('/edit/{clientSlug}/store', ClientEditStoreAction::class)->name('clientEditStore');
 
        Route::post('/{clientSlug}/contact/store', ContactCreationAction::class)->name('contactAdd');
+    });
+
+    Route::group(['prefix' => 'services'], function() {
+        Route::get('/', ServiceShowAllAction::class)->name('serviceShowAll');
+        Route::get('/voir/{serviceId}', ServiceShowOneAction::class)->name('serviceShowOne');
+        Route::get('/edit/{serviceId}', ServiceEditFormAction::class)->name('serviceEditForm');
+        Route::post('/ajouter', ServiceCreationAction::class)->name('serviceAdd');
+        Route::post('/edit/{serviceId}/store', ServiceEditStoreAction::class)->name('serviceEditStore');
     });
 });
 

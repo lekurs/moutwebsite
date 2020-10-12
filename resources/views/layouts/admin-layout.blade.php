@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Assistant:200,300,400,600,700,800" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
 
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap-datetimepicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/colorpicker/color-picker.css') }}">
@@ -44,7 +45,7 @@
     <div class="main-wrapper">
         <div class="bo-header">
             <div class="back-home">
-                <a href="">
+                <a href="{{ route('homeAdmin') }}">
                     <i class="fal fa-home admin-home-icon"></i>
                 </a>
             </div>
@@ -111,6 +112,7 @@
                         @yield('page-header')
                     </div>
                 </div>
+                @include('layouts.flashes.flash_message')
                 @yield('body')
             </div>
         </div>
@@ -124,6 +126,7 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
     <script src="{{ asset('js/admin/bo-mout-nav-bar.js') }}"></script>
+    <script src="{{ asset('plugins/dropdown-mout/dropdown-mout.js') }}"></script>
     <script  src="{{ asset('js/app.js') }}"></script>
 @yield('js')
 </body>

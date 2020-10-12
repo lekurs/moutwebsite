@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class MediaProject extends Model
 {
     protected $fillable = [
-        'imageProjectPath'
+        'mediaProjectPath'
     ];
 
     protected $table = 'media_projects';

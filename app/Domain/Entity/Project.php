@@ -7,6 +7,7 @@ namespace App\Domain\Entity;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Project extends Model
 {
@@ -25,9 +26,9 @@ class Project extends Model
 //        return $this->belongsTo(Client::class);
 //    }
 
-    public function mediaProjects(): BelongsToMany
+    public function mediaProjects(): HasMany
     {
-        return $this->belongsToMany(MediaProject::class);
+        return $this->hasMany(MediaProject::class);
     }
 
     public function services(): BelongsToMany

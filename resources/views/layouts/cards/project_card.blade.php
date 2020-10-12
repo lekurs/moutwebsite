@@ -20,7 +20,7 @@
             </div>
             <div class="img-portfolio-container">
                 <p class="subtitle">Image de présentation :</p>
-                <img src="{{ asset('storage/images/uploads/'. $project->client->slug . '/projects/jardiquiz-portfolio.png') }}" alt="" class="img-fluid">
+                <img src="{{ asset('storage/images/uploads/'. $project->client->slug . '/projets/portfolio/' . $project->mediaPortfolioProjectPath) }}" alt="" class="img-fluid">
             </div>
         </div>
     </div>

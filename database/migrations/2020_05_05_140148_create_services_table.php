@@ -18,6 +18,8 @@ class CreateServicesTable extends Migration
             $table->string('libelle', 100);
             $table->text('description');
             $table->string('icon');
+            $table->string('color_icon', 7)->nullable();
+            $table->boolean('status')->default(true);
             $table->string('slug', 255)->unique();
             $table->timestamps();
         });

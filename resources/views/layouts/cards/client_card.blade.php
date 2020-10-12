@@ -18,7 +18,7 @@
             <h4 class="client-name">{{ $client->name }}</h4>
         </a>
         <a href="{{ route('clientShowOne', $client->slug) }}">
-            <h5 class="client-total-projects">Nombre total de projets réalisés</h5>
+            <h5 class="client-total-projects">{{ count($client->projects) }} @if(count($client->projects)>1)projets réalisés @else projet réalisé @endif</h5>
         </a>
         <a href="{{ route('clientShowOne', $client->slug) }}">
             <div class="small text-muted client-total-ca">CA Total sur l'année</div>

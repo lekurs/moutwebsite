@@ -74,7 +74,7 @@
         <div class="mout-projects-container">
             @foreach($projects as $project)
                 <div class="mout-project-content">
-                    <img src="{{ asset('storage/images/uploads/projects/' . $project->slug . '/' . $project->mediaPortfolioProjectPath) }}" alt="{{ $project->title }}" class="img-fluid project-img">
+                    <img src="{{ asset('storage/images/uploads/' . $project->client->slug . '/projects/portfolio/' . $project->mediaPortfolioProjectPath) }}" alt="{{ $project->title }}" class="img-fluid project-img">
                     <a href="#" class="mout-project-description" style="background-color: {{ $project->colorProject }}">
                         <p>test</p>
                     </a>

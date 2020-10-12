@@ -87,6 +87,14 @@
         <div class="tab-content client-tab-content">
             <!-- PROJECTS -->
             <div class="tab-pane fade active show" id="myprojects" role="tabpanel" aria-labelledby="myprojects-tab">
+                <div class="row mb-3">
+                    <div class="col-auto float-right ml-auto">
+                        <a href="#" class="btn add-btn" data-toggle="modal" data-target="#create_project">
+                            <i class="fal fa-plus"></i>
+                            Créer un projet
+                        </a>
+                    </div>
+                </div>
                 <div class="row">
                     @foreach($client->projects as $project)
                         @include('layouts.cards.project_card')
@@ -119,7 +127,7 @@
     </div>
 </div>
 
-<!-- Modal -->
+<!-- Modal Contact -->
 <div class="modal fade custom-modal" id="create_contact" tabindex="-1" aria-labelledby="create_contact" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
@@ -204,8 +212,153 @@
     </div>
 </div>
 
+<!-- Modal Project -->
+<div class="modal fade custom-modal" id="create_project" tabindex="-1" aria-labelledby="create_project" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mout--regular" id="exampleModalLabel">Création d'un nouveau projet</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('projectAdd') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    @include('layouts.form_errors.errors')
+                    <input type="hidden" name="client-id" id=project-client-id" value="{{ $client->id }}">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="project-title" class="relative-label">Titre du projet</label>
+                                <div class="input-group">
+                                    <input class="form-control" type="text" name="project-title" id="project-title" aria-label="Titre du projet" placeholder="Titre du projet">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="project-end" class="relative-label">Fin du projet</label>
+                                <div class="input-group">
+                                    <input class="form-control datetimepicker" name="project-end" id="project-end" aria-label="Fin du projet" placeholder="Fin du projet" type="text" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" id="basic-addon2"><i class="fal fa-calendar"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="project-color" class="relative-label">Couleur du portfolio</label>
+                                <div class="input-group">
+                                    <input class="color-picker" id="project-color" name="project-color">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="project-img-portfolio" class="relative-label">Image de présentation</label>
+                                <div class="input-group">
+                                    <input type="file" class="form-control" name="project-img-portfolio" id="project-img-portfolio">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="project-description-mission" class="relative-label">Description du projet</label>
+                                <div class="input-group">
+                                    <textarea name="project-description-mission" id="project-description-mission" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="project-result-mission" class="relative-label">Description du résultat du projet</label>
+                                <div class="input-group">
+                                    <textarea name="project-result-mission" id="project-result-mission" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="" class="relative-label">Images résultats</label>
+                                <div class="images"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center">
+                            <button class="btn btn-primary add-btn">Enregistrer</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
 
 @section('js')
     <script src="{{ asset('plugins/dropdown-mout/dropdown-mout.js') }}"></script>
+    <script src="{{ asset('plugins/addmedias/addmedias.js') }}"></script>
+    <script src="{{asset('plugins/autocomplete/autocomplete.js')}}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+    <script src="{{ asset('vendor/colorpicker/color-picker.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.select-prestation').select2({
+                width: '100%'
+            });
+
+            var date_input=$('input[name="project-end"]');
+            var options={
+                format: 'mm/dd/yyyy',
+                todayHighlight: true,
+                autoclose: true,
+            };
+            date_input.datepicker(options);
+
+            $('#project-description-mission').summernote({
+                placeholder: 'Descriptif du projet',
+                height: 150,
+                width: '100%'
+            });
+
+            $('#project-result-mission').summernote({
+                placeholder: 'Descriptif du résultat du projet',
+                height: 150,
+                width: '100%'
+            })
+
+            $('.images').addMedia({
+                width: '150px',
+                height: '150px',
+                onDelete: function (url) {
+                    console.log(url);
+                    //Ici on fait l'ajax pour supprimer
+                }
+            });
+
+            $('#service-client').autocompletion({
+                width: 300,
+                placeholder:"recherchez vos clients",
+                multiple:false,
+                inputClass: 'floating-input',
+                resultClass: ''
+            });
+        });
+    </script>
 @endsection

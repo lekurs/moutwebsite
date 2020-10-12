@@ -26,6 +26,11 @@
   text-transform: uppercase;
 }
 
+.page-item.active .page-link {
+  background-color: #ff9b44 !important;
+  border-color: #ff9b44 !important;
+}
+
 /** MOUT GESTION DES FORMS **/
 
 .mout-form {
@@ -221,6 +226,29 @@ label.float {
   }
 }
 
+div.dropdown-mout.dropdown-mout-table {
+  position: relative;
+}
+
+div.dropdown-mout.dropdown-mout-table a.dropdown-icon {
+  color: #333333;
+  text-decoration: none;
+}
+
+div.dropdown-mout.dropdown-mout-table a.dropdown-icon i {
+  font-size: 2em;
+  color: #333;
+}
+
+div.dropdown-mout.dropdown-mout-table .action-label .btn-sm,
+div.dropdown-mout.dropdown-mout-table .action-label .btn-group-sm > .btn {
+  padding: 4px;
+}
+
+div.dropdown-mout.dropdown-mout-table .btn.btn-rounded {
+  border-radius: 50px;
+}
+
 div.dropdown-mout div.dropdown-icon {
   position: absolute;
   right: 10px;
@@ -243,6 +271,14 @@ div.dropdown-mout div.dropdown-menu-mout {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 3px;
   transform-origin: left top 0;
+}
+
+div.dropdown-mout div.dropdown-menu-mout.dropdown-menu-mout-table {
+  transform: translate3d(-20px, 15px, 0px) !important;
+}
+
+div.dropdown-mout div.dropdown-menu-mout.dropdown-menu-mout-table.dropdown-mout-status {
+  transform: translate3d(-40px, 35px, 0px) !important;
 }
 
 div.dropdown-mout div.dropdown-menu-mout.active {
@@ -612,6 +648,21 @@ p.contact-empty {
   background: #eee;
   border: 1px dashed #999;
   height: 200px;
+}
+
+table.table#services a {
+  text-decoration: none;
+  color: #333;
+}
+
+table.table#services a:hover {
+  color: #000;
+  font-size: 1.1em;
+}
+
+table.table#services th,
+table.table#services td {
+  text-align: center;
 }
 
 /*!
@@ -11969,6 +12020,13 @@ div.modal-body div.col-contact {
   font-family: "AristaProAlternate";
 }
 
+span.color-icon-square {
+  width: 20px;
+  height: 20px;
+  margin: -5px 10px;
+  display: inline-block;
+}
+
 div.container-fluid,
 div.container-sm,
 div.container-md,
@@ -12421,6 +12479,48 @@ section.mout-realisations H3 {
   font-size: 40px;
 }
 
+section.mout-projects div.mout-projects-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  grid-gap: 20px;
+  grid-auto-flow: row;
+  width: 70%;
+  margin: 0 auto;
+}
+
+section.mout-projects div.mout-projects-container div.mout-project-content {
+  position: relative;
+}
+
+section.mout-projects div.mout-projects-container div.mout-project-content img.project-img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+section.mout-projects div.mout-projects-container div.mout-project-content a.mout-project-description {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+section.mout-projects div.mout-projects-container div.mout-project-content a.mout-project-description:hover {
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
 @-webkit-keyframes navigation-line-top {
   0% {
     top: 0;
@@ -12464,6 +12564,10 @@ div.client-view div.client-img-wrap {
 div.client-view div.client-img-wrap div.client-logo img {
   width: 120px;
   height: 120px;
+}
+
+div.client-view div.client-img-wrap div.client-logo span i {
+  font-size: 4em;
 }
 
 div.client-view div.client-informations {

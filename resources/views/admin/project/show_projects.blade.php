@@ -50,6 +50,108 @@
             @include('layouts.cards.project_card')
         @endforeach
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade custom-modal" id="create_project" tabindex="-1" aria-labelledby="create_project" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mout--regular" id="exampleModalLabel">Création d'un nouveau projet</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-12">
+                                <select name="service-client" class="" id="service-client">
+                                    <option value="">jardiland</option>
+                                    <option value="">jqdlmjlfqj</option>
+                                    <option value="">jqdlmjlfqjqklfjlanjae</option>
+                                    {{--                                    @foreach($clients as $client)--}}
+                                    {{--                                        <option value="{{$client->id}}">{{$client->name}}</option>--}}
+                                    {{--                                    @endforeach--}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="project-title" class="relative-label">Titre du projet</label>
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" name="project-title" id="project-title" aria-label="Titre du projet" placeholder="Titre du projet">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="project-title" class="relative-label">Fin du projet</label>
+                                    <div class="input-group">
+                                        <input class="form-control datetimepicker" id="datetimepicker" aria-label="Fin du projet" placeholder="Fin du projet" type="text" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="basic-addon2"><i class="fal fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="project_color" class="relative-label">Couleur du portfolio</label>
+                                    <div class="input-group">
+                                        <input class="color-picker" id="project_color" name="project_color">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="project_img_portfolio" class="relative-label">Image du projet</label>
+                                    <div class="input-group">
+                                        <input type="file" class="form-control" name="project_img_portfolio" id="project_img_portfolio">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="project_description_mission" class="relative-label">Description du projet</label>
+                                    <div class="input-group">
+                                        <textarea name="project_description_mission" id="project_description_mission" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="project_result_mission" class="relative-label">Description du résultat du projet</label>
+                                    <div class="input-group">
+                                        <textarea name="project_result_mission" id="project_result_mission" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="" class="relative-label">Images du projet</label>
+                                    <div class="images"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-center">
+                                <button class="btn btn-primary add-btn">Enregistrer</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('js')

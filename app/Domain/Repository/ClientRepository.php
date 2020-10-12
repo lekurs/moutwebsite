@@ -26,6 +26,11 @@ class ClientRepository
         return Client::whereSlug($clientSlug)->first();
     }
 
+    public function getOneById(int $clientId): Client
+    {
+        return Client::whereId($clientId)->first();
+    }
+
     public function getOneBySlugWithProjectsAndContacts(string $clientSlug): Client
     {
         return Client::with('projects', 'contacts')->whereSlug($clientSlug)->first();

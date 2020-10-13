@@ -108,6 +108,16 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="service-expertise" class="relative-label">Expertise de la prestation</label>
+                                        <div class="input-group">
+                                            <textarea class="form-control" type="text" name="service-expertise" id="service-expertise" aria-label="Descriptif de la prestation" placeholder="Descriptif de la prestation"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="service-icon" class="relative-label">Icône representative</label>
@@ -148,6 +158,12 @@
 
         $('#service-description').summernote({
             placeholder: 'Descriptif de la prestation',
+            height: 150,
+            width: '100%'
+        });
+
+        $('#service-expertise').summernote({
+            placeholder: 'Expertise de la prestation',
             height: 150,
             width: '100%'
         });

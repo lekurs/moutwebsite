@@ -49,6 +49,16 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="service-expertise" class="relative-label">Expertise</label>
+                                <div class="input-group">
+                                    <textarea class="form-control" name="service-expertise" id="service-expertise" aria-label="Description" placeholder="Description">@isset($service){{ $service->expertise }}@endisset</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="service-icon" class="relative-label">Icone</label>
@@ -84,6 +94,12 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <script>
         $('#service-description').summernote({
+            placeholder: 'Descriptif de la prestation',
+            height: 150,
+            width: '100%'
+        });
+
+        $('#service-expertise').summernote({
             placeholder: 'Descriptif de la prestation',
             height: 150,
             width: '100%'

@@ -62,16 +62,15 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('projectAdd') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        @include('layouts.form_errors.errors')
                         <div class="row">
                             <div class="col-12">
-                                <select name="service-client" class="" id="service-client">
-                                    <option value="">jardiland</option>
-                                    <option value="">jqdlmjlfqj</option>
-                                    <option value="">jqdlmjlfqjqklfjlanjae</option>
-                                    {{--                                    @foreach($clients as $client)--}}
-                                    {{--                                        <option value="{{$client->id}}">{{$client->name}}</option>--}}
-                                    {{--                                    @endforeach--}}
+                                <select name="client-id" class="" id="client-id">
+                                    @foreach($clients as $client)
+                                    <option name="client-slug" id="client-{{ $client->slug }}" value="{{ $client->id }}">{{ $client->name }}</option>
+                                        @endforeach
                                 </select>
                             </div>
                         </div>
@@ -85,15 +84,25 @@
                                 </div>
                             </div>
                             <div class="col-6">
-                                <div class="form-group">
+                                <div class="form-group test">
                                     <label for="project-title" class="relative-label">Fin du projet</label>
                                     <div class="input-group">
-                                        <input class="form-control datetimepicker" id="datetimepicker" aria-label="Fin du projet" placeholder="Fin du projet" type="text" aria-describedby="basic-addon2">
+                                        <input class="form-control datetimepicker" name="project-end" id="datetimepicker" aria-label="Fin du projet" placeholder="Fin du projet" type="text" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <span class="input-group-text" id="basic-addon2"><i class="fal fa-calendar"></i></span>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                @foreach($services as $service)
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" name="project-service[]" type="checkbox" id="label-{{ $service->id }}" value="{{ $service->id }}">
+                                        <label class="form-check-label" for="label-{{ $service->id }}">{{ $service->libelle }}</label>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                         <div class="row">
@@ -107,9 +116,9 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="project_img_portfolio" class="relative-label">Image du projet</label>
+                                    <label for="project-img-portfolio" class="relative-label">Image du projet</label>
                                     <div class="input-group">
-                                        <input type="file" class="form-control" name="project_img_portfolio" id="project_img_portfolio">
+                                        <input type="file" class="form-control" name="project-img-portfolio" id="project-img-portfolio">
                                     </div>
                                 </div>
                             </div>
@@ -117,9 +126,9 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label for="project_description_mission" class="relative-label">Description du projet</label>
+                                    <label for="project-description-mission" class="relative-label">Description du projet</label>
                                     <div class="input-group">
-                                        <textarea name="project_description_mission" id="project_description_mission" class="form-control"></textarea>
+                                        <textarea name="project-description-mission" id="project-description-mission" class="form-control"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -127,9 +136,9 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label for="project_result_mission" class="relative-label">Description du résultat du projet</label>
+                                    <label for="project-result-mission" class="relative-label">Description du résultat du projet</label>
                                     <div class="input-group">
-                                        <textarea name="project_result_mission" id="project_result_mission" class="form-control"></textarea>
+                                        <textarea name="project-result-mission" id="project-result-mission" class="form-control"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -158,7 +167,10 @@
     <script src="{{ asset('plugins/dropdown-mout/dropdown-mout.js') }}"></script>
     <script src="{{ asset('plugins/addmedias/addmedias.js') }}"></script>
     <script src="{{asset('plugins/autocomplete/autocomplete.js')}}"></script>
-    <script src="{{ asset('plugins/bootstrap-datetimepicker.min.js') }}"></script>
+{{--    <script src="{{ asset('plugins/bootstrap-datetimepicker.min.js') }}"></script>--}}
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
     <script src="{{ asset('vendor/colorpicker/color-picker.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
@@ -169,15 +181,17 @@
                 width: '100%'
             });
 
-            $('#datetimepicker').datetimepicker();
+            $('#datetimepicker').datepicker({
+                highlight: 'today'
+            });
 
-            $('#project_description_mission').summernote({
+            $('#project-description-mission').summernote({
                 placeholder: 'Descriptif du projet',
                 height: 150,
                 width: '100%'
             });
 
-            $('#project_result_mission').summernote({
+            $('#project-result-mission').summernote({
                 placeholder: 'Descriptif du résultat du projet',
                 height: 150,
                 width: '100%'
@@ -192,7 +206,7 @@
                 }
             });
 
-            $('#service-client').autocompletion({
+            $('#client-id').autocompletion({
                 width: 300,
                 placeholder:"recherchez vos clients",
                 multiple:false,

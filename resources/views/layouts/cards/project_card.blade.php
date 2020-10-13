@@ -12,7 +12,10 @@
             </div>
             <h4 class="project-title">{{ $project->title }}</h4>
             <small class="block m-b-15">
-                <span class="bolder">Conseil</span> | <span class="bolder">Création</span> | <span class="bolder">Web</span></small>
+                @foreach($project->services as $service)
+                    <span class="bolder">{{ $service->libelle }} @if(!$loop->last)|@endif</span>
+                @endforeach
+            </small>
             <p class="text-muted">{!! $project->result !!}</p>
             <div class="end-project">
                 <p class="subtitle">Fin de projet :</p>

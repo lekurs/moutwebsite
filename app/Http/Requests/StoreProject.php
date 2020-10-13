@@ -30,7 +30,7 @@ class StoreProject extends FormRequest
             'project-result-mission' => '',
             'project-img-portfolio' => 'required',
             'project-color' => '',
-            'client-id' => 'required'
+            'client-id' => 'required',
         ];
     }
 }

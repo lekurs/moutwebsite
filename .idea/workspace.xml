@@ -22,29 +22,23 @@
     <list default="true" id="42f74991-eeae-4c20-95b1-4e849b65c5dc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/55c71b77-6065-44e1-b630-b85fe53dfecd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/55c71b77-6065-44e1-b630-b85fe53dfecd.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Domain/Entity/MediaProject.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Domain/Entity/MediaProject.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Domain/Entity/Project.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Domain/Entity/Project.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Domain/Repository/ClientRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Domain/Repository/ClientRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Domain/Repository/ProjectRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Domain/Repository/ProjectRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Domain/Repository/ServiceRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Domain/Repository/ServiceRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreProject.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreProject.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/UI/Action/Admin/Projects/ProjectsShowAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/UI/Action/Admin/Projects/ProjectsShowAction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/UI/Action/Pub/IndexAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/UI/Action/Pub/IndexAction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/UI/Responder/Admin/Projects/ProjectsShowResponder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/UI/Responder/Admin/Projects/ProjectsShowResponder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_05_140148_create_services_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_05_05_140148_create_services_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/plugins/dropdown-mout/dropdown-mout.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/plugins/dropdown-mout/dropdown-mout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/client.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/client.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/custom-buttons.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/custom-buttons.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/layout-backoffice.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/layout-backoffice.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/public/public-navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/public/public-navigation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/sass/layout-pub.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/layout-pub.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/mout-dropdown.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/mout-dropdown.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/clients/show_all_client.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/clients/show_all_client.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/clients/show_client.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/clients/show_client.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/project/show_projects.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/project/show_projects.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin-layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin-layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/cards/client_card.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/cards/client_card.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/services/edit_service.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/services/edit_service.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/services/show_all_services.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/services/show_all_services.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/cards/project_card.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/cards/project_card.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/public_layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/public_layout.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/public/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/public/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +182,7 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/services" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/storage/app/public/images/uploads/mout-sas/logo" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -207,11 +201,11 @@
       <recent name="$PROJECT_DIR$/app/Http/Controllers" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/storage/app/public/images/uploads/mout-sas/logo" />
       <recent name="$PROJECT_DIR$/resources/views/admin/services" />
       <recent name="$PROJECT_DIR$/resources/views/layouts/cards" />
       <recent name="$PROJECT_DIR$/app/Domain/Entity" />
       <recent name="$PROJECT_DIR$/public/plugins/autocomplete" />
-      <recent name="$PROJECT_DIR$/resources/sass" />
     </key>
   </component>
   <component name="RunManager">
@@ -243,7 +237,8 @@
       <workItem from="1602142660423" duration="8403000" />
       <workItem from="1602163621989" duration="25022000" />
       <workItem from="1602234425570" duration="9751000" />
-      <workItem from="1602488956431" duration="9031000" />
+      <workItem from="1602488956431" duration="12217000" />
+      <workItem from="1602572845593" duration="15529000" />
     </task>
     <servers />
   </component>
@@ -271,11 +266,11 @@
       <screen x="0" y="23" width="2560" height="1331" />
     </state>
     <state x="619" y="284" width="1057" height="833" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.2560.1331@0.23.2560.1331" timestamp="1601901575246" />
-    <state x="752" y="411" key="#com.intellij.ide.util.MemberChooser" timestamp="1602506896189">
+    <state x="752" y="411" key="#com.intellij.ide.util.MemberChooser" timestamp="1602600755143">
       <screen x="0" y="23" width="2560" height="1331" />
     </state>
     <state x="752" y="410" key="#com.intellij.ide.util.MemberChooser/0.23.2560.1329@0.23.2560.1329" timestamp="1602166198433" />
-    <state x="752" y="411" key="#com.intellij.ide.util.MemberChooser/0.23.2560.1331@0.23.2560.1331" timestamp="1602506896189" />
+    <state x="752" y="411" key="#com.intellij.ide.util.MemberChooser/0.23.2560.1331@0.23.2560.1331" timestamp="1602600755143" />
     <state x="968" y="209" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1602172191193">
       <screen x="0" y="23" width="2560" height="1331" />
     </state>
@@ -315,10 +310,10 @@
       <screen x="0" y="23" width="2560" height="1331" />
     </state>
     <state x="1045" y="495" width="470" height="378" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/0.23.2560.1331@0.23.2560.1331" timestamp="1602259024414" />
-    <state x="1576" y="282" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1602258927868">
+    <state x="1576" y="282" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1602599242197">
       <screen x="0" y="23" width="2560" height="1331" />
     </state>
-    <state x="1576" y="282" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.23.2560.1331@0.23.2560.1331" timestamp="1602258927868" />
+    <state x="1576" y="282" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.23.2560.1331@0.23.2560.1331" timestamp="1602599242197" />
     <state x="100" y="123" width="2360" height="1130" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1602196553176">
       <screen x="0" y="23" width="2560" height="1329" />
     </state>
@@ -332,11 +327,11 @@
       <screen x="0" y="23" width="2560" height="1331" />
     </state>
     <state x="1002" y="474" key="refactoring.ChangeSignatureDialog/0.23.2560.1331@0.23.2560.1331" timestamp="1602188542700" />
-    <state x="604" y="326" width="670" height="675" key="search.everywhere.popup" timestamp="1602513165751">
+    <state x="604" y="326" width="917" height="745" key="search.everywhere.popup" timestamp="1602618666883">
       <screen x="0" y="23" width="2560" height="1331" />
     </state>
     <state x="604" y="325" width="670" height="674" key="search.everywhere.popup/0.23.2560.1329@0.23.2560.1329" timestamp="1602196410033" />
-    <state x="604" y="326" width="670" height="675" key="search.everywhere.popup/0.23.2560.1331@0.23.2560.1331" timestamp="1602513165751" />
+    <state x="604" y="326" width="917" height="745" key="search.everywhere.popup/0.23.2560.1331@0.23.2560.1331" timestamp="1602618666883" />
     <state x="604" y="326" width="670" height="676" key="search.everywhere.popup/0.23.2560.1333@0.23.2560.1333" timestamp="1602078216896" />
     <state x="1010" y="542" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1602237556173">
       <screen x="0" y="23" width="2560" height="1331" />

@@ -26,6 +26,7 @@ class StoreService extends FormRequest
         return [
             'service-libelle' => 'required|max:255',
             'service-description' => 'required',
+            'service-expertise' => 'required',
             'service-icon' => 'required',
             'icon-color' => '',
             'service-id' => ''

@@ -36,7 +36,7 @@ class ProjectRepository
         $project->mission = $datas['project-description-mission'];
         $project->result = $datas['project-result-mission'];
         $project->mediaPortfolioProjectPath = $datas['project-img-portfolio']->getClientOriginalName();
-        $project->colorProject = $datas['project-color'];
+        $project->colorProject = $datas['project_color'];
         $project->slug = Str::slug($datas['project-title']);
         $project->client_id = $datas['client-id'];
 

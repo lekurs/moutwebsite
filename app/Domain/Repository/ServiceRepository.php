@@ -20,6 +20,11 @@ class ServiceRepository
         return Service::find($id);
     }
 
+    public function getAllWithProjects(): Collection
+    {
+        return Service::with('projects')->get();
+    }
+
     public function store(array $datas): void
     {
         if(isset($datas['service-id']) && !is_null($datas['service-id'])) {
@@ -29,6 +34,7 @@ class ServiceRepository
         }
         $service->libelle = $datas['service-libelle'];
         $service->description = $datas['service-description'];
+        $service->expertise = $datas['service-expertise'];
         $service->icon = $datas['service-icon'];
         $service->color_icon = $datas['color_icon'];
         $service->slug = Str::slug($datas['service-libelle']);

@@ -57,7 +57,11 @@
                     <a href="{{ route('project', $project->slug) }}" style="background-color: {{ $project->colorProject }}">
                         <img src="{{ asset('storage/images/uploads/' . $project->client->slug . '/logo/' . $project->client->logo) }}" alt="{{ $project->client->slug }}">
                         <p class="project-title">{{ $project->title }}</p>
-                        <span class="project-description">{!! $project->result !!}</span>
+                        <span class="project-description">
+                            @foreach($project->skills as $skill)
+                                {{ $skill->skill }} <br>
+                            @endforeach
+                        </span>
                         <button class="project-button">Voir le projet +</button>
                     </a>
                 </div>

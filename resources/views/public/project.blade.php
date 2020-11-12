@@ -40,7 +40,11 @@
                 </div>
             </div>
 
-            div.project-mission-content#
+            <div class="project-mission-content" id="skills">
+                @foreach($project->skills as $skill)
+                    {{ $skill->skill }} <br>
+                @endforeach
+            </div>
         </div>
 {{--        </div>--}}
     </section>

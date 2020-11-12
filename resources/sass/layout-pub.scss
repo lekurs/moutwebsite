@@ -836,6 +836,7 @@ section.mout-project-section {
 
             &#description {
                 margin-bottom: 3em;
+                position: relative;
 
                 & H2 {
                     width: 280px;
@@ -849,6 +850,13 @@ section.mout-project-section {
                 margin: 0 auto;
                 padding: 50px;
                 background-color: #DBE2E5;
+            }
+
+            &#skills {
+                position: absolute;
+                top: 0;
+                right: 10%;
+                width: 20%;
             }
 
             & H2 {

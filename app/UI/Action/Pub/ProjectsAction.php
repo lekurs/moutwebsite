@@ -7,7 +7,6 @@ namespace App\UI\Action\Pub;
 use App\Domain\Repository\ProjectRepository;
 use App\Domain\Repository\ServiceRepository;
 use App\UI\Responder\Pub\ProjectsResponder;
-use Symfony\Component\HttpFoundation\Session\Session;
 
 class ProjectsAction
 {
@@ -19,9 +18,12 @@ class ProjectsAction
      * ProjectsAction constructor.
      * @param ProjectRepository $projectRepository
      * @param ServiceRepository $serviceRepository
+     * @param SkillRepository $skillRepository
      */
-    public function __construct(ProjectRepository $projectRepository, ServiceRepository $serviceRepository)
-    {
+    public function __construct(
+        ProjectRepository $projectRepository,
+        ServiceRepository $serviceRepository
+    ) {
         $this->projectRepository = $projectRepository;
         $this->serviceRepository = $serviceRepository;
     }

@@ -16,7 +16,7 @@
                     <span class="bolder">{{ $service->libelle }} @if(!$loop->last)|@endif</span>
                 @endforeach
             </small>
-            <p class="text-muted">{!! $project->result !!}</p>
+            <p class="text-muted">{!! substr ($project->result, 0, 300) . '...' !!}</p>
             <div class="end-project">
                 <p class="subtitle">Fin de projet :</p>
                 <p class="text-muted">{{ date('d/m/Y', strtotime($project->endProject)) }}</p>

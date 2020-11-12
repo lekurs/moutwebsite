@@ -268,6 +268,18 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
+                            <div class="form-group form-focus select-focus focused">
+                                <select class="skills-selection sources" multiple="multiple" data-select2-id="1" tabindex="-1" name="skills[]" aria-hidden="true">
+                                    @foreach($skills as $skill)
+                                        <option data-select2-id="{{ $skill->id }}" value="{{ $skill->id }}">{{ $skill->skill }}</option>
+                                    @endforeach
+                                </select>
+                                <label class="focus-label-select">Compétences</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
                             <div class="form-group">
                                 <label for="project-description-mission" class="relative-label">Description du projet</label>
                                 <div class="input-group">
@@ -320,6 +332,10 @@
     <script>
         $(document).ready(function() {
             $('.select-prestation').select2({
+                width: '100%'
+            });
+
+            $('.skills-selection').select2({
                 width: '100%'
             });
 

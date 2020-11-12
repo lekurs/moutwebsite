@@ -43,7 +43,7 @@ class ProjectsShowAction
 
     public function __invoke(ProjectsShowResponder $responder): View
     {
-        $projects = $this->projectRepository->getAll();
+        $projects = $this->projectRepository->getAllBy4();
         $clients = $this->clientRepository->getAll();
         $services = $this->serviceRepository->getAll();
         $skills = $this->skillRepository->getAll();

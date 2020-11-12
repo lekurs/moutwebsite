@@ -30,6 +30,13 @@ class ProjectRepository
             ->get();
     }
 
+    public function getAllBy4(): Paginator
+    {
+        return Project::with('client', 'mediaProjects')
+            ->orderBy('endProject')
+            ->paginate(4);
+    }
+
     public function getAllBy12(): Paginator
     {
         return Project::with('client', 'mediaProjects')
@@ -57,6 +64,12 @@ class ProjectRepository
             }
         }
 
+        if (isset($datas['skills']) && !is_null($datas['skills'])) {
+            foreach ($datas['skills'] as $skill) {
+                $project->skills()->sync($skill, false);
+            }
+        }
+
         $lastId = $project->id;
 
         if (isset($datas['image']) && !is_null($datas['image'])) {
@@ -66,13 +79,6 @@ class ProjectRepository
                 $mediaProject->project_id = $lastId;
 
                 $mediaProject->save();
-            }
-        }
-
-        if (isset($datas['skill']) && !is_null($datas['skill'])) {
-            foreach ($datas['skill'] as $key => $skill) {
-                $skillObject = new Skill();
-//                $skillObject->skill
             }
         }
     }

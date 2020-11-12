@@ -32,26 +32,11 @@ div.card-body {
             width: 10px;
             height: 10px;
         }
+
+        & img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
     }
 }
-
-
-//& div.reverse-portfolio {
-//    width: 100%;
-//    padding: 20px;
-//
-//    & img {
-//        margin-bottom: 2em;
-//    }
-//
-//    & H4.project-name {
-//        font-size: 17px;
-//        font-weight: 700;
-//        color: #ffffff;
-//    }
-//
-//    & p.project-description {
-//        color: #ffffff;
-//
-//    }
-//}

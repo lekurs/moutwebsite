@@ -5,6 +5,7 @@ namespace App\UI\Responder\Pub;
 
 
 use App\Domain\Entity\Project;
+use Illuminate\Database\Eloquent\Collection;
 
 class ProjectShowOneReponder
 {

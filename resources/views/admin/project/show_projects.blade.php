@@ -30,12 +30,12 @@
         </div>
         <div class="col-sm-6 col-md-4">
             <div class="form-group form-focus select-focus focused">
-                <select class="select-prestation sources" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                    <option data-select2-id="3">Select Roll</option>
-                    <option data-select2-id="23">Web Developer</option>
-                    <option data-select2-id="24">Web Designer</option>
-                    <option data-select2-id="25">Android Developer</option>
-                    <option data-select2-id="26">Ios Developer</option>
+                <select class="select-prestation sources" tabindex="-1" aria-hidden="true">
+                    <option >Select Roll</option>
+                    <option >Web Developer</option>
+                    <option >Web Designer</option>
+                    <option >Android Developer</option>
+                    <option >Ios Developer</option>
                 </select>
                 <label class="focus-label-select">Services</label>
             </div>
@@ -48,7 +48,14 @@
     <div class="row">
         @foreach($projects as $project)
             @include('layouts.cards.project_card')
+
         @endforeach
+
+    </div>
+    <div class="row">
+        <div class="col-md-12 my-3">
+            {!! $projects->links() !!}
+        </div>
     </div>
 
     <!-- Modal -->
@@ -126,9 +133,9 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group form-focus select-focus focused">
-                                    <select class="skills-selection sources" multiple="multiple" data-select2-id="1" tabindex="-1" aria-hidden="true" name="skills[]">
+                                    <select class="skills-selection sources" multiple="multiple" tabindex="-1" name="skills[]" aria-hidden="true" id="skills">
                                         @foreach($skills as $skill)
-                                            <option data-select2-id="{{ $skill->id }}">{{ $skill->skill }}</option>
+                                            <option data-select2-id="{{ $skill->id }}" value="{{ $skill->id }}">{{ $skill->skill }}</option>
                                         @endforeach
                                     </select>
                                     <label class="focus-label-select">Compétences</label>
@@ -193,7 +200,7 @@
                 width: '100%'
             });
 
-            $('.skills-selection').select2({
+            $('.skills-selection#skills').select2({
                 width: '100%'
             });
 

@@ -9,12 +9,13 @@ use Illuminate\Database\Eloquent\Collection;
 
 class ProjectsShowResponder
 {
-    public function __invoke(Collection $projects, Collection $clients, Collection $services): View
+    public function __invoke(Collection $projects, Collection $clients, Collection $services, Collection $skills): View
     {
         return view('admin.project.show_projects', [
             'projects' => $projects,
             'clients' => $clients,
-            'services' => $services
+            'services' => $services,
+            'skills' => $skills
         ]);
     }
 }

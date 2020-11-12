@@ -28,7 +28,7 @@ class IndexAction
 
     public function __invoke(IndexResponder $responder)
     {
-        $services = $this->serviceRepository->getAllWithProjects();
+        $services = $this->serviceRepository->getAllWithProjectsLimitBy3();
 
         $projects = $this->projectRepository->getAllWithMediasOrderByNewer();
 

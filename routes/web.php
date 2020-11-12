@@ -8,13 +8,19 @@ use App\UI\Action\Admin\Clients\ClientShowOneAction;
 use App\UI\Action\Admin\Contacts\ContactCreationAction;
 use App\UI\Action\Admin\HomeAdminAction;
 use App\UI\Action\Admin\Projects\ProjectCreationAction;
+use App\UI\Action\Admin\Projects\ProjectShowOneAction;
 use App\UI\Action\Admin\Projects\ProjectsShowAction;
 use App\UI\Action\Admin\Services\ServiceCreationAction;
 use App\UI\Action\Admin\Services\ServiceEditFormAction;
 use App\UI\Action\Admin\Services\ServiceEditStoreAction;
 use App\UI\Action\Admin\Services\ServiceShowAllAction;
 use App\UI\Action\Admin\Services\ServiceShowOneAction;
+use App\UI\Action\Admin\Skills\SkillCreationAction;
+use App\UI\Action\Admin\Skills\SkillEditStoreAction;
+use App\UI\Action\Admin\Skills\SkillShowAllAction;
+use App\UI\Action\Admin\Skills\SkillShowOneAction;
 use App\UI\Action\Pub\IndexAction;
+use App\UI\Action\Pub\ProjectsAction;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +35,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', IndexAction::class)->name('index');
+Route::get('/realisations', ProjectsAction::class)->name('projets');
+Route::get('/realisation/{projectSlug}', ProjectShowOneAction::class)->name('project');
 
 //, 'middleware' => 'auth'
 Route::group(['prefix' => 'admin'], function () {
@@ -37,6 +45,13 @@ Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => 'projets'], function () {
        Route::get('/', ProjectsShowAction::class)->name('showProjects');
        Route::post('/ajouter', ProjectCreationAction::class)->name('projectAdd');
+
+       Route::group(['prefix' => 'competences'], function () {
+           Route::get('/', SkillShowAllAction::class)->name('skillShowAll');
+           Route::get('/voir/{skillId}', SkillShowOneAction::class)->name('skillShowOne');
+           Route::post('/ajouter', SkillCreationAction::class)->name('skillAdd');
+           Route::post('/edit/{skillId)', SkillEditStoreAction::class)->name('skillEditStore');
+       });
     });
 
     Route::group(['prefix' => 'clients'], function () {

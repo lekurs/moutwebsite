@@ -78,3 +78,8 @@
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
     background-color: #ff9b44 !important;
 }
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    height: 70px;
+    padding-top: 20px;
+}

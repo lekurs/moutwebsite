@@ -20,9 +20,11 @@ class ServiceRepository
         return Service::find($id);
     }
 
-    public function getAllWithProjects(): Collection
+    public function getAllWithProjectsLimitBy3(): Collection
     {
-        return Service::with('projects')->get();
+        return Service::with(['projects' => function($q) {
+            $q->limit(5)->orderBy('endProject');
+        }])->get();
     }
 
     public function store(array $datas): void

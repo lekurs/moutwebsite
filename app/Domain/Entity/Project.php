@@ -40,4 +40,9 @@ class Project extends Model
     {
         return $this->belongsTo(Client::class, 'client_id');
     }
+
+    public function skills(): BelongsToMany
+    {
+        return $this->belongsToMany(Skill::class, 'projects_skills');
+    }
 }

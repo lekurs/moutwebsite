@@ -3,14 +3,11 @@
 
 namespace App\UI\Action\Admin\Clients;
 
-
-use App\Domain\Handlers\Client\ClientCreationHandler;
 use App\Domain\Repository\ClientRepository;
 use App\Http\Requests\StoreClient;
 use App\Services\Uploads\UploadedFilesService;
 use App\UI\Responder\Admin\Clients\ClientCreationResponder;
 use Illuminate\Support\Str;
-use Symfony\Component\HttpFoundation\Request;
 
 class ClientCreationAction
 {

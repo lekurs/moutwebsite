@@ -6,6 +6,8 @@ namespace App\Domain\Repository;
 
 use App\Domain\Entity\MediaProject;
 use App\Domain\Entity\Project;
+use App\Domain\Entity\Skill;
+use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Str;
 
@@ -18,7 +20,7 @@ class ProjectRepository
 
     public function getOneBySlug(string $slug): Project
     {
-        return Project::whereSlug($slug);
+        return Project::whereSlug($slug)->first();
     }
 
     public function getAllWithMediasOrderByNewer(): Collection
@@ -26,6 +28,13 @@ class ProjectRepository
         return Project::with('client', 'mediaProjects')
             ->orderBy('endProject')
             ->get();
+    }
+
+    public function getAllBy12(): Paginator
+    {
+        return Project::with('client', 'mediaProjects')
+            ->orderBy('endProject')
+            ->paginate(12);
     }
 
     public function store(array $datas): void
@@ -57,6 +66,13 @@ class ProjectRepository
                 $mediaProject->project_id = $lastId;
 
                 $mediaProject->save();
+            }
+        }
+
+        if (isset($datas['skill']) && !is_null($datas['skill'])) {
+            foreach ($datas['skill'] as $key => $skill) {
+                $skillObject = new Skill();
+//                $skillObject->skill
             }
         }
     }

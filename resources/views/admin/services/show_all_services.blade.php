@@ -38,7 +38,7 @@
             @foreach($services as $service)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td><a href="{{ route('serviceShowOne', $service->id) }}">{{ $service->libelle }}</a></td>
+                    <td><a href="{{ route('serviceShowOne', $service->id) }}" class="txt">{{ $service->libelle }}</a></td>
                     <td>{!! $service->icon !!}</td>
                     <td>{!! $service->color_icon !!} <span class="color-icon-square" style="border: 10px solid {!! $service->color_icon !!}"></span></td>
                     <td>

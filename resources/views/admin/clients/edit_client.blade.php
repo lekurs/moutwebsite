@@ -25,9 +25,6 @@
                 <div class="col-12 text-center">
                     <h5 class="add-client-title"><i class="fal fa-building"></i> {{ $client->name }}</h5>
                 </div>
-                {{--                        <div class="col-2 add-contact d-flex justify-content-around align-items-center">--}}
-                {{--                            <button type="button" class="btn btn-white addcontact"><i class="fal fa-plus"></i> Contact</button>--}}
-                {{--                        </div>--}}
             </div>
             <div class="row">
                 <div class="col-12 col-client">

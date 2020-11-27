@@ -7,7 +7,10 @@ use App\UI\Action\Admin\Clients\ClientShowAllAction;
 use App\UI\Action\Admin\Clients\ClientShowOneAction;
 use App\UI\Action\Admin\Contacts\ContactCreationAction;
 use App\UI\Action\Admin\HomeAdminAction;
+use App\UI\Action\Admin\Profile\ProfileEditStoreAction;
+use App\UI\Action\Admin\Profile\ProfileShowOneAction;
 use App\UI\Action\Admin\Projects\ProjectCreationAction;
+use App\UI\Action\Admin\Projects\ProjectEditFormAction;
 use App\UI\Action\Admin\Projects\ProjectShowOneAction;
 use App\UI\Action\Admin\Projects\ProjectsShowAction;
 use App\UI\Action\Admin\Services\ServiceCreationAction;
@@ -21,6 +24,7 @@ use App\UI\Action\Admin\Skills\SkillShowAllAction;
 use App\UI\Action\Admin\Skills\SkillShowOneAction;
 use App\UI\Action\Pub\IndexAction;
 use App\UI\Action\Pub\ProjectsAction;
+use App\UI\Action\Pub\SendContactMailAction;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,14 +41,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', IndexAction::class)->name('index');
 Route::get('/realisations', ProjectsAction::class)->name('projets');
 Route::get('/realisation/{projectSlug}', ProjectShowOneAction::class)->name('project');
+Route::post('/contact-mail', SendContactMailAction::class)->middleware('throttle:1,60')->name('contactMail');
 
-//, 'middleware' => 'auth'
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/', HomeAdminAction::class)->name('homeAdmin');
+
+    Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
+       Route::get('/', ProfileShowOneAction::class)->name('profile');
+       Route::post('/edit', ProfileEditStoreAction::class)->name('profileEdit');
+    });
 
     Route::group(['prefix' => 'projets'], function () {
        Route::get('/', ProjectsShowAction::class)->name('showProjects');
        Route::post('/ajouter', ProjectCreationAction::class)->name('projectAdd');
+       Route::get('/edit/{projectSlug}', ProjectEditFormAction::class)->name('projectEditForm');
 
        Route::group(['prefix' => 'competences'], function () {
            Route::get('/', SkillShowAllAction::class)->name('skillShowAll');
@@ -72,5 +82,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/edit/{serviceId}/store', ServiceEditStoreAction::class)->name('serviceEditStore');
     });
 });
+
+Route::get('logout', '\App\Http\Controllers\Auth\LogoutController@logout')->name('logout');
 
 Auth::routes();

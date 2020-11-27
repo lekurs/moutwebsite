@@ -6,7 +6,7 @@
                     <i class="fal fa-ellipsis-v"></i>
                 </div>
                 <div class="dropdown-menu-mout">
-                    <a class="dropdown-item" href="#" data-id=""><i class="fal fa-pen"></i> Modifier</a>
+                    <a class="dropdown-item" href="{{ route('projectEditForm', $project->slug) }}" data-id=""><i class="fal fa-pen"></i> Modifier</a>
                     <a class="dropdown-item" href="#" data-id=""><i class="fal fa-trash"></i> Supprimer</a>
                 </div>
             </div>

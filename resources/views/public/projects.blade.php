@@ -52,7 +52,7 @@
     <section class="container projects-container">
         <div class="row">
             @foreach($projects as $project)
-                <div class="col-12 md-4 col-lg-4 mb-4 project-container @foreach($project->services as $service){{$service->slug}} @endforeach">
+                <div class="col-12 md-4 col-lg-4 mb-4 project-container {{ $project->id }} @foreach($project->services as $service){{$service->slug}} @endforeach">
                         <img src="{{ asset('storage/images/uploads/' . $project->client->slug . '/projects/portfolio/' . $project->mediaPortfolioProjectPath) }}" alt="{{ $project->title }}" class="img-fluid project-img">
                     <a href="{{ route('project', $project->slug) }}" style="background-color: {{ $project->colorProject }}">
                         <img src="{{ asset('storage/images/uploads/' . $project->client->slug . '/logo/' . $project->client->logo) }}" alt="{{ $project->client->slug }}">

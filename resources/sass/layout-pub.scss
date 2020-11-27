@@ -1,5 +1,71 @@
 // Mout Public
+@media all and (max-width: 768px) {
+    div.mout-pub-header-container {
+        & H2 {
+            text-align: center;
+        }
+    }
+
+    div.mout-description-container {
+        grid-template-columns: 1fr;
+    }
+
+    div.services-description-content {
+
+        &.active {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    section.mout-services-description div.services-icon-container:after {
+        display: none;
+    }
+
+    //Realisations
+    div.project-header {
+        & span.background-opacity {
+            & H1 {
+                text-align: center;
+            }
+        }
+    }
+
+    div.project-mission-content {
+
+        &#result {
+            width: 80% !important;
+        }
+
+        &#skills {
+            position: relative;
+            margin-top: 2em;
+        }
+
+        &#skill-content {
+            &::after {
+                bottom: -20px !important;
+            }
+        }
+    }
+
+    footer {
+        padding: 40px;
+
+        & div.footer-address-container {
+            & span.galaxy {
+                top: -12px !important;
+            }
+            & p {
+                line-height: 30px;
+            }
+        }
+    }
+}
+
 @media all and (max-width: 767px) {
+    div.services-icon-container {
+        flex-direction: column;
+    }
 
     footer {
         height: auto;
@@ -8,6 +74,15 @@
 }
 
 @media all and (min-width: 768px) {
+
+    //Home
+    div.mout-description-container {
+        grid-template-columns: repeat(10, 1fr);
+    }
+
+    div.services-description-content {
+        grid-template-columns: 1fr 1.5fr;
+    }
 
     footer {
         height: 105px;
@@ -68,10 +143,24 @@
             margin: 0 2em;
         }
     }
+
+    //Realisations
+
+    div.project-mission-content {
+        &#skills {
+            position: absolute;
+            top: 0;
+            right: 10%;
+            width: 20%;
+            height: 70%;
+        }
+    }
 }
 
 @media all and (min-width: 768px) and (max-width: 1199px) {
-
+    section.mout-services-description div.services-icon-container a {
+        margin: 0 1em !important;
+    }
 }
 
 @media all and (min-width: 1200px) and (max-width: 1399px) {
@@ -372,7 +461,6 @@ section.mout-description-section {
         display: grid;
         margin: 3em auto 0;
         grid-template-rows: 80px;
-        grid-template-columns: repeat(10, 1fr);
         font-size: 20px;
         width: 55%;
 
@@ -450,19 +538,6 @@ section.mout-services-description {
                 text-decoration: none;
             }
 
-            //    &:nth-of-type(1) {
-            //        color: #7A63F9;
-            //    }
-            //
-            //    &:nth-of-type(2) {
-            //        color: #FF9D00;
-            //    }
-            //
-            //    &:nth-of-type(3) {
-            //        color: #03DBC2;
-            //    }
-            //}
-
             & i {
                 font-size: 30px;
 
@@ -527,7 +602,6 @@ section.mout-services-description {
                 opacity: 1;
                 display: grid;
                 margin: 0 auto;
-                grid-template-columns: 1fr 1.5fr;
                 grid-column-gap: 80px;
                 grid-template-rows: minmax(200px, 1fr);
             }
@@ -760,6 +834,7 @@ div.project-container {
 section.mout-contact {
     margin-bottom: 3em;
     text-align: center;
+    transition: all .5s ease-in-out;
 
     & h3 {
         font-family: $mout-font-bold;
@@ -768,7 +843,7 @@ section.mout-contact {
         margin-bottom: .5em;
     }
 
-    & a {
+    & span {
         color: #000;
         font-family: $mout-font;
         font-size: 30px;
@@ -791,6 +866,16 @@ section.mout-contact {
         & svg {
             width: 8%;
             transform: rotate(180deg);
+            transition: all .5s ease-in-out;
+        }
+    }
+
+    &.active {
+
+        & div.svg-container {
+            & svg {
+                transform: rotate(0deg);
+            }
         }
     }
 }
@@ -853,10 +938,26 @@ section.mout-project-section {
             }
 
             &#skills {
-                position: absolute;
-                top: 0;
-                right: 10%;
-                width: 20%;
+                background-color: #FFFE00;
+                padding: 40px;
+            }
+
+            &#skill-content {
+                position: relative;
+                height: 100%;
+                width: 100% !important;
+                font-family: $mout-font;
+                font-size: 20px;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 4px;
+                    background-color: #fff;
+                }
             }
 
             & H2 {
@@ -869,6 +970,15 @@ section.mout-project-section {
                 margin-bottom: 0;
                 line-height: 25px;
             }
+        }
+    }
+
+    & div.project-img-container {
+        width: 80%;
+        margin: 2em auto;
+
+        & img {
+            object-fit: cover;
         }
     }
 }
@@ -932,6 +1042,89 @@ footer {
 
     & div.footer-right-container {
         //margin: 0 2em;
+    }
+}
+
+//Contact form
+div.contact-form {
+    display: none;
+
+    & div.floating-label.contact-form-input-container {
+        margin: 0 auto;
+        width: 50%;
+
+        &.custom-radio {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1em;
+        }
+
+        & input {
+            &:not([type="radio"]) {
+                width: 100%;
+                border: none;
+            }
+        }
+
+        & label {
+            font-family: $mout-font;
+            color: #000 !important;
+            opacity: 1 !important;
+            -webkit-box-shadow: inset 0px -10px 0px 0px #FFFE00;
+            box-shadow: inset 0px -10px 0px 0px #FFFE00;
+
+            &.float {
+                left: 13px;
+            }
+            &::after {
+                background: none !important;
+            }
+        }
+
+        & .custom-control-input:checked ~ .custom-control-label::before {
+            border-color: #FFFE00;
+            background-color: #FFFE00;
+        }
+
+        & .custom-radio .custom-control-input:checked ~ .custom-control-label::after {
+            background-image: none !important;
+        }
+
+        & H6 {
+            width: 14%;
+            font-family: $mout-font;
+            font-size: 20px;
+            -webkit-box-shadow: inset 0px -10px 0px 0px #FFFE00;
+            box-shadow: inset 0px -10px 0px 0px #FFFE00;
+            margin: 1em 0;
+        }
+
+        & textarea {
+            width: 100%;
+            border: none;
+            background: #F6F8F9;
+            font-family: 'Assistant';
+            font-size: 18px;
+            font-weight:300;
+        }
+
+        & button.btn-submit-form {
+            border: 1px solid #fff;
+            padding: 8px 20px;
+            background: none;
+            font-family: $mout-font;
+            font-size: 20px;
+            -webkit-box-shadow: inset 0px -10px 0px 0px #FFFE00;
+            box-shadow: inset 0px -10px 0px 0px #FFFE00;
+            line-height: 30px;
+            transition: all .5s ease-in-out;
+
+            &:hover {
+                -webkit-box-shadow: inset 0 0 0 0 #FFFE00;
+                box-shadow: inset 0 0 0 0 #FFFE00;
+                border: 1px solid #FFFE00;
+            }
+        }
     }
 }
 

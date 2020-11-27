@@ -86,6 +86,30 @@ div.bo-header {
                 height: 60px;
                 text-decoration: none;
 
+                &.mout-top-dropdown-menu {
+
+                    &::after {
+                        border-top: 0;
+                        border-left: 0;
+                        border-bottom: 2px solid #fff;
+                        border-right: 2px solid #fff;
+                        content: '';
+                        height: 8px;
+                        display: inline-block;
+                        pointer-events: none;
+                        -webkit-transform-origin: 66% 66%;
+                        -ms-transform-origin: 66% 66%;
+                        transform-origin: 66% 66%;
+                        -webkit-transform: rotate(45deg);
+                        -ms-transform: rotate(45deg);
+                        transform: rotate(45deg);
+                        -webkit-transition: all 0.15s ease-in-out;
+                        transition: all 0.15s ease-in-out;
+                        width: 8px;
+                        vertical-align: 2px;
+                    }
+                }
+
                 & span.user-img {
                     display: inline-block;
                     position: relative;
@@ -107,6 +131,28 @@ div.bo-header {
                 &.main-drop {
                     min-width: 130px;
                     padding: 0;
+
+                    & a {
+                        display: block;
+                        width: 100%;
+                        padding: .25rem 1.5rem;
+                        clear: both;
+                        font-weight: 400;
+                        color: #212529;
+                        text-align: inherit;
+                        white-space: nowrap;
+                        background-color: transparent;
+                        border: 0;
+                        line-height: inherit !important;
+                        height: auto !important;
+                        font-size: 13px !important;
+
+                        &:hover {
+                            color: #16181b;
+                            text-decoration: none;
+                            background-color: #f8f9fa;
+                        }
+                    }
                 }
             }
         }
@@ -138,6 +184,7 @@ div.sidebar {
                 & img {
                     width: 40px;
                     height: 40px;
+                    border-radius: 50%;
                 }
             }
             & div.mout-profil-right {
@@ -185,7 +232,8 @@ div.sidebar {
 
                 & > a {
                     border-radius: 0;
-                    background-color: #505b72;
+                    //background-color: #505b72;
+                    background-color: #34444c;
                     color: #fff;
                     padding: 8px 10px;
                     font-size: 14px;
@@ -249,7 +297,7 @@ div.sidebar {
                 background-color: #34444c;
 
                 & > li {
-                    border-top: 1px solid #eaecf0;
+                    //border-top: 1px solid #eaecf0;
                     text-transform: uppercase;
                     float: none;
                     font-weight: 500;
@@ -447,6 +495,75 @@ div.page-wrapper {
             a {
                 color: #333;
             }
+        }
+    }
+
+    //Profile
+    img.img-client-logo {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+    }
+
+    span.profile-name {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5em;
+        color: #fff;
+    }
+
+    div.profile-img-container {
+        position: relative;
+        padding: 50px 0;
+        background: #fff;
+
+        & span.profile-name {
+            position: relative;
+            width: 120px !important;
+            height: 120px !important;
+            overflow: hidden;
+        }
+
+        & div.profile-img-content {
+            border-radius: 50%;
+            overflow: hidden;
+
+            & img {
+                position: relative;
+                width: 120px;
+                height: 120px;
+                border-radius: 50%;
+                overflow: hidden;
+            }
+        }
+
+        & div.fileupload-filter {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 13px;
+            background: rgba(33, 33, 33, 0.5);
+            border-radius: 0;
+            padding: 3px 10px;
+            border: none;
+            color: #fff;
+        }
+
+        & input[type="file"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 3;
         }
     }
 }

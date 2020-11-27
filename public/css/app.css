@@ -37,6 +37,11 @@
 
 /** MOUT GESTION DES FORMS **/
 
+:root {
+  --input-padding-x: .75rem;
+  --input-padding-y: .75rem;
+}
+
 .mout-form {
   min-width: 35%;
   margin: 2em 0 2em;
@@ -11676,6 +11681,22 @@ div.bo-header ul.nav-menu li a {
   text-decoration: none;
 }
 
+div.bo-header ul.nav-menu li a.mout-top-dropdown-menu::after {
+  border-top: 0;
+  border-left: 0;
+  border-bottom: 2px solid #fff;
+  border-right: 2px solid #fff;
+  content: "";
+  height: 8px;
+  display: inline-block;
+  pointer-events: none;
+  transform-origin: 66% 66%;
+  transform: rotate(45deg);
+  transition: all 0.15s ease-in-out;
+  width: 8px;
+  vertical-align: 2px;
+}
+
 div.bo-header ul.nav-menu li a span.user-img {
   display: inline-block;
   position: relative;
@@ -11697,6 +11718,28 @@ div.bo-header ul.nav-menu li div.dropdown-menu {
 div.bo-header ul.nav-menu li div.dropdown-menu.main-drop {
   min-width: 130px;
   padding: 0;
+}
+
+div.bo-header ul.nav-menu li div.dropdown-menu.main-drop a {
+  display: block;
+  width: 100%;
+  padding: 0.25rem 1.5rem;
+  clear: both;
+  font-weight: 400;
+  color: #212529;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+  line-height: inherit !important;
+  height: auto !important;
+  font-size: 13px !important;
+}
+
+div.bo-header ul.nav-menu li div.dropdown-menu.main-drop a:hover {
+  color: #16181b;
+  text-decoration: none;
+  background-color: #f8f9fa;
 }
 
 div.sidebar {
@@ -11725,6 +11768,7 @@ div.sidebar div.mout-left-panel-informations div.mout-left-panel-profil div.mout
 div.sidebar div.mout-left-panel-informations div.mout-left-panel-profil div.mout-profil-left img {
   width: 40px;
   height: 40px;
+  border-radius: 50%;
 }
 
 div.sidebar div.mout-left-panel-informations div.mout-left-panel-profil div.mout-profil-right {
@@ -11771,7 +11815,7 @@ div.sidebar div.mout-left-panel-informations ul.nav-tabs.nav-justified.nav-sideb
 
 div.sidebar div.mout-left-panel-informations ul.nav-tabs.nav-justified.nav-sidebar > li.mout-pan-top > a {
   border-radius: 0;
-  background-color: #505b72;
+  background-color: #34444c;
   color: #fff;
   padding: 8px 10px;
   font-size: 14px;
@@ -11829,7 +11873,6 @@ div.sidebar div.mout-left-panel-informations div.mout-tab-content ul.nav-quirk {
 }
 
 div.sidebar div.mout-left-panel-informations div.mout-tab-content ul.nav-quirk > li {
-  border-top: 1px solid #eaecf0;
   text-transform: uppercase;
   float: none;
   font-weight: 500;
@@ -12014,6 +12057,74 @@ div.page-wrapper div.page-header ul.breadcrumb a {
   color: #333;
 }
 
+div.page-wrapper img.img-client-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+div.page-wrapper span.profile-name {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  color: #fff;
+}
+
+div.page-wrapper div.profile-img-container {
+  position: relative;
+  padding: 50px 0;
+  background: #fff;
+}
+
+div.page-wrapper div.profile-img-container span.profile-name {
+  position: relative;
+  width: 120px !important;
+  height: 120px !important;
+  overflow: hidden;
+}
+
+div.page-wrapper div.profile-img-container div.profile-img-content {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+div.page-wrapper div.profile-img-container div.profile-img-content img {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+div.page-wrapper div.profile-img-container div.fileupload-filter {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 13px;
+  background: rgba(33, 33, 33, 0.5);
+  border-radius: 0;
+  padding: 3px 10px;
+  border: none;
+  color: #fff;
+}
+
+div.page-wrapper div.profile-img-container input[type=file] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 3;
+}
+
 .modal-content {
   border-radius: 10px;
 }
@@ -12097,7 +12208,58 @@ div.mout-public-login-container div.mout-public-login-right-panel h2 {
   color: white;
 }
 
+@media all and (max-width: 768px) {
+  div.mout-pub-header-container H2 {
+    text-align: center;
+  }
+
+  div.mout-description-container {
+    grid-template-columns: 1fr;
+  }
+
+  div.services-description-content.active {
+    grid-template-columns: 1fr;
+  }
+
+  section.mout-services-description div.services-icon-container:after {
+    display: none;
+  }
+
+  div.project-header span.background-opacity H1 {
+    text-align: center;
+  }
+
+  div.project-mission-content#result {
+    width: 80% !important;
+  }
+
+  div.project-mission-content#skills {
+    position: relative;
+    margin-top: 2em;
+  }
+
+  div.project-mission-content#skill-content::after {
+    bottom: -20px !important;
+  }
+
+  footer {
+    padding: 40px;
+  }
+
+  footer div.footer-address-container span.galaxy {
+    top: -12px !important;
+  }
+
+  footer div.footer-address-container p {
+    line-height: 30px;
+  }
+}
+
 @media all and (max-width: 767px) {
+  div.services-icon-container {
+    flex-direction: column;
+  }
+
   footer {
     height: auto;
     flex-direction: column;
@@ -12105,6 +12267,14 @@ div.mout-public-login-container div.mout-public-login-right-panel h2 {
 }
 
 @media all and (min-width: 768px) {
+  div.mout-description-container {
+    grid-template-columns: repeat(10, 1fr);
+  }
+
+  div.services-description-content {
+    grid-template-columns: 1fr 1.5fr;
+  }
+
   footer {
     height: 105px;
     flex-direction: row;
@@ -12163,6 +12333,20 @@ div.mout-public-login-container div.mout-public-login-right-panel h2 {
 
   footer div.footer-right-container {
     margin: 0 2em;
+  }
+
+  div.project-mission-content#skills {
+    position: absolute;
+    top: 0;
+    right: 10%;
+    width: 20%;
+    height: 70%;
+  }
+}
+
+@media all and (min-width: 768px) and (max-width: 1199px) {
+  section.mout-services-description div.services-icon-container a {
+    margin: 0 1em !important;
   }
 }
 
@@ -12451,7 +12635,6 @@ section.mout-description-section div.mout-description-container {
   display: grid;
   margin: 3em auto 0;
   grid-template-rows: 80px;
-  grid-template-columns: repeat(10, 1fr);
   font-size: 20px;
   width: 55%;
 }
@@ -12568,7 +12751,6 @@ section.mout-services-description div.services-description-container div.service
   opacity: 1;
   display: grid;
   margin: 0 auto;
-  grid-template-columns: 1fr 1.5fr;
   grid-column-gap: 80px;
   grid-template-rows: minmax(200px, 1fr);
 }
@@ -12794,6 +12976,7 @@ div.project-container a:hover {
 section.mout-contact {
   margin-bottom: 3em;
   text-align: center;
+  transition: all 0.5s ease-in-out;
 }
 
 section.mout-contact h3 {
@@ -12803,28 +12986,33 @@ section.mout-contact h3 {
   margin-bottom: 0.5em;
 }
 
-section.mout-contact a {
+section.mout-contact span {
   color: #000;
   font-family: "AristaProAlternate";
   font-size: 30px;
 }
 
-section.mout-contact a span {
+section.mout-contact span span {
   padding: 10px;
   background-color: #FFFF00;
 }
 
-section.mout-contact a:hover {
+section.mout-contact span:hover {
   color: #fff;
 }
 
-section.mout-contact a:hover span {
+section.mout-contact span:hover span {
   background-color: #000;
 }
 
 section.mout-contact div.svg-container svg {
   width: 8%;
   transform: rotate(180deg);
+  transition: all 0.5s ease-in-out;
+}
+
+section.mout-contact.active div.svg-container svg {
+  transform: rotate(0deg);
 }
 
 section.projects-container {
@@ -12883,10 +13071,26 @@ section.mout-project-section div.project-description-container div.project-missi
 }
 
 section.mout-project-section div.project-description-container div.project-mission-content#skills {
+  background-color: #FFFE00;
+  padding: 40px;
+}
+
+section.mout-project-section div.project-description-container div.project-mission-content#skill-content {
+  position: relative;
+  height: 100%;
+  width: 100% !important;
+  font-family: "AristaProAlternate";
+  font-size: 20px;
+}
+
+section.mout-project-section div.project-description-container div.project-mission-content#skill-content::after {
+  content: "";
   position: absolute;
-  top: 0;
-  right: 10%;
-  width: 20%;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #fff;
 }
 
 section.mout-project-section div.project-description-container div.project-mission-content H2 {
@@ -12898,6 +13102,16 @@ section.mout-project-section div.project-description-container div.project-missi
 section.mout-project-section div.project-description-container div.project-mission-content p {
   margin-bottom: 0;
   line-height: 25px;
+}
+
+section.mout-project-section div.project-img-container {
+  width: 80%;
+  margin: 2em auto;
+}
+
+section.mout-project-section div.project-img-container img {
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 footer {
@@ -12943,6 +13157,83 @@ footer div.footer-left-container div.footer-address-container p {
 
 footer div.footer-left-container div.footer-social-networks-container a {
   margin: 0 0.5em;
+}
+
+div.contact-form {
+  display: none;
+}
+
+div.contact-form div.floating-label.contact-form-input-container {
+  margin: 0 auto;
+  width: 50%;
+}
+
+div.contact-form div.floating-label.contact-form-input-container.custom-radio {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+}
+
+div.contact-form div.floating-label.contact-form-input-container input:not([type=radio]) {
+  width: 100%;
+  border: none;
+}
+
+div.contact-form div.floating-label.contact-form-input-container label {
+  font-family: "AristaProAlternate";
+  color: #000 !important;
+  opacity: 1 !important;
+  box-shadow: inset 0px -10px 0px 0px #FFFE00;
+}
+
+div.contact-form div.floating-label.contact-form-input-container label.float {
+  left: 13px;
+}
+
+div.contact-form div.floating-label.contact-form-input-container label::after {
+  background: none !important;
+}
+
+div.contact-form div.floating-label.contact-form-input-container .custom-control-input:checked ~ .custom-control-label::before {
+  border-color: #FFFE00;
+  background-color: #FFFE00;
+}
+
+div.contact-form div.floating-label.contact-form-input-container .custom-radio .custom-control-input:checked ~ .custom-control-label::after {
+  background-image: none !important;
+}
+
+div.contact-form div.floating-label.contact-form-input-container H6 {
+  width: 14%;
+  font-family: "AristaProAlternate";
+  font-size: 20px;
+  box-shadow: inset 0px -10px 0px 0px #FFFE00;
+  margin: 1em 0;
+}
+
+div.contact-form div.floating-label.contact-form-input-container textarea {
+  width: 100%;
+  border: none;
+  background: #F6F8F9;
+  font-family: "Assistant";
+  font-size: 18px;
+  font-weight: 300;
+}
+
+div.contact-form div.floating-label.contact-form-input-container button.btn-submit-form {
+  border: 1px solid #fff;
+  padding: 8px 20px;
+  background: none;
+  font-family: "AristaProAlternate";
+  font-size: 20px;
+  box-shadow: inset 0px -10px 0px 0px #FFFE00;
+  line-height: 30px;
+  transition: all 0.5s ease-in-out;
+}
+
+div.contact-form div.floating-label.contact-form-input-container button.btn-submit-form:hover {
+  box-shadow: inset 0 0 0 0 #FFFE00;
+  border: 1px solid #FFFE00;
 }
 
 @-webkit-keyframes navigation-line-top {

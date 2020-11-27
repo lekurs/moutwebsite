@@ -62,19 +62,23 @@
                 <h1>Mout</h1>
             </div>
             <ul class="nav-menu">
-                <li>
-                    <a href="">
+                <li class="mout-top-menu-admin">
+                    <a href="#" class="mout-top-dropdown-menu">
                         <span class="user-img">
-                            <img src="{{ asset('storage/images/uploads/clairegindre.png') }}" alt="Claire Gindre" class="user-img img-fluid">
+                            @if(!is_null(auth()->user()->profile_photo_path))
+                                <img src="{{ asset('storage/images/uploads/profiles/img/' . auth()->user()->profile_photo_path) }}" alt="{{ auth()->user()->name }}" class="img-fluid user-img">
+                            @else
+                                <span class="profile-name" style="background-color:{{ $color }} ">{{ substr(auth()->user()->lastname, 0, 1) . substr(auth()->user()->name, 0, 1) }}</span>
+                            @endif
                         </span>
                         <span>Admin</span>
                     </a>
                     <div class="dropdown-menu main-drop">
-                        <a href="#" class="dropdown-item">
-                            Menu-1
+                        <a href="{{ route('profile') }}" class="dropdown-item">
+                            <i class="fal fa-edit"></i> Profil
                         </a>
-                        <a href="#" class="dropdown-item">
-                            Menu-2
+                        <a href="{{ route('logout') }}" class="dropdown-item">
+                            <i class="fal fa-user-times"></i> Logout
                         </a>
                     </div>
                 </li>
@@ -84,13 +88,15 @@
             <div class="mout-left-panel-informations">
                 <div class="mout-left-panel-profil">
                     <div class="mout-profil-left">
-        {{--                @if(auth()->user()->roles == "admin")--}}
-                            <img src="{{ asset('storage/images/uploads/clairegindre.png') }}" alt="" class="img-fluid img-portrait-bo-left-side">
-        {{--                @endif--}}
+                        @if(!is_null(auth()->user()->profile_photo_path))
+                            <img src="{{ asset('storage/images/uploads/profiles/img/' . auth()->user()->profile_photo_path) }}" alt="{{ auth()->user()->name }}" class="img-fluid img-portrait-bo-left-side">
+                        @else
+                            <span class="profile-name" style="background-color:{{ $color }} ">{{ substr(auth()->user()->lastname, 0, 1) . substr(auth()->user()->name, 0, 1) }}</span>
+                        @endif
                     </div>
                     <div class="mout-profil-right">
                         <h4 class="mout-profil-name">Maxime <span class="text-uppercase">Gindre</span>
-                            <a href="#"><i class="fas fa-user-times" style="color: #ffffff"></i></a></h4>
+                            <a href="{{ route('logout') }}"><i class="fas fa-user-times" style="color: #ffffff"></i></a></h4>
                         <span>Admin</span>
                     </div>
                 </div>

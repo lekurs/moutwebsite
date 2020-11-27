@@ -29,13 +29,8 @@
             </div>
             <ul class="nav-children">
                 <li>
-                    <a href="">
+                    <a href="{{ route('clientShowAll') }}">
                         Voir tous
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        Ajouter
                     </a>
                 </li>
             </ul>
@@ -62,7 +57,7 @@
             </div>
             <ul class="nav-children">
                 <li>
-                    <a href="">
+                    <a href="{{ route('showProjects') }}">
                         Voir tous
                     </a>
                 </li>
@@ -81,8 +76,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        Param 2
+                    <a href="{{ route('profile') }}">
+                        Compte utilisateur
                     </a>
                 </li>
                 <li>

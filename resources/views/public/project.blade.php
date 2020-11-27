@@ -16,7 +16,7 @@
     </div>
 
     <section class="mout-project-section">
-        <div class="project-header" style="background: url('{{ asset('storage/images/uploads/' . $project->client->slug . '/projects/portfolio/' . $project->mediaPortfolioProjectPath) }}') center center no-repeat; ">
+        <div class="project-header" style="background: url('{{ asset('storage/images/uploads/' . $project->client->slug . '/projects/portfolio/' . $project->mediaPortfolioProjectPath) }}') center center no-repeat; background-size: cover;">
             <span class="background-opacity">
                 <img src="{{ asset('storage/images/uploads/' . $project->client->slug . '/logo/' . $project->client->logo) }}" alt="{{ $project->client->name }}">
                 <h1 class="title-project">{{ $project->title }}</h1>
@@ -41,11 +41,20 @@
             </div>
 
             <div class="project-mission-content" id="skills">
-                @foreach($project->skills as $skill)
-                    {{ $skill->skill }} <br>
+                <div class="project-mission-content" id="skill-content">
+                    @foreach($project->skills as $skill)
+                        {{ $skill->skill }} <br>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
+        <div class="project-img-container">
+            <div class="project-img-content">
+                @foreach($project->mediaProjects as $media)
+                    <img src="{{ asset('storage/images/uploads/' . $project->client->slug . '/projets/' . $project->slug . '/' . $media->mediaProjectPath) }}" alt="{{ $project->title }}" class="img-fluid">
                 @endforeach
             </div>
         </div>
-{{--        </div>--}}
     </section>
 @endsection

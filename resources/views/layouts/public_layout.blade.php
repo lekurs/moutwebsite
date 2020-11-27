@@ -89,9 +89,9 @@
 
 <section class="mout-contact">
     <h3>Un nouveau projet ?</h3>
-    <a href="" class="btn btn-contact">
+    <span class="btn btn-contact btn-open-contact-form">
         <span>Contactez-nous</span>
-    </a>
+    </span>
     <div class="svg-container text-center">
         <svg version="1.1" id="mout-fusee-black-contact" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 166 126" style="enable-background:new 0 0 166 126;" xml:space="preserve">
                     <style type="text/css">
@@ -111,6 +111,8 @@
             </g>
                 </svg>
     </div>
+
+    @include('public.contact')
 </section>
 
 <footer>
@@ -138,5 +140,16 @@
         </div>
     </div>
 </footer>
+
+<script>
+    $('.btn.btn-open-contact-form').on('click', function() {
+        console.log($(this).closest('.mout-contact').find('svg'));
+        $(this).closest('.mout-contact').addClass('active');
+
+        // $(this).closest('.mout-contact').find('svg').css('transform', 'rotate(0deg)');
+        // $(this).closest('.mout-contact').find('.contact-form').addClass('active');
+        $('.contact-form').show(500);
+    });
+</script>
 </body>
 </html>

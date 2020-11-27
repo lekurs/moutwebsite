@@ -1,4 +1,8 @@
 /** MOUT GESTION DES FORMS **/
+:root {
+    --input-padding-x: .75rem;
+    --input-padding-y: .75rem;
+}
 
 .mout-form {
     min-width: 35%;
@@ -53,17 +57,7 @@ legend {
 
 .floating-input,
 .floating-select {
-  //font-family: $bo-font;
-  //font-weight: 200;
-  //font-size:14px !important;
-  //padding:4px 4px !important;
   display:block;
-  //width:100% !important;
-  //height:30px !important;
-  //background-color: transparent !important;
-  //border:none !important;
-  //border-bottom:1px solid #757575 !important;
-  //border-radius: 0 !important;
     height: 50px !important;
     padding: 21px 12px 6px !important;
 
@@ -75,17 +69,6 @@ legend {
 }
 
 label.float {
-  //color:#707070;
-  //font-family: $mout-font;
-  //font-weight: 200;
-  //font-size:16px;
-  //position:absolute;
-  //pointer-events:none;
-  //left:5px;
-  //top:2px;
-  //transition:0.2s ease all;
-  //-moz-transition:0.2s ease all;
-  //-webkit-transition:0.2s ease all;
     font-size: 16px;
     font-weight: 400;
     opacity: 0.4;
@@ -106,9 +89,6 @@ label.float {
 
 
 .floating-input:focus ~ label.float, .floating-input:not(:placeholder-shown) ~ label.float {
-  //top:-18px;
-  //font-size:14px;
-  //color:#343a40;
     opacity: 1;
     font-weight: 300;
     top: -14px;

@@ -21,7 +21,9 @@
     </div>
 @endsection
 @section('body')
-    <form class="row filter-row" action="" method="post">
+    <form class="row filter-row" action="{{ route('searchProject') }}" method="post">
+        @csrf
+        @include('layouts.form_errors.errors')
         <div class="col-sm-6 col-md-4">
             <div class="form-group form-focus">
                 <input type="text" id="project-name" name="project-name" class="form-control floating-input" placeholder=" ">
@@ -30,18 +32,17 @@
         </div>
         <div class="col-sm-6 col-md-4">
             <div class="form-group form-focus select-focus focused">
-                <select class="select-prestation sources" tabindex="-1" aria-hidden="true">
-                    <option >Select Roll</option>
-                    <option >Web Developer</option>
-                    <option >Web Designer</option>
-                    <option >Android Developer</option>
-                    <option >Ios Developer</option>
+                <select class="select-prestation sources" tabindex="-1" aria-hidden="true" name="skill">
+                    <option value="">Choississez la compétence</option>
+                    @foreach($skills as $skill)
+                        <option value="{{ $skill->id }}">{{ $skill->skill }}</option>
+                    @endforeach
                 </select>
-                <label class="focus-label-select">Services</label>
+                <label class="focus-label-select">Compétence</label>
             </div>
         </div>
         <div class="col-sm-6 col-md-4">
-            <a href="#" class="btn btn-success btn-block text-uppercase mout--regular">Chercher</a>
+            <button type="submit" class="btn btn-success btn-block text-uppercase mout--regular search-project">Chercher</button>
         </div>
     </form>
 
@@ -186,7 +187,6 @@
     <script src="{{ asset('plugins/dropdown-mout/dropdown-mout.js') }}"></script>
     <script src="{{ asset('plugins/addmedias/addmedias.js') }}"></script>
     <script src="{{asset('plugins/autocomplete/autocomplete.js')}}"></script>
-{{--    <script src="{{ asset('plugins/bootstrap-datetimepicker.min.js') }}"></script>--}}
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 

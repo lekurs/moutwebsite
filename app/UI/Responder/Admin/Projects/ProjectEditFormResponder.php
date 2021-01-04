@@ -9,11 +9,12 @@ use Illuminate\Database\Eloquent\Collection;
 
 class ProjectEditFormResponder
 {
-    public function __invoke(Project $project, Collection $skills)
+    public function __invoke(Project $project, Collection $skills, array $projectSkills)
     {
         return view('admin.project.show_project', [
             'project' => $project,
-            'skills' => $skills
+            'skills' => $skills,
+            'projectSkills' => $projectSkills
         ]);
     }
 }

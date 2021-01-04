@@ -6,6 +6,15 @@
 
 require('./bootstrap');
 
+require('randomcolor');
+
+var randomColor = require('randomcolor'); // import the script
+var color = randomColor();
+
+const els = document.querySelectorAll('.randcolor')
+els.forEach(el => el.style.backgroundColor = color)
+
+
 // window.$ = import('jquery');
 // window.Vue = require('vue');
 

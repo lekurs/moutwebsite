@@ -6,10 +6,10 @@
         </h3>
         <ul class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="">Dashboard</a>
+                <a href="{{ route('homeAdmin') }}">Dashboard</a>
             </li>
             <li class="breacrumb-item active">
-                Projet {{ $project->id }}
+                <a href="{{ route('showProjects') }}">Projet </a>| {{ $project->title }}
             </li>
         </ul>
     </div>
@@ -98,12 +98,15 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="{{ route('projectEditStore') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                @include('layouts.form_errors.errors')
                 <div class="row">
                     <div class="col-12">
                         <div class="form-group">
                             <label for="project-title" class="relative-label">Titre du projet</label>
                             <div class="input-group">
+                                <input type="hidden" value="{{ $project->id }}" name="project-id">
                                 <input class="form-control" type="text" name="project-title" id="project-title" aria-label="Titre du projet" placeholder="Titre du projet" @isset($project) value="{{ $project->title }}" @endisset>
                             </div>
                         </div>
@@ -114,7 +117,7 @@
                         <div class="form-group form-focus select-focus focused">
                             <select class="skills-selection sources" multiple="multiple" tabindex="-1" name="skills[]" aria-hidden="true" id="skills">
                                 @foreach($skills as $skill)
-                                    <option data-select2-id="{{ $skill->id }}" value="{{ $skill->id }}">{{ $skill->skill }}</option>
+                                    <option data-select2-id="{{ $skill->id }}" value="{{ $skill->id }}" @if( in_array($skill->skill, $projectSkills)) selected @endif>{{ $skill->skill }}</option>
                                 @endforeach
                             </select>
                             <label class="focus-label-select">Compétences</label>
@@ -125,6 +128,7 @@
                     <div class="col-6">
                         <div class="form-group">
                             <img src="{{ asset('storage/images/uploads/' . $project->client->slug . '/projects/portfolio/' . $project->mediaPortfolioProjectPath) }}" alt="{{ $project->title }}" class="img-fluid">
+                            <input type="file" name="img-project-portfolio" id="img-project-portfolio">
                         </div>
                     </div>
                     <div class="col-6">
@@ -165,62 +169,66 @@
                         </div>
                     </div>
                 </div>
-                @foreach($project->mediaProjects as $media)
                 <div class="row">
                     <div class="col-12">
-                        <img src="{{ asset('storage/images/uploads/' . $project->client->slug . '/projects/' . $project->slug . '/' . $media->mediaProjectPath) }}" alt="{{ $project->title . '-' . $loop->index }}" class="img-fluid">
+                        <h4>Images du projet</h4>
+                    </div>
+                </div>
+                @foreach($project->mediaProjects as $media)
+                <div class="row image-project-hover my-3">
+                    <div class="col-6 m-auto">
+                        <div class="add-project-media" data-toggle="modal" data-position="before" data-target="#add-media" data-img-parent="{{ $media->mediaProjectPath }}" data-id="{{ $loop->index }}">
+                            <i class="fal fa-plus-circle"></i>
+                        </div>
+
+                        <img src="{{ asset('storage/images/uploads/' . $project->client->slug . '/projets/' . $project->slug . '/' . $media->mediaProjectPath) }}"
+                             alt="{{ $project->title . '-' . $loop->index }}"
+                             class="img-fluid project-media-img"
+                             data-project="{{ $project->id }}"
+                             data-path="{{ $media->mediaProjectPath }}"
+                             id="{{ $loop->index }}">
+
+                        <div class="add-project-media" data-toggle="modal" data-position="after" data-target="#add-media" data-img-parent="{{ $media->mediaProjectPath }}" data-id="{{ $loop->index }}">
+                            <i class="fal fa-plus-circle"></i>
+                        </div>
                     </div>
                 </div>
                 @endforeach
+                <div class="row no-gutters mt-3">
+                    <div class="col-12 d-flex justify-content-center">
+                        <button class="btn btn-primary add-btn">Enregistrer</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
 </section>
 
-{{--<div class="row">--}}
-{{--    <div class="col-12">--}}
-{{--        <div class="tab-content client-tab-content">--}}
-{{--            <!-- PROJECTS -->--}}
-{{--            <div class="tab-pane fade active show" id="myprojects" role="tabpanel" aria-labelledby="myprojects-tab">--}}
-{{--                <div class="row mb-3">--}}
-{{--                    <div class="col-auto float-right ml-auto">--}}
-{{--                        <a href="#" class="btn add-btn" data-toggle="modal" data-target="#create_project">--}}
-{{--                            <i class="fal fa-plus"></i>--}}
-{{--                            Créer un projet--}}
-{{--                        </a>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="row">--}}
-{{--                    @foreach($client->projects as $project)--}}
-{{--                        @include('layouts.cards.project_card')--}}
-{{--                    @endforeach--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <!-- CONTACTS -->--}}
-{{--            <div class="tab-pane fade" id="contacts" role="tabpanel" aria-labelledby="estimations-tab">--}}
-{{--                <div class="row mb-3">--}}
-{{--                    <div class="col-auto float-right ml-auto">--}}
-{{--                        <a href="#" class="btn add-btn" data-toggle="modal" data-target="#create_contact">--}}
-{{--                            <i class="fal fa-plus"></i>--}}
-{{--                            Créer un contact--}}
-{{--                        </a>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="row">--}}
-{{--                    @forelse($client->contacts as $contact)--}}
-{{--                        @include('layouts.cards.contact_card')--}}
-{{--                    @empty--}}
-{{--                        <p class="contact-empty mt-4">Aucun contact enregistré</p>--}}
-{{--                    @endforelse--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <!-- ESTIMATIONS -->--}}
-{{--            <div class="tab-pane fade" id="estimations" role="tabpanel" aria-labelledby="estimations-tab">--}}
-{{--                3--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</div>--}}
+
+<div class="modal fade add-project-media-modal" id="add-media" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="file" class="media-project-select-input" name="add-project-media-input" id="add-project-media-input">
+                <input type="text" class="media-project-select-input" id="project-media-img-id" name="project-id" value="{{ $project->id }}">
+                <input type="text" class="media-project-select-input" id="media-project-list" name="list-images" value="">
+                <input type="text" class="media-project-select-input" id="media-project-order-new-img" name="order-new-img">
+                <input type="text" class="media-project-select-input" id="media-project-position" name="media-project-position">
+                <input type="text" class="media-project-select-input" id="media-project-id">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn add-btn store-new-media-img">Ajouter</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection
 
@@ -228,6 +236,7 @@
     <script src="{{ asset('plugins/dropdown-mout/dropdown-mout.js') }}"></script>
     <script src="{{ asset('plugins/addmedias/addmedias.js') }}"></script>
     <script src="{{asset('plugins/autocomplete/autocomplete.js')}}"></script>
+    <script src="{{ asset('js/admin/mediaprojects/manage_mediaprojects.js') }}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
     <script src="{{ asset('vendor/colorpicker/color-picker.js') }}"></script>

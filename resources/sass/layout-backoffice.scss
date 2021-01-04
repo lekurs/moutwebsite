@@ -159,6 +159,19 @@ div.bo-header {
     }
 }
 
+div.bo-header, div.mout-left-panel-profil {
+    & span.profile-name {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1em;
+        color: #fff;
+    }
+}
+
 div.sidebar {
     background-color: #34444c;
     width: 230px;

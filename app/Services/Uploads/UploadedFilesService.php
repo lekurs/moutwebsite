@@ -24,7 +24,7 @@ class UploadedFilesService
         }
     }
 
-    public function moveFile(UploadedFile $file, string $path): void
+    public function moveFile($file, string $path): void
     {
         $this->controlUploadedFile($file);
 

@@ -8,6 +8,7 @@ use App\Domain\Entity\MediaProject;
 use App\Domain\Entity\Project;
 use App\Domain\Entity\Skill;
 use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Str;
 
@@ -30,6 +31,24 @@ class ProjectRepository
             ->get();
     }
 
+    public function getAllWithSearchBar(string $title = null, int $skill = null): Paginator
+    {
+        return Project::with(['client', 'mediaProjects', 'skills'])
+            ->whereHas('skills', function(Builder $q) use($skill) {
+                $q->whereId($skill);
+            })
+            ->where('title', 'like', $title . '%')
+            ->paginate(4);
+    }
+
+    public function getOneBySLugWithMediasOrderByDisplay(string $slug): Project
+    {
+        return Project::with(['client', 'mediaProjects' => function ($q) {
+            $q->orderBy('displayOrder', 'ASC');
+        }])->whereSlug($slug)
+            ->first();
+    }
+
     public function getAllBy4(): Paginator
     {
         return Project::with('client', 'mediaProjects')
@@ -44,42 +63,64 @@ class ProjectRepository
             ->paginate(12);
     }
 
-    public function store(array $datas): void
+    public function store(array $data): void
     {
         $project = new Project();
-        $project->title = $datas['project-title'];
-        $project->endProject = date('Y-m-d', strtotime($datas['project-end']));
-        $project->mission = $datas['project-description-mission'];
-        $project->result = $datas['project-result-mission'];
-        $project->mediaPortfolioProjectPath = $datas['project-img-portfolio']->getClientOriginalName();
-        $project->colorProject = $datas['project_color'];
-        $project->slug = Str::slug($datas['project-title']);
-        $project->client_id = $datas['client-id'];
+        $project->title = $data['project-title'];
+        $project->endProject = date('Y-m-d', strtotime($data['project-end']));
+        $project->mission = $data['project-description-mission'];
+        $project->result = $data['project-result-mission'];
+        $project->mediaPortfolioProjectPath = $data['project-img-portfolio']->getClientOriginalName();
+        $project->colorProject = $data['project_color'];
+        $project->slug = Str::slug($data['project-title']);
+        $project->client_id = $data['client-id'];
 
         $project->save();
 
-        if (isset($datas['project-service'])) {
-            foreach ($datas['project-service'] as $service) {
+        if (isset($data['project-service'])) {
+            foreach ($data['project-service'] as $service) {
                 $project->services()->sync($service, false);
             }
         }
 
-        if (isset($datas['skills']) && !is_null($datas['skills'])) {
-            foreach ($datas['skills'] as $skill) {
+        if (isset($data['skills']) && !is_null($data['skills'])) {
+            foreach ($data['skills'] as $skill) {
                 $project->skills()->sync($skill, false);
             }
         }
 
         $lastId = $project->id;
 
-        if (isset($datas['image']) && !is_null($datas['image'])) {
-            foreach ($datas['image'] as $key => $file) {
+        if (isset($data['image']) && !is_null($data['image'])) {
+            foreach ($data['image'] as $key => $file) {
                 $mediaProject = new MediaProject();
                 $mediaProject->mediaProjectPath = $file->getClientOriginalName();
+                $mediaProject->displayOrder = ($key+1);
                 $mediaProject->project_id = $lastId;
 
                 $mediaProject->save();
             }
         }
+    }
+
+    public function editProjectMedias(array $data)
+    {
+        $project = Project::whereId($data['project-id'])->first();
+        //
+    }
+
+    public function editStore(array $data)
+    {
+        if(isset($data['project-id']) && !is_null($data['project-id'])) {
+            $project = Project::whereId($data['project-id'])->first();
+
+            $project->title = $data['project-title'];
+            $project->colorProject = $data['project_color'];
+            $project->mission = $data['project-description-mission'];
+            $project->result = $data['project-result-mission'];
+            $project->slug = Str::slug($data['project-title']);
+        }
+
+        dd($project);
     }
 }

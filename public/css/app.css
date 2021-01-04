@@ -671,6 +671,17 @@ p.contact-empty {
   height: 200px;
 }
 
+div.add-project-media {
+  height: 30px;
+  background: rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 3px;
+  line-height: 1.5em;
+  margin: 0.3em auto;
+  cursor: pointer;
+  display: none;
+}
+
 table.table#services a,
 table#skills a {
   text-decoration: none;
@@ -11740,6 +11751,18 @@ div.bo-header ul.nav-menu li div.dropdown-menu.main-drop a:hover {
   color: #16181b;
   text-decoration: none;
   background-color: #f8f9fa;
+}
+
+div.bo-header span.profile-name,
+div.mout-left-panel-profil span.profile-name {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+  color: #fff;
 }
 
 div.sidebar {

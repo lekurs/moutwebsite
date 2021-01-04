@@ -68,7 +68,7 @@
                             @if(!is_null(auth()->user()->profile_photo_path))
                                 <img src="{{ asset('storage/images/uploads/profiles/img/' . auth()->user()->profile_photo_path) }}" alt="{{ auth()->user()->name }}" class="img-fluid user-img">
                             @else
-                                <span class="profile-name" style="background-color:{{ $color }} ">{{ substr(auth()->user()->lastname, 0, 1) . substr(auth()->user()->name, 0, 1) }}</span>
+                                <span class="profile-name randcolor">{{ substr(auth()->user()->lastname, 0, 1) . substr(auth()->user()->name, 0, 1) }}</span>
                             @endif
                         </span>
                         <span>Admin</span>
@@ -91,7 +91,7 @@
                         @if(!is_null(auth()->user()->profile_photo_path))
                             <img src="{{ asset('storage/images/uploads/profiles/img/' . auth()->user()->profile_photo_path) }}" alt="{{ auth()->user()->name }}" class="img-fluid img-portrait-bo-left-side">
                         @else
-                            <span class="profile-name" style="background-color:{{ $color }} ">{{ substr(auth()->user()->lastname, 0, 1) . substr(auth()->user()->name, 0, 1) }}</span>
+                            <span class="profile-name randcolor">{{ substr(auth()->user()->lastname, 0, 1) . substr(auth()->user()->name, 0, 1) }}</span>
                         @endif
                     </div>
                     <div class="mout-profil-right">

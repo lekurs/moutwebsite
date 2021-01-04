@@ -11,6 +11,9 @@ use App\UI\Action\Admin\Profile\ProfileEditStoreAction;
 use App\UI\Action\Admin\Profile\ProfileShowOneAction;
 use App\UI\Action\Admin\Projects\ProjectCreationAction;
 use App\UI\Action\Admin\Projects\ProjectEditFormAction;
+use App\UI\Action\Admin\Projects\ProjectEditStoreAction;
+use App\UI\Action\Admin\Projects\ProjectMediaFileStore;
+use App\UI\Action\Admin\Projects\ProjectSearchBarAction;
 use App\UI\Action\Admin\Projects\ProjectShowOneAction;
 use App\UI\Action\Admin\Projects\ProjectsShowAction;
 use App\UI\Action\Admin\Services\ServiceCreationAction;
@@ -55,6 +58,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
        Route::get('/', ProjectsShowAction::class)->name('showProjects');
        Route::post('/ajouter', ProjectCreationAction::class)->name('projectAdd');
        Route::get('/edit/{projectSlug}', ProjectEditFormAction::class)->name('projectEditForm');
+       Route::post('/store', ProjectEditStoreAction::class)->name('projectEditStore');
+       Route::post('/store/projectmediafile', ProjectMediaFileStore::class)->name('addProjectMediaFile');
+       Route::post('/find', ProjectSearchBarAction::class)->name('searchProject');
 
        Route::group(['prefix' => 'competences'], function () {
            Route::get('/', SkillShowAllAction::class)->name('skillShowAll');

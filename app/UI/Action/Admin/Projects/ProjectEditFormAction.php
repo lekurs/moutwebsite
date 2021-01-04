@@ -28,9 +28,15 @@ class ProjectEditFormAction
 
     public function __invoke(ProjectEditFormResponder $responder)
     {
-        $project = $this->projectRepository->getOneBySlug(request('projectSlug'));
+        $project = $this->projectRepository->getOneBySLugWithMediasOrderByDisplay(request('projectSlug'));
         $skills = $this->skillRepository->getAll();
+        $projectSKills = [];
 
-        return $responder($project, $skills);
+        foreach($project->skills as $skillProject)
+        {
+            $projectSKills[] = $skillProject->skill;
+        }
+
+        return $responder($project, $skills, $projectSKills);
     }
 }

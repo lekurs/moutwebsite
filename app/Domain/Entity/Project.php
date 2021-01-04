@@ -21,11 +21,6 @@ class Project extends Model
         'slug'
     ];
 
-//    public function client(): BelongsTo
-//    {
-//        return $this->belongsTo(Client::class);
-//    }
-
     public function mediaProjects(): HasMany
     {
         return $this->hasMany(MediaProject::class);

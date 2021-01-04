@@ -16,6 +16,7 @@ class CreateMediaProjectsTable extends Migration
         Schema::create('media_projects', function (Blueprint $table) {
             $table->increments('id');
             $table->string('mediaProjectPath');
+            $table->integer('displayOrder')->unsigned();
             $table->integer('project_id')->unsigned();
             $table->foreign('project_id')->references('id')->on('projects');
             $table->timestamps();

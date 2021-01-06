@@ -4,19 +4,23 @@
 
 @section('js')
     <script src="{{ asset('js/public/descriptions.js') }}"></script>
-    <script src="{{ asset('js/public/public-navigation.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            let link = $('a.service-link');
+            link.on('mouseover', function () {
+                $(this).css('color', $(this).attr('data-color'));
+            });
+
+            link.on('mouseout', function () {
+                $(this).css('color', '#000')
+            })
+        })
+    </script>
 @endsection
 
 @section('body')
-    <header>
+    <section>
         <div class="container-fluid">
-            <div class="mout-pub-panel" id="top-panel">
-                <svg class="burger" viewBox="0 0 100 100" width="80">
-                    <path class="burger__line top" d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40"></path>
-                    <path class="burger__line middle" d="m 30,50 h 40"></path>
-                    <path class="burger__line bottom" d="m 30,67 h 40 c 12.796276,0 15.357889,-11.717785 15.357889,-26.851538 0,-15.133752 -4.786586,-27.274118 -16.667516,-27.274118 -11.88093,0 -18.499247,6.994427 -18.435284,17.125656 l 0.252538,40"></path>
-                </svg>
-            </div>
             <div class="mout-pub-header-container">
                 <h1>mout</h1>
                 <h2>l’agence geek et créative</h2>
@@ -29,8 +33,7 @@
                 </div>
             </div>
         </div>
-    </header>
-
+    </section>
     <section class="mout-description-section">
         <h3>mout en quelques mots</h3>
         <div class="mout-description-container">
@@ -52,39 +55,64 @@
 
         <div class="services-icon-container">
             @foreach($services as $service)
-                <a href="#" id="{{$service->slug }}" data-service="{{ $service->slug }}">
+                <a href="#" id="{{$service->slug }}" data-service="{{ $service->slug }}" data-color="{{ $service->color_icon }}" class="service-link">
                     <p>{{$service->libelle}}</p>
-                    <i class="{{$service->icon}}"></i>
+                    <span class="service-icon" style="color: {{ $service->color_icon }}">{!! $service->icon !!}</span>
                 </a>
             @endforeach
         </div>
         <div class="services-description-container">
             @foreach($services as $service)
                 <div class="services-description-content" id="{{ $service->slug }}">
-                    <h4 class="service-description-title">Notre expertise</h4>
-                    <p>{!! $service->description !!}</p>
-                    <a href="#" class="btn btn-mout">En savoir +</a>
+                    <div class="services-description-content-left" style="background-color: {{ $service->color_icon }}">
+                        <div class="icon-container">
+                            {!! $service->icon !!}
+                        </div>
+                        <h4>{{ $service->libelle }}</h4>
+                        {!! $service->expertise !!}
+                    </div>
+                    <div class="services-description-content-right">
+                        <h4 class="service-description-title">Notre expertise</h4>
+                        <p>{!! $service->description !!}</p>
+
+                        <div class="last-three-projects row mb-4">
+                            @foreach($service->projects as $project)
+                                <div class="mout-project-content col-12 col-md-4">
+                                    <a href="{{ route('project', $project->slug) }}">
+                                        <img src="{{ asset('storage/images/uploads/' . $project->client->slug . '/projects/portfolio/' . $project->mediaPortfolioProjectPath) }}" alt="{{ $project->title }}" class="img-fluid project-img">
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
+                        <a href="{{ route('projets') }}" class="btn btn-mout show-more">Voir nos réalisations</a>
+                    </div>
                 </div>
             @endforeach
         </div>
     </section>
 
     <section class="mout-projects">
-        <h3>Nos réalisations</h3>
-        <div class="mout-projects-container">
+        <h3>Nos derniers projets</h3>
+        <div class="row projects-container">
             @foreach($projects as $project)
-                <div class="mout-project-content">
-                    <img src="{{ asset('storage/images/uploads/projects/' . $project->slug . '/' . $project->mediaPortfolioProjectPath) }}" alt="{{ $project->title }}" class="img-fluid project-img">
-                    <a href="#" class="mout-project-description" style="background-color: {{ $project->colorProject }}">
-                        <p>test</p>
+                <div class="col-12 md-4 col-lg-4 mb-4 project-container @foreach($project->services as $service){{$service->slug}} @endforeach">
+                    <img src="{{ asset('storage/images/uploads/' . $project->client->slug . '/projects/portfolio/' . $project->mediaPortfolioProjectPath) }}" alt="{{ $project->title }}" class="img-fluid project-img">
+                    <a href="#" style="background-color: {{ $project->colorProject }}">
+                        <img src="{{ asset('storage/images/uploads/' . $project->client->slug . '/logo/' . $project->client->logo) }}" alt="{{ $project->client->slug }}">
+                        <p class="project-title">{{ $project->title }}</p>
+                        <span class="project-description">{!! $project->result !!}</span>
+                        <button class="project-button">Voir le projet +</button>
                     </a>
                 </div>
             @endforeach
         </div>
-    </section>
-@endsection
+        <div class="link-container">
+            <a href="{{ route('projets') }}" class="projects-plus">
+                <span class="projects-plus">Voir + de réalisations</span>
+            </a>
+        </div>
+        <div class="end-section-container">
 
-@section('js')
-{{--    <script src="{{ asset('js/public/descriptions.js') }}"></script>--}}
-{{--    <script src="{{ asset('js/public/public-navigation.js') }}"></script>--}}
+        </div>
+    </section>
 @endsection

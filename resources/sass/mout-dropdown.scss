@@ -1,0 +1,62 @@
+div.dropdown-mout {
+
+    &.dropdown-mout-table {
+        position: relative;
+
+        & a.dropdown-icon {
+            color: #333333;
+            text-decoration: none;
+
+            & i {
+                font-size: 2em;
+                color: #333;
+            }
+        }
+
+        & .action-label .btn-sm {
+            padding: 4px;
+        }
+        & .btn.btn-rounded {
+            border-radius: 50px;
+        }
+    }
+
+    & div.dropdown-icon {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        font-size: 24px;
+        width: 30px;
+        text-align: center;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    & div.dropdown-menu-mout {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate3d(-20px, 45px, 0px);
+        background: #fff;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 3px;
+        transform-origin: left top 0;
+
+        &.dropdown-menu-mout-table {
+            transform: translate3d(-20px, 15px, 0px) !important;
+
+            &.dropdown-mout-status {
+                transform: translate3d(-40px, 35px, 0px) !important;
+            }
+        }
+
+
+
+        &.active {
+            display: block;
+            z-index: 1001;
+        }
+    }
+}

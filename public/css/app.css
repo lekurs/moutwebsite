@@ -10,7 +10,37 @@
   min-width: 140px;
 }
 
+.btn-success.add-skill {
+  border-radius: 50px !important;
+}
+
+.btn-white {
+  background-color: #fff !important;
+  border: 1px solid #ccc !important;
+  color: #333 !important;
+}
+
+.btn-white:hover {
+  background-color: #f7f7f7 !important;
+}
+
+.filter-row .btn {
+  min-height: 50px;
+  padding: 12px;
+  text-transform: uppercase;
+}
+
+.page-item.active .page-link {
+  background-color: #ff9b44 !important;
+  border-color: #ff9b44 !important;
+}
+
 /** MOUT GESTION DES FORMS **/
+
+:root {
+  --input-padding-x: .75rem;
+  --input-padding-y: .75rem;
+}
 
 .mout-form {
   min-width: 35%;
@@ -147,6 +177,20 @@ label.float {
   height: auto;
 }
 
+.relative-label {
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.datetimepicker {
+  margin-top: 0 !important;
+  padding: 0.375rem 0.75rem !important;
+}
+
+.input-group-text {
+  background-color: transparent !important;
+}
+
 /* highlighter */
 
 .highlight {
@@ -189,6 +233,503 @@ label.float {
     width: 0;
     background: transparent;
   }
+}
+
+div.dropdown-mout.dropdown-mout-table {
+  position: relative;
+}
+
+div.dropdown-mout.dropdown-mout-table a.dropdown-icon {
+  color: #333333;
+  text-decoration: none;
+}
+
+div.dropdown-mout.dropdown-mout-table a.dropdown-icon i {
+  font-size: 2em;
+  color: #333;
+}
+
+div.dropdown-mout.dropdown-mout-table .action-label .btn-sm,
+div.dropdown-mout.dropdown-mout-table .action-label .btn-group-sm > .btn {
+  padding: 4px;
+}
+
+div.dropdown-mout.dropdown-mout-table .btn.btn-rounded {
+  border-radius: 50px;
+}
+
+div.dropdown-mout div.dropdown-icon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 24px;
+  width: 30px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+div.dropdown-mout div.dropdown-menu-mout {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate3d(-20px, 45px, 0px);
+  background: #fff;
+  font-size: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  transform-origin: left top 0;
+}
+
+div.dropdown-mout div.dropdown-menu-mout.dropdown-menu-mout-table {
+  transform: translate3d(-20px, 15px, 0px) !important;
+}
+
+div.dropdown-mout div.dropdown-menu-mout.dropdown-menu-mout-table.dropdown-mout-status {
+  transform: translate3d(-40px, 35px, 0px) !important;
+}
+
+div.dropdown-mout div.dropdown-menu-mout.active {
+  display: block;
+  z-index: 1001;
+}
+
+.form-focus .select2-container .select2-selection--single {
+  border: 1px solid #e3e3e3;
+  height: 50px;
+}
+
+.select2-container .select2-selection--single {
+  border: 1px solid #e3e3e3;
+  border-radius: 0.25rem;
+  height: 44px;
+}
+
+.form-focus .select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: #676767;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 38px;
+}
+
+.form-focus .select2-container .select2-selection--single .select2-selection__rendered {
+  padding-right: 30px;
+  padding-left: 12px;
+  padding-top: 10px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: #676767;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 42px;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+  padding-right: 30px;
+  padding-left: 15px;
+}
+
+.form-focus .select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 48px;
+  right: 7px;
+}
+
+.form-focus .select2-container--default .select2-selection--single .select2-selection__arrow b {
+  border-color: #ccc transparent transparent;
+  border-style: solid;
+  border-width: 6px 6px 0;
+  height: 0;
+  left: 50%;
+  margin-left: -10px;
+  margin-top: -2px;
+  position: absolute;
+  top: 50%;
+  width: 0;
+}
+
+.form-focus.select-focus .focus-label-select {
+  opacity: 1;
+  font-weight: 300;
+  top: -20px;
+  font-size: 12px;
+  z-index: 1;
+}
+
+.form-focus .focus-label-select {
+  font-size: 16px;
+  font-weight: 400;
+  opacity: 0.4;
+  pointer-events: none;
+  position: absolute;
+  transform: translate3d(0, 22px, 0) scale(1);
+  transform-origin: left top;
+  transition: 240ms;
+  left: 26px;
+  top: -8px;
+  z-index: 1;
+  color: #888;
+  margin-bottom: 0;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color: #ff9b44 !important;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+  height: 70px;
+  padding-top: 20px;
+}
+
+div.card-body {
+  font-size: 0.9375rem;
+  position: relative;
+}
+
+div.card-body H4 {
+  font-size: 1.125rem;
+}
+
+div.card-body span.bolder {
+  font-weight: bold;
+}
+
+div.card-body p.subtitle {
+  margin-bottom: 5px;
+  font-weight: 700;
+  line-height: 14px;
+}
+
+div.card-body p.subtitle + p.text-muted {
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+div.card-body div.img-portfolio-container {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+div.card-body div.img-portfolio-container span.portfolio-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+}
+
+div.card-body div.img-portfolio-container img {
+  width: 100%;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+div.client-card-container {
+  background-color: #fff;
+  border: 1px solid #ededed;
+  border-radius: 4px;
+  margin-bottom: 30px;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+div.client-card-container div.client-img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 80px;
+  margin: 0 auto;
+  position: relative;
+}
+
+div.client-card-container div.client-img-container img.client-img {
+  width: 70px;
+  height: 70px;
+}
+
+div.client-card-container H4,
+div.client-card-container H5 {
+  color: #333;
+}
+
+div.client-card-container H4 {
+  font-size: 1.125rem;
+}
+
+div.client-card-container H5 {
+  font-size: 0.875rem;
+  margin-bottom: 0;
+}
+
+div.client-card-container div.client-total-ca {
+  margin-bottom: 14px;
+}
+
+div.client-card-container a {
+  text-decoration: none;
+}
+
+div.contact-card-container {
+  background-color: #fff;
+  border: 1px solid #ededed;
+  border-radius: 4px;
+  margin-bottom: 30px;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+div.contact-card-container div.contact-img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 80px;
+  margin: 0 auto;
+  position: relative;
+}
+
+div.contact-card-container div.contact-img-container img.contact-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+div.contact-card-container div.contact-img-container span.contact-name {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  color: #fff;
+}
+
+div.contact-card-container H4,
+div.contact-card-container H5 {
+  color: #333;
+}
+
+div.contact-card-container H4 {
+  font-size: 1.125rem;
+}
+
+div.contact-card-container H5 {
+  font-size: 0.875rem;
+  margin-bottom: 0;
+}
+
+div.contact-card-container div.contact-total-ca {
+  margin-bottom: 14px;
+}
+
+div.contact-card-container a {
+  text-decoration: none;
+}
+
+p.contact-empty {
+  background-color: #fff;
+  padding: 10px;
+}
+
+.note-editor .note-toolbar,
+.note-popover .popover-content {
+  padding: 0 0 5px 5px;
+  margin: 0;
+  background: #f5f5f5;
+}
+
+.images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.images .img,
+.images .add-media-block {
+  flex-basis: 31%;
+  border-radius: 4px;
+  min-height: 220px;
+  height: 300px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.images .img {
+  width: 112px;
+  height: 93px;
+  background-size: cover;
+  margin-right: 10px;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.images .img:nth-child(3n) {
+  margin-right: 0;
+}
+
+.images .img span {
+  display: none;
+  text-transform: capitalize;
+  z-index: 2;
+}
+
+.images .img::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.1s ease-in;
+  border-radius: 4px;
+  opacity: 0;
+  position: absolute;
+}
+
+.images .img:hover::after {
+  display: block;
+  background-color: #000;
+  opacity: 0.5;
+}
+
+.images .img:hover span {
+  display: block;
+  color: #fff;
+}
+
+.add-media-block {
+  background-color: #F5F7FA;
+  align-self: center;
+  text-align: center;
+  text-transform: uppercase;
+  color: #848EA1;
+  font-size: 12px;
+  cursor: pointer;
+  position: relative;
+}
+
+.add-media-block input[type=file] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.add-media-block span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-size: 20px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.add-media-block span:hover {
+  opacity: 1;
+}
+
+.add-media-block img.add-media-preview-img {
+  max-width: 100%;
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.uploader {
+  flex-basis: 31%;
+  background: #eee;
+  border: 1px dashed #999;
+  height: 200px;
+}
+
+div.add-project-media {
+  height: 30px;
+  background: rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 3px;
+  line-height: 1.5em;
+  margin: 0.3em auto;
+  cursor: pointer;
+  display: none;
+}
+
+span.delete-img {
+  position: absolute;
+  right: 55px;
+  z-index: 3;
+  color: #ffffff;
+  top: 50px;
+  cursor: pointer;
+}
+
+img.roject-media-img {
+  position: relative;
+}
+
+img.mini-img-project {
+  position: relative;
+  width: 100%;
+  max-height: 400px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+img.mini-img-project + input {
+  cursor: pointer;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+table.table#services a,
+table#skills a {
+  text-decoration: none;
+  color: #333;
+}
+
+table.table#services a.txt:hover,
+table#skills a.txt:hover {
+  color: #000;
+  font-size: 1.1em;
+}
+
+table.table#services th,
+table.table#services td,
+table#skills th,
+table#skills td {
+  text-align: center;
 }
 
 /*!
@@ -11182,6 +11723,22 @@ div.bo-header ul.nav-menu li a {
   text-decoration: none;
 }
 
+div.bo-header ul.nav-menu li a.mout-top-dropdown-menu::after {
+  border-top: 0;
+  border-left: 0;
+  border-bottom: 2px solid #fff;
+  border-right: 2px solid #fff;
+  content: "";
+  height: 8px;
+  display: inline-block;
+  pointer-events: none;
+  transform-origin: 66% 66%;
+  transform: rotate(45deg);
+  transition: all 0.15s ease-in-out;
+  width: 8px;
+  vertical-align: 2px;
+}
+
 div.bo-header ul.nav-menu li a span.user-img {
   display: inline-block;
   position: relative;
@@ -11203,6 +11760,40 @@ div.bo-header ul.nav-menu li div.dropdown-menu {
 div.bo-header ul.nav-menu li div.dropdown-menu.main-drop {
   min-width: 130px;
   padding: 0;
+}
+
+div.bo-header ul.nav-menu li div.dropdown-menu.main-drop a {
+  display: block;
+  width: 100%;
+  padding: 0.25rem 1.5rem;
+  clear: both;
+  font-weight: 400;
+  color: #212529;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+  line-height: inherit !important;
+  height: auto !important;
+  font-size: 13px !important;
+}
+
+div.bo-header ul.nav-menu li div.dropdown-menu.main-drop a:hover {
+  color: #16181b;
+  text-decoration: none;
+  background-color: #f8f9fa;
+}
+
+div.bo-header span.profile-name,
+div.mout-left-panel-profil span.profile-name {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+  color: #fff;
 }
 
 div.sidebar {
@@ -11231,6 +11822,7 @@ div.sidebar div.mout-left-panel-informations div.mout-left-panel-profil div.mout
 div.sidebar div.mout-left-panel-informations div.mout-left-panel-profil div.mout-profil-left img {
   width: 40px;
   height: 40px;
+  border-radius: 50%;
 }
 
 div.sidebar div.mout-left-panel-informations div.mout-left-panel-profil div.mout-profil-right {
@@ -11277,7 +11869,7 @@ div.sidebar div.mout-left-panel-informations ul.nav-tabs.nav-justified.nav-sideb
 
 div.sidebar div.mout-left-panel-informations ul.nav-tabs.nav-justified.nav-sidebar > li.mout-pan-top > a {
   border-radius: 0;
-  background-color: #505b72;
+  background-color: #34444c;
   color: #fff;
   padding: 8px 10px;
   font-size: 14px;
@@ -11335,7 +11927,6 @@ div.sidebar div.mout-left-panel-informations div.mout-tab-content ul.nav-quirk {
 }
 
 div.sidebar div.mout-left-panel-informations div.mout-tab-content ul.nav-quirk > li {
-  border-top: 1px solid #eaecf0;
   text-transform: uppercase;
   float: none;
   font-weight: 500;
@@ -11360,9 +11951,10 @@ div.sidebar div.mout-left-panel-informations div.mout-tab-content ul.nav-quirk >
   font-size: 14px;
   text-align: center;
   margin-right: 7px;
-  color: #259dab;
+  color: #b7c0cd;
   vertical-align: top;
   margin-top: 1.5555px;
+  padding: 5px 0;
 }
 
 div.sidebar div.mout-left-panel-informations div.mout-tab-content ul.nav-quirk > li > a {
@@ -11380,9 +11972,10 @@ div.sidebar div.mout-left-panel-informations div.mout-tab-content ul.nav-quirk >
   font-size: 14px;
   text-align: center;
   margin-right: 7px;
-  color: #259dab;
+  color: #b7c0cd;
   vertical-align: top;
   margin-top: 1.5555px;
+  padding: 5px 0;
 }
 
 div.sidebar div.mout-left-panel-informations div.mout-tab-content ul.nav-quirk .nav-parent > a:after,
@@ -11511,13 +12104,117 @@ div.page-wrapper div.page-header ul.breadcrumb li.breacrumb-item.active {
 
 div.page-wrapper div.page-header ul.breadcrumb li.breacrumb-item.active:before {
   display: inline-block;
-  padding-right: 0.5rem;
   color: #6c757d;
   content: "/";
 }
 
 div.page-wrapper div.page-header ul.breadcrumb a {
   color: #333;
+}
+
+div.page-wrapper img.img-client-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+div.page-wrapper span.profile-name {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  color: #fff;
+}
+
+div.page-wrapper div.profile-img-container {
+  position: relative;
+  padding: 50px 0;
+  background: #fff;
+}
+
+div.page-wrapper div.profile-img-container span.profile-name {
+  position: relative;
+  width: 120px !important;
+  height: 120px !important;
+  overflow: hidden;
+}
+
+div.page-wrapper div.profile-img-container div.profile-img-content {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+div.page-wrapper div.profile-img-container div.profile-img-content img {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+div.page-wrapper div.profile-img-container div.fileupload-filter {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 13px;
+  background: rgba(33, 33, 33, 0.5);
+  border-radius: 0;
+  padding: 3px 10px;
+  border: none;
+  color: #fff;
+}
+
+div.page-wrapper div.profile-img-container input[type=file] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.modal-content {
+  border-radius: 10px;
+}
+
+.custom-modal .modal-header {
+  border: 0;
+  justify-content: center;
+  padding: 30px 30px 0;
+}
+
+.custom-modal .modal-header .modal-title {
+  font-size: 22px;
+}
+
+.custom-modal .modal-header h5.add-client-title {
+  font-size: 1.125rem;
+}
+
+div.modal-body div.col-contact {
+  display: none;
+}
+
+.mout--regular {
+  font-family: "AristaProAlternate";
+}
+
+span.color-icon-square {
+  width: 20px;
+  height: 20px;
+  margin: -5px 10px;
+  display: inline-block;
+}
+
+div.hidden {
+  display: none;
 }
 
 div.container-fluid,
@@ -11566,11 +12263,227 @@ div.mout-public-login-container div.mout-public-login-right-panel h2 {
   color: white;
 }
 
+@media all and (max-width: 768px) {
+  div.mout-pub-header-container H2 {
+    text-align: center;
+  }
+
+  div.mout-description-container {
+    grid-template-columns: 1fr;
+  }
+
+  div.services-description-content.active {
+    grid-template-columns: 1fr;
+  }
+
+  section.mout-services-description div.services-icon-container:after {
+    display: none;
+  }
+
+  div.project-header span.background-opacity H1 {
+    text-align: center;
+  }
+
+  div.project-mission-content#result {
+    width: 80% !important;
+  }
+
+  div.project-mission-content#skills {
+    position: relative;
+    margin-top: 2em;
+  }
+
+  div.project-mission-content#skill-content::after {
+    bottom: -20px !important;
+  }
+
+  footer {
+    padding: 40px;
+  }
+
+  footer div.footer-address-container span.galaxy {
+    top: -12px !important;
+  }
+
+  footer div.footer-address-container p {
+    line-height: 30px;
+  }
+}
+
+@media all and (max-width: 767px) {
+  div.services-icon-container {
+    flex-direction: column;
+  }
+
+  footer {
+    height: auto;
+    flex-direction: column;
+  }
+}
+
+@media all and (min-width: 768px) {
+  div.mout-description-container {
+    grid-template-columns: repeat(10, 1fr);
+  }
+
+  div.services-description-content {
+    grid-template-columns: 1fr 1.5fr;
+  }
+
+  footer {
+    height: 105px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  footer div.footer-left-container {
+    align-items: center;
+    margin: 0 2em;
+    display: flex;
+  }
+
+  footer div.footer-left-container h4 {
+    font-family: "AristaProAlternate";
+    font-size: 25px;
+    color: #FFFF00;
+  }
+
+  footer div.footer-left-container a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  footer div.footer-left-container a:hover {
+    color: #FFFF00;
+    text-decoration: none;
+  }
+
+  footer div.footer-left-container a i {
+    color: #FFFF00;
+  }
+
+  footer div.footer-left-container div.footer-address-container {
+    position: relative;
+    margin: 0 2em;
+  }
+
+  footer div.footer-left-container div.footer-address-container span {
+    position: absolute;
+    top: -20px;
+    left: 0;
+  }
+
+  footer div.footer-left-container div.footer-address-container p {
+    margin-bottom: 0;
+  }
+
+  footer div.footer-left-container div.footer-mail-container {
+    margin: 0 2em 0 0;
+  }
+
+  footer div.footer-left-container div.footer-social-networks-container {
+    margin-left: 2em;
+  }
+
+  footer div.footer-right-container {
+    margin: 0 2em;
+  }
+
+  div.project-mission-content#skills {
+    position: absolute;
+    top: 0;
+    right: 10%;
+    width: 20%;
+    height: 70%;
+  }
+}
+
+@media all and (min-width: 768px) and (max-width: 1199px) {
+  section.mout-services-description div.services-icon-container a {
+    margin: 0 1em !important;
+  }
+}
+
 body {
   background-color: #ffffff !important;
 }
 
-svg.burger {
+div.mout-pub-panel {
+  position: absolute;
+  top: 50px;
+  display: flex;
+  height: calc(100% - 50px);
+  align-items: center;
+  justify-content: center;
+}
+
+div.mout-pub-panel#top-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  justify-content: space-between;
+  padding-right: 70px;
+  z-index: 1000;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+div.mout-pub-panel span.txt-hidden {
+  visibility: hidden;
+  opacity: 0;
+  font-family: "AristaProAlternate";
+  font-size: 40px;
+  color: #000;
+  margin-left: 50px;
+}
+
+div.mout-pub-panel span.txt-hidden span {
+  font-size: 30px;
+}
+
+div.mout-pub-panel span.txt-hidden.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+div.mout-pub-panel#left-panel {
+  left: 0;
+  width: 50px;
+  height: calc(100% - 50px);
+  justify-content: center;
+  align-items: center;
+}
+
+div.mout-pub-panel#left-panel.fixed {
+  position: fixed;
+  z-index: 9999;
+}
+
+div.mout-pub-panel#left-panel div.mout-pub-rs-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: #fff;
+}
+
+div.mout-pub-panel#left-panel div.mout-pub-rs-container#project-page {
+  background: transparent !important;
+}
+
+div.mout-pub-panel#left-panel div.mout-pub-rs-container#project-page i {
+  color: #fff !important;
+}
+
+div.mout-pub-panel#left-panel div.mout-pub-rs-container i {
+  margin: 10px auto;
+}
+
+div.mout-pub-panel svg.burger {
   width: 3rem;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
@@ -11581,11 +12494,11 @@ svg.burger {
   transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-svg.burger .burger__line.top {
+div.mout-pub-panel svg.burger .burger__line.top {
   stroke-dasharray: 40 139;
 }
 
-svg.burger .burger__line {
+div.mout-pub-panel svg.burger .burger__line {
   fill: none;
   transition: stroke-dasharray 0.5s cubic-bezier(0.645, 0.045, 0.355, 1), stroke-dashoffset 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
   stroke: #000;
@@ -11593,99 +12506,23 @@ svg.burger .burger__line {
   stroke-linecap: round;
 }
 
-svg.burger .burger__line.bottom {
+div.mout-pub-panel svg.burger .burger__line.bottom {
   stroke-dasharray: 40 180;
 }
 
-svg.burger.active {
+div.mout-pub-panel svg.burger.active {
   transform: rotate(45deg);
 }
 
-svg.burger.active .burger__line.top {
+div.mout-pub-panel svg.burger.active .burger__line.top {
   stroke-dashoffset: -98px;
 }
 
-svg.burger.active .burger__line.bottom {
+div.mout-pub-panel svg.burger.active .burger__line.bottom {
   stroke-dashoffset: -138px;
 }
 
-nav.mout-burger-nav {
-  flex-direction: column;
-  justify-content: space-between;
-  height: 25px;
-  align-items: flex-end;
-  cursor: pointer;
-  position: relative;
-}
-
-nav.mout-burger-nav span {
-  height: 4px;
-  background-color: black;
-  border-radius: 5px;
-  position: absolute;
-}
-
-nav.mout-burger-nav span.line-top {
-  top: 0;
-}
-
-nav.mout-burger-nav span.line-top,
-nav.mout-burger-nav span.line-bot {
-  width: 30px;
-}
-
-nav.mout-burger-nav span.line-mid {
-  width: 41px;
-  top: 40%;
-}
-
-nav.mout-burger-nav span.line-bot {
-  bottom: 0;
-}
-
-nav.mout-burger-nav.nav-active span.line-top {
-  top: 40%;
-  transition: all 0.5s ease-in-out;
-}
-
-nav.mout-burger-nav.nav-active span.line-mid {
-  transform: rotate(900deg);
-  transition: all 0.7s ease-in-out;
-}
-
-nav.mout-burger-nav.nav-active span.line-bot {
-  bottom: 42%;
-  transition: all 0.5s ease-in-out;
-}
-
-nav.mout-burger-nav.nav-active span.line-top.active {
-  transform: rotate(140deg);
-  transition: all 0.5s ease-in-out;
-}
-
-nav.mout-burger-nav.nav-active span.line-mid.disactivated {
-  display: none;
-}
-
-nav.mout-burger-nav.nav-active span.line-bot.active {
-  transform: rotate(-140deg);
-  transition: all 0.5s ease-in-out;
-}
-
-div.mout-pub-panel#top-panel {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50px;
-  justify-content: flex-end;
-  padding-right: 70px;
-  z-index: 1000;
-  background: #ffffff;
-  cursor: pointer;
-}
-
-header div.mout-pub-header-container {
+div.mout-pub-header-container {
   position: relative;
   background-color: #000000;
   height: calc(100vh - 100px);
@@ -11698,43 +12535,144 @@ header div.mout-pub-header-container {
   margin: 50px auto;
 }
 
-header div.mout-pub-header-container H1 {
+div.mout-pub-header-container H1 {
   font-family: "AristaProAlternateLight";
   font-size: 90px;
   color: yellow;
 }
 
-header div.mout-pub-header-container h2 {
+div.mout-pub-header-container h2 {
   font-family: "AristaProAlternateLight";
   font-size: 60px;
 }
 
-header div.mout-pub-panel {
-  position: absolute;
-  top: 50px;
-  display: flex;
-  height: calc(100% - 50px);
-  align-items: center;
-  justify-content: center;
-}
-
-header div.mout-pub-panel#left-panel {
+nav.main-nav {
+  position: fixed;
+  top: 0;
   left: 0;
-  width: 50px;
-  height: calc(100% - 50px);
-  justify-content: center;
-  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: #FFFF00;
+  z-index: 9999;
+  visibility: hidden;
+  opacity: 0;
 }
 
-header div.mout-pub-panel#left-panel div.mout-pub-rs-container {
+nav.main-nav.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+nav.main-nav.active.scale-up-tl {
+  -webkit-animation: scale-up-tl 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: scale-up-tl 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+nav.main-nav.scale-up-br {
+  -webkit-animation: scale-up-br 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: scale-up-br 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+nav.main-nav div.main-nav-left-container {
+  float: left;
+  width: 50%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
-header div.mout-pub-panel#left-panel div.mout-pub-rs-container i {
-  margin: 10px auto;
+nav.main-nav div.main-nav-left-container H4 {
+  font-family: "AristaProAlternate";
+  font-size: 40px;
+  color: #000;
+  margin-left: 50px;
+}
+
+nav.main-nav div.main-nav-left-container H4 span {
+  font-size: 30px;
+}
+
+nav.main-nav div.main-nav-left-container div.main-nav-content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 38vh;
+  text-align: left;
+  width: 30%;
+  align-self: flex-end;
+  color: #000;
+}
+
+nav.main-nav div.main-nav-left-container div.main-nav-content i {
+  font-size: 2em;
+}
+
+nav.main-nav div.main-nav-left-container div.main-nav-content a {
+  text-decoration: none;
+  color: #000;
+  font-family: "AristaProAlternate";
+  font-size: 35px;
+}
+
+nav.main-nav div.main-nav-left-container div.main-nav-content a:hover {
+  text-decoration: underline;
+}
+
+nav.main-nav div.main-nav-right-container {
+  position: relative;
+  width: calc(50% - 50px);
+  float: right;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  height: calc(100% - 50px);
+  margin-right: 50px;
+}
+
+nav.main-nav div.main-nav-right-container div.main-nav-content {
+  margin-top: 45vh;
+  margin-left: 15%;
+  text-align: left;
+  width: 30%;
+  align-self: flex-start;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+}
+
+nav.main-nav div.main-nav-right-container div.main-nav-content H4 {
+  font-family: "AristaProAlternateHairline";
+  font-size: 20px;
+  margin-bottom: 1em;
+}
+
+nav.main-nav div.main-nav-right-container div.main-nav-content a {
+  color: #000;
+  text-decoration: none;
+  font-family: "AristaProAlternate";
+  font-size: 20px;
+}
+
+nav.main-nav div.main-nav-right-container div.main-nav-content a:hover {
+  text-decoration: underline;
+}
+
+nav.main-nav div.main-nav-right-container div.main-nav-content a:nth-of-type(2) {
+  margin-bottom: 1em;
+}
+
+nav.main-nav div.main-nav-right-container div.main-nav-content p {
+  margin-bottom: 0;
+  font-family: "AristaProAlternateHairline";
+  font-size: 20px;
+}
+
+nav.main-nav div.close {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 30px;
+  right: 30px;
+  color: #000;
+  cursor: pointer;
 }
 
 section.mout-description-section {
@@ -11752,7 +12690,6 @@ section.mout-description-section div.mout-description-container {
   display: grid;
   margin: 3em auto 0;
   grid-template-rows: 80px;
-  grid-template-columns: repeat(10, 1fr);
   font-size: 20px;
   width: 55%;
 }
@@ -11830,48 +12767,12 @@ section.mout-services-description div.services-icon-container a:hover {
   text-decoration: none;
 }
 
-section.mout-services-description div.services-icon-container a:hover:nth-of-type(1) {
-  color: #7A63F9;
-}
-
-section.mout-services-description div.services-icon-container a:hover:nth-of-type(2) {
-  color: #FF9D00;
-}
-
-section.mout-services-description div.services-icon-container a:hover:nth-of-type(3) {
-  color: #03DBC2;
-}
-
 section.mout-services-description div.services-icon-container a i {
   font-size: 30px;
 }
 
 section.mout-services-description div.services-icon-container a i:before {
   background-color: #ffffff;
-}
-
-section.mout-services-description div.services-icon-container a:nth-of-type(1) i {
-  color: #7A63F9;
-}
-
-section.mout-services-description div.services-icon-container a:nth-of-type(2) i {
-  color: #FF9D00;
-}
-
-section.mout-services-description div.services-icon-container a:nth-of-type(3) i {
-  color: #03DBC2;
-}
-
-section.mout-services-description div.services-icon-container a.link-active#conseil {
-  color: #7A63F9;
-}
-
-section.mout-services-description div.services-icon-container a.link-active#creation {
-  color: #FF9D00;
-}
-
-section.mout-services-description div.services-icon-container a.link-active#web {
-  color: #03DBC2;
 }
 
 section.mout-services-description div.services-icon-container:after {
@@ -11884,82 +12785,87 @@ section.mout-services-description div.services-icon-container:after {
   top: 75px;
 }
 
-section.mout-services-description div.services-description-container {
-  display: flex;
-  position: relative;
-}
-
-section.mout-services-description div.services-description-container div.services-description-content {
-  width: 100%;
-  display: none;
-}
-
-section.mout-services-description div.services-description-container div.services-description-content.active {
-  display: block;
+section.mout-services-description div.services-icon-container span.service-icon {
+  margin-top: -15px;
 }
 
 section.mout-services-description div.services-description-container {
   margin-top: 1em;
+  position: relative;
 }
 
-section.mout-services-description div.services-description-container div.services-description-content H4 {
-  font-size: 42px;
+section.mout-services-description div.services-description-container div.services-description-content {
+  width: 85%;
+  visibility: hidden;
+  opacity: 0;
+  display: none;
 }
 
-section.mout-services-description div.services-description-container div.services-description-content#conseil H4 {
-  color: #7A63F9;
+section.mout-services-description div.services-description-container div.services-description-content.active {
+  visibility: visible;
+  opacity: 1;
+  display: grid;
+  margin: 0 auto;
+  grid-column-gap: 80px;
+  grid-template-rows: minmax(200px, 1fr);
 }
 
-section.mout-services-description div.services-description-container div.services-description-content#creation H4 {
-  color: #FF9D00;
+section.mout-services-description div.services-description-container div.services-description-content div.services-description-content-left {
+  text-align: left;
+  padding: 30px;
+  position: relative;
+  color: #fff;
 }
 
-section.mout-services-description div.services-description-container div.services-description-content#web H4 {
-  color: #03DBC2;
+section.mout-services-description div.services-description-container div.services-description-content div.services-description-content-left div.icon-container {
+  position: absolute;
+  top: -20px;
+  right: -20px;
 }
 
-section.mout-services-description div.services-description-container div.services-description-content p {
+section.mout-services-description div.services-description-container div.services-description-content div.services-description-content-left div.icon-container i {
+  font-size: 10em;
+  color: #fff;
+}
+
+section.mout-services-description div.services-description-container div.services-description-content div.services-description-content-left H4 {
+  font-size: 60px;
+}
+
+section.mout-services-description div.services-description-container div.services-description-content div.services-description-content-left p {
+  font-family: "AristaProAlternate";
+  font-size: 30px;
+}
+
+section.mout-services-description div.services-description-container div.services-description-content div.services-description-content-right b {
+  font-weight: 700 !important;
+}
+
+section.mout-services-description div.services-description-container div.services-description-content div.services-description-content-right H4 {
+  text-align: left;
+  font-size: 30px;
+}
+
+section.mout-services-description div.services-description-container div.services-description-content div.services-description-content-right p {
   font-family: "Assistant";
+  font-size: 18px;
   font-weight: 200;
-  color: #707070;
-  width: 50%;
-  margin: 1em auto 4em;
-  text-align: center;
+  text-align: left;
 }
 
-section.mout-services-description div.services-description-container div.services-description-content a {
-  color: #ffffff;
+section.mout-services-description div.services-description-container div.services-description-content a.show-more {
+  float: left;
+  color: #000;
   border-radius: 0;
+  background-color: #FFFF00;
+  border: 1px solid #FFFF00;
+  font-size: 18px;
 }
 
-section.mout-services-description div.services-description-container div.services-description-content#conseil a {
-  background-color: #7A63F9;
-}
-
-section.mout-services-description div.services-description-container div.services-description-content#conseil a:hover {
-  color: #7A63F9;
-  background-color: #ffffff;
-  border: 1px solid #7A63F9;
-}
-
-section.mout-services-description div.services-description-container div.services-description-content#creation a {
-  background-color: #FF9D00;
-}
-
-section.mout-services-description div.services-description-container div.services-description-content#creation a:hover {
-  color: #FF9D00;
-  background-color: #ffffff;
-  border: 1px solid #FF9D00;
-}
-
-section.mout-services-description div.services-description-container div.services-description-content#web a {
-  background-color: #03DBC2;
-}
-
-section.mout-services-description div.services-description-container div.services-description-content#web a:hover {
-  color: #03DBC2;
-  background-color: #ffffff;
-  border: 1px solid #03DBC2;
+section.mout-services-description div.services-description-container div.services-description-content a.show-more:hover {
+  color: #fff;
+  background-color: #000;
+  border: 1px solid #000;
 }
 
 section.mout-realisations {
@@ -11970,6 +12876,419 @@ section.mout-realisations {
 
 section.mout-realisations H3 {
   font-size: 40px;
+}
+
+section.mout-projects {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 3em;
+}
+
+section.mout-projects h3 {
+  font-family: "AristaProAlternate";
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+section.mout-projects div.projects-container {
+  width: 75%;
+  margin: 0 auto;
+}
+
+section.mout-projects div.end-section-container {
+  width: 100%;
+  margin: 3em auto;
+  position: relative;
+}
+
+section.mout-projects div.end-section-container::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background-color: #E4E4E4;
+  z-index: 1000;
+  top: 0;
+}
+
+section.mout-projects div.link-container {
+  width: 85%;
+  margin: 2em auto;
+  text-align: right;
+}
+
+section.mout-projects div.link-container a.projects-plus {
+  padding: 10px 0;
+  color: #000;
+  text-decoration: none;
+  font-family: "AristaProAlternate";
+  font-size: 18px;
+}
+
+section.mout-projects div.link-container a.projects-plus span.projects-plus {
+  background-color: #FFFF00;
+  padding: 10px;
+  border: 1px solid #FFFF00;
+}
+
+section.mout-projects div.link-container a.projects-plus:hover {
+  color: #fff;
+}
+
+section.mout-projects div.link-container a.projects-plus:hover span.projects-plus {
+  background-color: #000;
+  border: 1px solid #fff;
+}
+
+div.project-container {
+  position: relative;
+}
+
+div.project-container::before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+div.project-container img.project-img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+div.project-container a {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-left: 15px;
+  padding-right: 15px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+div.project-container a img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  height: 20%;
+  top: 0;
+  margin-bottom: 2em;
+}
+
+div.project-container a p {
+  line-height: 16px;
+}
+
+div.project-container a p.project-title {
+  font-family: "Assistant";
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
+
+div.project-container a span.project-description p {
+  font-family: "Assistant";
+  font-weight: 200;
+  margin-bottom: 0;
+  line-height: 20px;
+}
+
+div.project-container a button {
+  bottom: 30px;
+  position: absolute;
+  background: transparent;
+  border: none;
+  font-family: "AristaProAlternate";
+  color: #fff;
+  font-size: 18px;
+}
+
+div.project-container a:hover {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  left: 15px;
+  opacity: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  cursor: pointer;
+}
+
+section.mout-contact {
+  margin-bottom: 3em;
+  text-align: center;
+  transition: all 0.5s ease-in-out;
+}
+
+section.mout-contact h3 {
+  font-family: "AristaProAlternateFat";
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+
+section.mout-contact span {
+  color: #000;
+  font-family: "AristaProAlternate";
+  font-size: 30px;
+}
+
+section.mout-contact span span {
+  padding: 10px;
+  background-color: #FFFF00;
+}
+
+section.mout-contact span:hover {
+  color: #fff;
+}
+
+section.mout-contact span:hover span {
+  background-color: #000;
+}
+
+section.mout-contact div.svg-container svg {
+  width: 8%;
+  transform: rotate(180deg);
+  transition: all 0.5s ease-in-out;
+}
+
+section.mout-contact.active div.svg-container svg {
+  transform: rotate(0deg);
+}
+
+section.projects-container {
+  margin-top: 100px;
+}
+
+section.mout-project-section div.project-header {
+  height: 100vh;
+  position: relative;
+}
+
+section.mout-project-section div.project-header span.background-opacity {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+section.mout-project-section div.project-header span.background-opacity H1.title-project {
+  color: #fff;
+  margin-top: 0.7em;
+}
+
+section.mout-project-section div.project-description-container {
+  position: relative;
+  margin: 2em auto 0;
+}
+
+section.mout-project-section div.project-description-container div.project-mission-content {
+  width: 80%;
+  text-align: left;
+  margin: 0 auto;
+}
+
+section.mout-project-section div.project-description-container div.project-mission-content#description {
+  margin-bottom: 3em;
+  position: relative;
+}
+
+section.mout-project-section div.project-description-container div.project-mission-content#description H2 {
+  width: 280px;
+  box-shadow: inset 0px -14px 0px 0px #FFFE00 !important;
+}
+
+section.mout-project-section div.project-description-container div.project-mission-content#result {
+  width: 60%;
+  margin: 0 auto;
+  padding: 50px;
+  background-color: #DBE2E5;
+}
+
+section.mout-project-section div.project-description-container div.project-mission-content#skills {
+  background-color: #FFFE00;
+  padding: 40px;
+}
+
+section.mout-project-section div.project-description-container div.project-mission-content#skill-content {
+  position: relative;
+  height: 100%;
+  width: 100% !important;
+  font-family: "AristaProAlternate";
+  font-size: 20px;
+}
+
+section.mout-project-section div.project-description-container div.project-mission-content#skill-content::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #fff;
+}
+
+section.mout-project-section div.project-description-container div.project-mission-content H2 {
+  font-family: "AristaProAlternate";
+  font-size: 50px;
+  margin-bottom: 0.4em;
+}
+
+section.mout-project-section div.project-description-container div.project-mission-content p {
+  margin-bottom: 0;
+  line-height: 25px;
+}
+
+section.mout-project-section div.project-img-container {
+  width: 80%;
+  margin: 2em auto;
+}
+
+section.mout-project-section div.project-img-container img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+footer {
+  display: flex;
+  color: #fff;
+  background-color: #000;
+  font-family: "AristaProAlternate";
+}
+
+footer div.footer-left-container h4 {
+  font-family: "AristaProAlternate";
+  font-size: 25px;
+  color: #FFFF00;
+}
+
+footer div.footer-left-container a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer div.footer-left-container a:hover {
+  color: #FFFF00;
+  text-decoration: none;
+}
+
+footer div.footer-left-container a i {
+  color: #FFFF00;
+}
+
+footer div.footer-left-container div.footer-address-container {
+  position: relative;
+}
+
+footer div.footer-left-container div.footer-address-container span {
+  position: absolute;
+  top: -20px;
+  left: 0;
+}
+
+footer div.footer-left-container div.footer-address-container p {
+  margin-bottom: 0;
+}
+
+footer div.footer-left-container div.footer-social-networks-container a {
+  margin: 0 0.5em;
+}
+
+div.contact-form {
+  display: none;
+}
+
+div.contact-form div.floating-label.contact-form-input-container {
+  margin: 0 auto;
+  width: 50%;
+}
+
+div.contact-form div.floating-label.contact-form-input-container.custom-radio {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+}
+
+div.contact-form div.floating-label.contact-form-input-container input:not([type=radio]) {
+  width: 100%;
+  border: none;
+}
+
+div.contact-form div.floating-label.contact-form-input-container label {
+  font-family: "AristaProAlternate";
+  color: #000 !important;
+  opacity: 1 !important;
+  box-shadow: inset 0px -10px 0px 0px #FFFE00;
+}
+
+div.contact-form div.floating-label.contact-form-input-container label.float {
+  left: 13px;
+}
+
+div.contact-form div.floating-label.contact-form-input-container label::after {
+  background: none !important;
+}
+
+div.contact-form div.floating-label.contact-form-input-container .custom-control-input:checked ~ .custom-control-label::before {
+  border-color: #FFFE00;
+  background-color: #FFFE00;
+}
+
+div.contact-form div.floating-label.contact-form-input-container .custom-radio .custom-control-input:checked ~ .custom-control-label::after {
+  background-image: none !important;
+}
+
+div.contact-form div.floating-label.contact-form-input-container H6 {
+  width: 14%;
+  font-family: "AristaProAlternate";
+  font-size: 20px;
+  box-shadow: inset 0px -10px 0px 0px #FFFE00;
+  margin: 1em 0;
+}
+
+div.contact-form div.floating-label.contact-form-input-container textarea {
+  width: 100%;
+  border: none;
+  background: #F6F8F9;
+  font-family: "Assistant";
+  font-size: 18px;
+  font-weight: 300;
+}
+
+div.contact-form div.floating-label.contact-form-input-container button.btn-submit-form {
+  border: 1px solid #fff;
+  padding: 8px 20px;
+  background: none;
+  font-family: "AristaProAlternate";
+  font-size: 20px;
+  box-shadow: inset 0px -10px 0px 0px #FFFE00;
+  line-height: 30px;
+  transition: all 0.5s ease-in-out;
+}
+
+div.contact-form div.floating-label.contact-form-input-container button.btn-submit-form:hover {
+  box-shadow: inset 0 0 0 0 #FFFE00;
+  border: 1px solid #FFFE00;
 }
 
 @-webkit-keyframes navigation-line-top {
@@ -11998,5 +13317,172 @@ section.mout-realisations H3 {
   100% {
     transform: rotate(120deg);
   }
+}
+
+/**
+ * ----------------------------------------
+ * animation scale-up-tl
+ * ----------------------------------------
+ */
+
+@-webkit-keyframes scale-up-tl {
+  0% {
+    transform: scale(0.5);
+    transform-origin: 0% 0%;
+  }
+
+  100% {
+    transform: scale(1);
+    transform-origin: 0% 0%;
+  }
+}
+
+@keyframes scale-up-tl {
+  0% {
+    transform: scale(0.5);
+    transform-origin: 0% 0%;
+  }
+
+  100% {
+    transform: scale(1);
+    transform-origin: 0% 0%;
+  }
+}
+
+/**
+ * ----------------------------------------
+ * animation scale-up-br
+ * ----------------------------------------
+ */
+
+@-webkit-keyframes scale-up-br {
+  0% {
+    transform: scale(0.5);
+    transform-origin: 100% 100%;
+  }
+
+  100% {
+    transform: scale(1);
+    transform-origin: 100% 100%;
+  }
+}
+
+@keyframes scale-up-br {
+  0% {
+    transform: scale(0.5);
+    transform-origin: 100% 100%;
+  }
+
+  100% {
+    transform: scale(1);
+    transform-origin: 100% 100%;
+  }
+}
+
+div.client-view {
+  position: relative;
+}
+
+div.client-view div.client-img-wrap {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: #fff;
+  overflow: hidden;
+}
+
+div.client-view div.client-img-wrap div.client-logo img {
+  width: 120px;
+  height: 120px;
+}
+
+div.client-view div.client-img-wrap div.client-logo span i {
+  font-size: 4em;
+}
+
+div.client-view div.client-informations {
+  margin-left: 140px;
+  padding-right: 50px;
+  min-height: 120px;
+}
+
+div.client-view div.client-informations div.client-informations-left {
+  border-right: 2px dashed #ccc;
+  min-height: 120px;
+}
+
+div.client-view div.client-informations ul.client-details {
+  list-style: none;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+div.client-view div.client-informations ul.client-details li {
+  margin-bottom: 10px;
+  list-style: none;
+  font-family: "Assistant";
+}
+
+div.client-view div.client-informations ul.client-details li span.title {
+  color: #4f4f4f;
+  float: left;
+  margin-right: 30px;
+  width: 25%;
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+div.client-view div.client-informations ul.client-details li span.text {
+  color: #8e8e8e;
+  display: block;
+  overflow: hidden;
+  font-size: 0.9375rem;
+}
+
+div.card.tab-box div.user-tabs div.line-tabs ul.nav-tabs-bottom li a {
+  margin-right: 0;
+  color: #888;
+  border-radius: 0;
+}
+
+div.card.tab-box div.user-tabs div.line-tabs ul.nav-tabs-bottom li a:hover {
+  background-color: #eee;
+  border-color: transparent;
+  color: #333;
+}
+
+div.card.tab-box div.user-tabs div.line-tabs ul.nav-tabs-bottom li a.active {
+  color: #495057;
+  border-bottom-width: 2px;
+  border-color: transparent;
+  border-bottom-color: #ff9b44;
+  background-color: transparent;
+  transition: none 0s ease 0s;
+  -moz-transition: none 0s ease 0s;
+  -o-transition: none 0s ease 0s;
+  -ms-transition: none 0s ease 0s;
+  -webkit-transition: none 0s ease 0s;
+}
+
+div.edit-client-form-container {
+  background-color: #ffffff;
+  padding: 30px;
+}
+
+div.edit-client-form-container img.logo-client {
+  position: relative;
+  cursor: pointer;
+  width: 140px;
+  height: 140px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+div.edit-client-form-container input.input-file-hidden {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
 }
 

@@ -5,15 +5,14 @@ namespace App\UI\Action\Admin\Projects;
 
 
 use App\Domain\Repository\ProjectRepository;
-use App\UI\Responder\Admin\Projects\ShowProjectsResponder;
-use Illuminate\Contracts\View\View;
+use App\UI\Responder\Pub\ProjectShowOneReponder;
 
-class ShowProjectsAction
+class ProjectShowOneAction
 {
     private ProjectRepository $projectRepository;
 
     /**
-     * ShowProjectsAction constructor.
+     * ProjectShowOneAction constructor.
      * @param ProjectRepository $projectRepository
      */
     public function __construct(ProjectRepository $projectRepository)
@@ -21,10 +20,11 @@ class ShowProjectsAction
         $this->projectRepository = $projectRepository;
     }
 
-    public function __invoke(ShowProjectsResponder $responder): View
+    public function __invoke(ProjectShowOneReponder $responder)
     {
-        $projects = $this->projectRepository->getAll();
+        $project = $this->projectRepository->getOneBySlug(request('projectSlug'));
 
-        return $responder($projects);
+        return $responder($project);
+
     }
 }

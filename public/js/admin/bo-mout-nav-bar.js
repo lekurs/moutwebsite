@@ -5,6 +5,7 @@ $(document).ready(function ($) {
     const addNav =  $('.btn.mout-add-buttton');
     const cancel = $('.btn.mout-btn-add-button.btn-cancel')
     const pageWrapper = $('.page-wrapper');
+    const dropdownTopAdminNav = $('.mout-top-dropdown-menu');
 
     //Tab panel top
     $(tabPanel).click(function (e) {
@@ -54,5 +55,11 @@ $(document).ready(function ($) {
 
     let heightWrapper = $(window).height();
     $(pageWrapper).css('height', heightWrapper);
+
+    //Admin nav top
+    dropdownTopAdminNav.on('click', function (e) {
+        e.preventDefault();
+       $('.dropdown-menu.main-drop').toggle();
+    });
 
 });

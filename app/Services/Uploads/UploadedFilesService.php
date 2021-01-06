@@ -4,6 +4,7 @@
 namespace App\Services\Uploads;
 
 
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
@@ -29,5 +30,10 @@ class UploadedFilesService
         $this->controlUploadedFile($file);
 
         $file->storeAs($path, $file->getClientOriginalName());
+    }
+
+    public function removeFile(string $path)
+    {
+        Storage::delete($path);
     }
 }

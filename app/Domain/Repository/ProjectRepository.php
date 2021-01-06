@@ -115,12 +115,24 @@ class ProjectRepository
             $project = Project::whereId($data['project-id'])->first();
 
             $project->title = $data['project-title'];
-            $project->colorProject = $data['project_color'];
+            if (isset($data['project_color'])) {
+                $project->colorProject = $data['project_color'];
+            }
             $project->mission = $data['project-description-mission'];
             $project->result = $data['project-result-mission'];
             $project->slug = Str::slug($data['project-title']);
-        }
 
-        dd($project);
+            if (isset($data['img-project-portfolio'])) {
+                $project->mediaPortfolioProjectPath = $data['img-project-portfolio']->getClientOriginalName();
+            }
+
+            $project->save();
+        }
+    }
+
+    public function delete(string $slug)
+    {
+        $project = $this->getOneBySlug($slug);
+        $project->delete();
     }
 }

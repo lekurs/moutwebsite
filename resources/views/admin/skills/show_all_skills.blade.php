@@ -7,7 +7,7 @@
         </h3>
         <ul class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="">Dashboard</a>
+                <a href="{{ route('homeAdmin') }}">Dashboard</a>
             </li>
             <li class="breacrumb-item active">
                 Compétences
@@ -44,8 +44,8 @@
                                 <i class="fa fa-dot-circle-o @if($skill->status > 0) text-success @else text-danger @endif"></i> @if($skill->status > 0)Actif @else Inactif @endif
                             </a>
                             <div class="dropdown-menu-mout dropdown-menu-mout-table dropdown-mout-status" x-placement="bottom-end" style="position: absolute; transform: translate3d(-17px, 31px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-success"></i> Activé</a>
-                                <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Désactivé</a>
+                                <a class="dropdown-item" href="{{ route('skillStatus', $skill->id) }}"><i class="fa fa-dot-circle-o text-success"></i> Activé</a>
+                                <a class="dropdown-item" href="{{ route('skillStatus', $skill->id) }}"><i class="fa fa-dot-circle-o text-danger"></i> Désactivé</a>
                             </div>
                         </div>
                     </td>
@@ -55,8 +55,8 @@
                                 <i class="fal fa-ellipsis-v" aria-hidden="true"></i>
                             </a>
                             <div class="dropdown-menu-mout dropdown-menu-mout-table">
-                                <a class="dropdown-item" href="{{ route('serviceEditForm', $skill->id) }}" data-id="{{ $skill->id }}"><i class="fal fa-pen"></i> Modifier</a>
-                                <a class="dropdown-item" href="#" data-id=""><i class="fal fa-trash"></i> Supprimer</a>
+                                <a class="dropdown-item" href="{{ route('skillShowOne', $skill->id) }}" data-id="{{ $skill->id }}"><i class="fal fa-pen"></i> Modifier</a>
+                                <a class="dropdown-item" href="{{ route('skillDelete', $skill->id) }}" data-id=""><i class="fal fa-trash"></i> Supprimer</a>
                             </div>
                         </div>
                     </td>

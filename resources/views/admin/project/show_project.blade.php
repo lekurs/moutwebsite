@@ -18,21 +18,12 @@
 @section('body')
 <div class="card">
     <div class="card-body">
-        <div class="dropdown-mout">
-            <div class="dropdown-icon">
-                <i class="fal fa-ellipsis-v"></i>
-            </div>
-            <div class="dropdown-menu-mout">
-{{--                <a class="dropdown-item" href="{{ route('clientEditForm', $client->slug) }}" data-id="{{ $client->id }}"><i class="fal fa-pen"></i> Modifier</a>--}}
-{{--                <a class="dropdown-item" href="#" data-id="{{ $client->id }}"><i class="fal fa-trash"></i> Supprimer</a>--}}
-            </div>
-        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="client-view">
                     <div class="client-img-wrap">
                         <div class="client-logo">
-                            <img src="{{ asset('storage/images/uploads/' . $project->client->slug . '/projects/portfolio/' . $project->mediaPortfolioProjectPath) }}" alt="{{ $project->title }}" class="img-fluid img-client-logo">
+                            <img src="{{ asset('storage/images/uploads/' . $project->client->slug . '/projets/portfolio/' . $project->mediaPortfolioProjectPath) }}" alt="{{ $project->title }}" class="img-fluid img-client-logo">
                         </div>
                     </div>
                     <div class="client-informations">
@@ -83,8 +74,8 @@
         <div class="col-12 line-tabs">
             <ul class="nav nav-tabs nav-tabs-bottom">
                 <li class="nav-item col-sm-3"><a class="nav-link active" data-toggle="tab" role="tab" aria-controls="myprojects" aria-selected="true" href="#myprojects">Projets</a></li>
-                <li class="nav-item col-sm-3"><a class="nav-link" data-toggle="tab" role="tab" aria-controls="contacts" aria-selected="false" href="#contacts">Contacts</a></li>
-                <li class="nav-item col-sm-3"><a class="nav-link" data-toggle="tab" role="tab" aria-controls="estimations" aria-selected="false" href="#estimations">Devis</a></li>
+{{--                <li class="nav-item col-sm-3"><a class="nav-link" data-toggle="tab" role="tab" aria-controls="contacts" aria-selected="false" href="#contacts">Contacts</a></li>--}}
+{{--                <li class="nav-item col-sm-3"><a class="nav-link" data-toggle="tab" role="tab" aria-controls="estimations" aria-selected="false" href="#estimations">Devis</a></li>--}}
             </ul>
         </div>
     </div>
@@ -127,8 +118,8 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group">
-                            <img src="{{ asset('storage/images/uploads/' . $project->client->slug . '/projects/portfolio/' . $project->mediaPortfolioProjectPath) }}" alt="{{ $project->title }}" class="img-fluid">
-                            <input type="file" name="img-project-portfolio" id="img-project-portfolio">
+                            <img src="{{ asset('storage/images/uploads/' . $project->client->slug . '/projets/portfolio/' . $project->mediaPortfolioProjectPath) }}" alt="{{ $project->title }}" class="img-fluid mini-img-project" >
+                            <input type="file" name="img-project-portfolio" id="img-project-portfolio" class="file-reader-input">
                         </div>
                     </div>
                     <div class="col-6">
@@ -180,7 +171,7 @@
                         <div class="add-project-media" data-toggle="modal" data-position="before" data-target="#add-media" data-img-parent="{{ $media->mediaProjectPath }}" data-id="{{ $loop->index }}">
                             <i class="fal fa-plus-circle"></i>
                         </div>
-
+                        <span class="delete-img" data-img="{{ $media->id }}"><i class="fal fa-times fa-2x"></i></span>
                         <img src="{{ asset('storage/images/uploads/' . $project->client->slug . '/projets/' . $project->slug . '/' . $media->mediaProjectPath) }}"
                              alt="{{ $project->title . '-' . $loop->index }}"
                              class="img-fluid project-media-img"
@@ -216,11 +207,11 @@
             </div>
             <div class="modal-body">
                 <input type="file" class="media-project-select-input" name="add-project-media-input" id="add-project-media-input">
-                <input type="text" class="media-project-select-input" id="project-media-img-id" name="project-id" value="{{ $project->id }}">
-                <input type="text" class="media-project-select-input" id="media-project-list" name="list-images" value="">
-                <input type="text" class="media-project-select-input" id="media-project-order-new-img" name="order-new-img">
-                <input type="text" class="media-project-select-input" id="media-project-position" name="media-project-position">
-                <input type="text" class="media-project-select-input" id="media-project-id">
+                <input type="hidden" class="media-project-select-input" id="project-media-img-id" name="project-id" value="{{ $project->id }}">
+                <input type="hidden" class="media-project-select-input" id="media-project-list" name="list-images" value="">
+                <input type="hidden" class="media-project-select-input" id="media-project-order-new-img" name="order-new-img">
+                <input type="hidden" class="media-project-select-input" id="media-project-position" name="media-project-position">
+                <input type="hidden" class="media-project-select-input" id="media-project-id">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -233,6 +224,7 @@
 @endsection
 
 @section('js')
+    <script src="{{ asset('js/admin/filereader.js') }}"></script>
     <script src="{{ asset('plugins/dropdown-mout/dropdown-mout.js') }}"></script>
     <script src="{{ asset('plugins/addmedias/addmedias.js') }}"></script>
     <script src="{{asset('plugins/autocomplete/autocomplete.js')}}"></script>

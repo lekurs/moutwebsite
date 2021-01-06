@@ -335,9 +335,10 @@ div.sidebar {
                             font-size: 14px;
                             text-align: center;
                             margin-right: 7px;
-                            color: #259dab;
+                            color: #b7c0cd;
                             vertical-align: top;
                             margin-top: 1.5555px;
+                            padding: 5px 0;
                         }
                     }
 
@@ -358,9 +359,10 @@ div.sidebar {
                             font-size: 14px;
                             text-align: center;
                             margin-right: 7px;
-                            color: #259dab;
+                            color: #b7c0cd;
                             vertical-align: top;
                             margin-top: 1.5555px;
+                            padding: 5px 0;
                         }
                     }
                 }
@@ -498,7 +500,7 @@ div.page-wrapper {
 
                     &:before {
                         display: inline-block;
-                        padding-right: .5rem;
+                        //padding-right: .5rem;
                         color: #6c757d;
                         content: "/";
                     }

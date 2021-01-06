@@ -2,14 +2,14 @@
 @section('page-header')
     <div class="col">
         <h3 class="page-header-title">
-            Projets
+            Client
         </h3>
         <ul class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="">Dashboard</a>
+                <a href="{{ route('homeAdmin') }}">Dashboard</a>
             </li>
             <li class="breacrumb-item active">
-                Projets
+                <a href="{{ route('clientShowOne', $client->slug) }}">Client</a> / Editer
             </li>
         </ul>
     </div>

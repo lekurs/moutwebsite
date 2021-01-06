@@ -7,7 +7,7 @@
                 </div>
                 <div class="dropdown-menu-mout">
                     <a class="dropdown-item" href="{{ route('projectEditForm', $project->slug) }}" data-id=""><i class="fal fa-pen"></i> Modifier</a>
-                    <a class="dropdown-item" href="#" data-id=""><i class="fal fa-trash"></i> Supprimer</a>
+                    <a class="dropdown-item" href="{{ route('deleteProject', $project->slug) }}" data-id=""><i class="fal fa-trash"></i> Supprimer</a>
                 </div>
             </div>
             <h4 class="project-title">{{ $project->title }}</h4>

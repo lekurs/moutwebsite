@@ -6,7 +6,7 @@
         </h3>
         <ul class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="">Dashboard</a>
+                <a href="{{route('homeAdmin')}}">Dashboard</a>
             </li>
             <li class="breacrumb-item active">
                 Prestations
@@ -47,8 +47,8 @@
                                 <i class="fa fa-dot-circle-o @if($service->status > 0) text-success @else text-danger @endif"></i> @if($service->status > 0)Actif @else Inactif @endif
                             </a>
                             <div class="dropdown-menu-mout dropdown-menu-mout-table dropdown-mout-status" x-placement="bottom-end" style="position: absolute; transform: translate3d(-17px, 31px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-success"></i> Activé</a>
-                                <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Désactivé</a>
+                                <a class="dropdown-item" href="{{ route('serviceStatus', $service->id) }}"><i class="fa fa-dot-circle-o text-success"></i> Activé</a>
+                                <a class="dropdown-item" href="{{ route('serviceStatus', $service->id) }}"><i class="fa fa-dot-circle-o text-danger"></i> Désactivé</a>
                             </div>
                         </div>
                     </td>

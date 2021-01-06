@@ -24,7 +24,20 @@ class ServiceRepository
     {
         return Service::with(['projects' => function($q) {
             $q->limit(5)->orderBy('endProject');
-        }])->get();
+        }])->whereStatus(1)->get();
+    }
+
+    public function updateStatus(int $id): void
+    {
+        $service = $this->getone($id);
+
+        if($service->status === 1) {
+            $service->status = 0;
+            $service->save();
+        } else {
+            $service->status = 1;
+            $service->save();
+        }
     }
 
     public function store(array $datas): void

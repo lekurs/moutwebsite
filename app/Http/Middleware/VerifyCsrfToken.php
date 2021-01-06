@@ -13,5 +13,6 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         '/admin/projets/store/projectmediafile',
+        '/admin/projets/store/deleteimg',
     ];
 }

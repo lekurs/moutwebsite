@@ -21,6 +21,19 @@ class SkillRepository
         return Skill::whereId($id)->first();
     }
 
+    public function updateStatus(int $skillId): void
+    {
+        $skill = $this->getOneById($skillId);
+
+        if($skill->status === 1) {
+            $skill->status = 0;
+            $skill->save();
+        } else {
+            $skill->status = 1;
+            $skill->save();
+        }
+    }
+
     public function store(array $datas): void
     {
         if (!empty($datas['skill_id'])) {
@@ -53,5 +66,11 @@ class SkillRepository
                 }
             }
         }
+    }
+
+    public function delete(int $skillId): void
+    {
+        $skill = $this->getOneById($skillId);
+        $skill->delete();
     }
 }

@@ -42,7 +42,3 @@
 </div>
 
 @endsection
-
-@section('js')
-{{--    <script src="{{ asset('plugins/dropdown-mout/dropdown-mout.js') }}"></script>--}}
-@endsection

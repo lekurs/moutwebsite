@@ -31,6 +31,14 @@ class MediaProjectRepository
         }
     }
 
+    public function getOneWithProjectById(int $id)
+    {
+        $media = MediaProject::with('project')->whereId($id)->first();
+        $media->delete();
+
+        return $media;
+    }
+
     public function storeAndReorganizeOrder(Project $project, $file, array $medias)
     {
         $newMedia = new MediaProject();

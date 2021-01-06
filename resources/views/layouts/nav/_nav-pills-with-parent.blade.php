@@ -2,7 +2,7 @@
     <h5 class="mout-tab-title">Dashboard</h5>
     <ul class="nav nav-pills nav-stacked nav-quirk">
         <li>
-            <a href="">
+            <a href="{{ route('homeAdmin') }}">
                 <i class="fa fa-home"></i>
                 <span>Dashboard</span>
             </a>
@@ -71,57 +71,52 @@
             </div>
             <ul class="nav-children">
                 <li>
-                    <a href="">
-                        Services
-                    </a>
-                </li>
-                <li>
                     <a href="{{ route('profile') }}">
                         Compte utilisateur
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        Param 3
+                    <a href="{{ route('serviceShowAll') }}">
+                        Services
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        Param 4
+                    <a href="{{ route('skillShowAll') }}">
+                        Compétences
                     </a>
                 </li>
             </ul>
         </li>
 
-        <li class="nav-parent">
-            <div class="nav-parent-container">
-                <i class="fas fa-cog"></i>
-                <span>Langues</span>
-            </div>
-            <ul class="nav-children">
-                <li>
-                    <a href="">logout
+{{--        <li class="nav-parent">--}}
+{{--            <div class="nav-parent-container">--}}
+{{--                <i class="fas fa-cog"></i>--}}
+{{--                <span>Langues</span>--}}
+{{--            </div>--}}
+{{--            <ul class="nav-children">--}}
+{{--                <li>--}}
+{{--                    <a href="">logout--}}
 
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        Langues 2
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        Langues 3
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        Langues 4
-                    </a>
-                </li>
-            </ul>
-        </li>
-    </ul>
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                <li>--}}
+{{--                    <a href="#">--}}
+{{--                        Langues 2--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                <li>--}}
+{{--                    <a href="#">--}}
+{{--                        Langues 3--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                <li>--}}
+{{--                    <a href="#">--}}
+{{--                        Langues 4--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--            </ul>--}}
+{{--        </li>--}}
+{{--    </ul>--}}
 </div>
 
 <div class="mout-tab-pane" id="mail">

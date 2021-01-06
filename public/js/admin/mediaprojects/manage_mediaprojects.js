@@ -42,7 +42,7 @@ $(document).ready(function () {
                $('.modal-backdrop').remove();
 
                newline = "<div class='row image-project-hover my-3'>";
-               newline += "<div class='col-12'>";
+               newline += "<div class='col-6 m-auto'>";
                newline += "<div class='add-project-media' data-toggle='modal' data-position='before' data-target='#add-media' data-img-parent='' data-id=''>";
                newline += "<i class='fal fa-plus-circle'></i>";
                newline += "</div>";
@@ -53,7 +53,6 @@ $(document).ready(function () {
                newline += "</div>";
                newline += "</div>";
 
-               console.log($('img#'+ $('#media-project-id').val()).closest('.image-project-hover'));
                if ($('#media-project-position').val() == "after") {
 
                 $('img#'+ $('#media-project-id').val()).closest('.image-project-hover').after(newline);
@@ -68,5 +67,16 @@ $(document).ready(function () {
 
            }
        });
+    });
+
+    $('span.delete-img').on('click', function () {
+        imgId = $(this).attr('data-img');
+        let elt = $(this);
+
+        $.post('/admin/projets/store/deleteimg', {id: imgId}, function (data) {
+            elt.closest('.image-project-hover').remove();
+        });
+
+        console.log($(this).attr('data-img'))
     });
 });

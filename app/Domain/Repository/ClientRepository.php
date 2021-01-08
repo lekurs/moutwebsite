@@ -21,7 +21,7 @@ class ClientRepository
         return Client::paginate(12);
     }
 
-    public function getOneBySlug(string $clientSlug): Client
+    public function getOneBySlug(string $clientSlug): ?Client
     {
         return Client::whereSlug($clientSlug)->first();
     }
@@ -29,6 +29,11 @@ class ClientRepository
     public function getOneById(int $clientId): Client
     {
         return Client::whereId($clientId)->first();
+    }
+
+    public function search(string $clientName)
+    {
+        return Client::where('name', 'like', $clientName . '%')->paginate(12);
     }
 
     public function getOneBySlugWithProjectsAndContacts(string $clientSlug): Client

@@ -26,7 +26,7 @@
                                 @if(!is_null(auth()->user()->profile_photo_path))
                                 <img src="{{ asset('storage/images/uploads/profiles/img/' . auth()->user()->profile_photo_path) }}" alt="{{ auth()->user()->name }}" class="img-fluid img-client-logo">
                                 @else
-                                    <span class="profile-name" style="background-color:{{ $color }} ">{{ substr(auth()->user()->lastname, 0, 1) . substr(auth()->user()->name, 0, 1) }}</span>
+                                    <span class="profile-name randcolor">{{ substr(auth()->user()->lastname, 0, 1) . substr(auth()->user()->name, 0, 1) }}</span>
                                 @endif
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                                                 @if(!is_null(auth()->user()->profile_photo_path))
                                                     <img src="{{ asset('storage/images/uploads/profiles/img/' . auth()->user()->profile_photo_path) }}" alt="{{ auth()->user()->name }}" class="img-fluid img-client-logo">
                                                 @else
-                                                    <span class="profile-name" style="background-color:{{ $color }} ">{{ substr(auth()->user()->lastname, 0, 1) . substr(auth()->user()->name, 0, 1) }}</span>
+                                                    <span class="profile-name randcolor">{{ substr(auth()->user()->lastname, 0, 1) . substr(auth()->user()->name, 0, 1) }}</span>
                                                 @endif
                                             </span>
                                         </li>
@@ -75,14 +75,14 @@
                 <div class="col-12">
                     <input type="hidden" name="profile-id" value="{{ auth()->user()->id }}">
                     <div class="profile-img-container d-flex justify-content-center">
-                    <input type="file" class="profile-img-input" name="profile-img" id="profile-img">
                         @if(!is_null(auth()->user()->profile_photo_path))
-                            <div class="profile-img-content position-relative">
-                                <img src="{{ asset('storage/images/uploads/profiles/img/' . auth()->user()->profile_photo_path) }}" alt="{{ auth()->user()->name . ' ' . auth()->user()->lastname }}" class="img-fluid img-client-logo">
+                            <div class="profile-img-content position-relative form-group">
+                                <img src="{{ asset('storage/images/uploads/profiles/img/' . auth()->user()->profile_photo_path) }}" alt="{{ auth()->user()->name . ' ' . auth()->user()->lastname }}" class="img-fluid img-client-logo file-reader-img">
+                                <input type="file" name="profile-img" id="profile-img" class="file-reader-input">
                                 <div class="fileupload-filter">Edit</div>
                             </div>
                         @else
-                            <span class="profile-name" style="background-color:{{ $color }} ">{{ substr(auth()->user()->lastname, 0, 1) . substr(auth()->user()->name, 0, 1) }}
+                            <span class="profile-name randcolor">{{ substr(auth()->user()->lastname, 0, 1) . substr(auth()->user()->name, 0, 1) }}
                                 <div class="fileupload-filter">Edit</div>
                             </span>
                         @endif
@@ -134,4 +134,8 @@
             </div>
         </form>
     </div>
+@endsection
+
+@section('js')
+    <script src="{{ asset('js/admin/filereader.js') }}"></script>
 @endsection

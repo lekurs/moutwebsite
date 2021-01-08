@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+    @include('layouts.flashes.flash_message')
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

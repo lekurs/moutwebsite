@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    @yield('title')
+    <title>Mout</title>
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -31,7 +32,7 @@
         <!-- Metatags FB -->
         <meta property="og:title" content="Mout Web Agency" />
         <meta property="og:type" content="Mout Web Agency" />
-        <meta property="og:url" content="moutwebdesign.com" />
+        <meta property="og:url" content="moutwebagency.com" />
         <meta property="og:description" content="Mout Web Agency" />
         <meta property="og:image" content="{{ asset('assets/images/logo/bandeau-mout.png') }}" />
 
@@ -95,7 +96,7 @@
                         @endif
                     </div>
                     <div class="mout-profil-right">
-                        <h4 class="mout-profil-name">Maxime <span class="text-uppercase">Gindre</span>
+                        <h4 class="mout-profil-name">{{ auth()->user()->lastname }}<span class="text-uppercase ml-1">{{ auth()->user()->name }}</span>
                             <a href="{{ route('logout') }}"><i class="fas fa-user-times" style="color: #ffffff"></i></a></h4>
                         <span>Admin</span>
                     </div>

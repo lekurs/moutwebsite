@@ -43,10 +43,8 @@ class ProjectSearchBarAction
 
     public function __invoke(ProjectSearchBarResponder $responder)
     {
-//        dd(request('project-name'), request('skill'));
         $projects = $this->projectRepository->getAllWithSearchBar(request('project-name'), request('skill'));
 
-//        dd($projects);
         $clients = $this->clientRepository->getAll();
         $services = $this->serviceRepository->getAll();
         $skills = $this->skillRepository->getAll();

@@ -695,15 +695,18 @@ img.roject-media-img {
   position: relative;
 }
 
-img.mini-img-project {
+img.file-reader-img {
   position: relative;
   width: 100%;
+}
+
+img.file-reader-img.mini-img-project {
   max-height: 400px;
   -o-object-fit: contain;
      object-fit: contain;
 }
 
-img.mini-img-project + input {
+img.file-reader-img + input {
   cursor: pointer;
   position: absolute;
   width: 100%;
@@ -11747,6 +11750,7 @@ div.bo-header ul.nav-menu li a span.user-img {
 div.bo-header ul.nav-menu li a span.user-img img {
   border-radius: 50%;
   width: 30px;
+  height: 30px;
 }
 
 div.bo-header ul.nav-menu li div.dropdown-menu {

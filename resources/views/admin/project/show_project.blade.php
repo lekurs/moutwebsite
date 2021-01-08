@@ -74,8 +74,6 @@
         <div class="col-12 line-tabs">
             <ul class="nav nav-tabs nav-tabs-bottom">
                 <li class="nav-item col-sm-3"><a class="nav-link active" data-toggle="tab" role="tab" aria-controls="myprojects" aria-selected="true" href="#myprojects">Projets</a></li>
-{{--                <li class="nav-item col-sm-3"><a class="nav-link" data-toggle="tab" role="tab" aria-controls="contacts" aria-selected="false" href="#contacts">Contacts</a></li>--}}
-{{--                <li class="nav-item col-sm-3"><a class="nav-link" data-toggle="tab" role="tab" aria-controls="estimations" aria-selected="false" href="#estimations">Devis</a></li>--}}
             </ul>
         </div>
     </div>
@@ -118,8 +116,8 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group">
-                            <img src="{{ asset('storage/images/uploads/' . $project->client->slug . '/projets/portfolio/' . $project->mediaPortfolioProjectPath) }}" alt="{{ $project->title }}" class="img-fluid mini-img-project" >
-                            <input type="file" name="img-project-portfolio" id="img-project-portfolio" class="file-reader-input">
+                            <img src="{{ asset('storage/images/uploads/' . $project->client->slug . '/projets/portfolio/' . $project->mediaPortfolioProjectPath) }}" alt="{{ $project->title }}" class="img-fluid file-reader-img mini-img-project" >
+                            <input type="file" name="img-project-portfolio" id="img-project-portfolio" class="file-reader-img file-reader-input">
                         </div>
                     </div>
                     <div class="col-6">

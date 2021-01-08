@@ -3,6 +3,7 @@
 use App\UI\Action\Admin\Clients\ClientCreationAction;
 use App\UI\Action\Admin\Clients\ClientEditFormAction;
 use App\UI\Action\Admin\Clients\ClientEditStoreAction;
+use App\UI\Action\Admin\Clients\ClientSearchBarAction;
 use App\UI\Action\Admin\Clients\ClientShowAllAction;
 use App\UI\Action\Admin\Clients\ClientShowOneAction;
 use App\UI\Action\Admin\Contacts\ContactCreationAction;
@@ -54,7 +55,7 @@ Route::get('/realisations', ProjectsAction::class)->name('projets');
 Route::get('/realisation/{projectSlug}', ProjectShowOneAction::class)->name('project');
 Route::post('/contact-mail', SendContactMailAction::class)->middleware('throttle:1,60')->name('contactMail');
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'authorization']], function () {
     Route::get('/', HomeAdminAction::class)->name('homeAdmin');
 
     Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
@@ -88,6 +89,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
        Route::get('/edit/{clientSlug}', ClientEditFormAction::class)->name('clientEditForm');
        Route::post('/ajouter', ClientCreationAction::class)->name('clientAdd');
        Route::post('/edit/{clientSlug}/store', ClientEditStoreAction::class)->name('clientEditStore');
+       Route::post('/search', ClientSearchBarAction::class)->name('clientSearch');
 
        Route::post('/{clientSlug}/contact/store', ContactCreationAction::class)->name('contactAdd');
 

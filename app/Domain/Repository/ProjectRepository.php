@@ -31,14 +31,18 @@ class ProjectRepository
             ->get();
     }
 
-    public function getAllWithSearchBar(string $title = null, int $skill = null): Paginator
+    public function getAllWithSearchBar(string $title = null, int $skill = null)
     {
-        return Project::with(['client', 'mediaProjects', 'skills'])
-            ->whereHas('skills', function(Builder $q) use($skill) {
+        $q = Project::with(['client', 'mediaProjects', 'skills']);
+
+        if (!is_null($skill)) {
+         $q->whereHas('skills', function(Builder $q) use($skill) {
                 $q->whereId($skill);
-            })
-            ->where('title', 'like', $title . '%')
-            ->paginate(4);
+            });
+        }
+            $q->where('title', 'like', $title . '%');
+
+        return $q->paginate(4);
     }
 
     public function getOneBySLugWithMediasOrderByDisplay(string $slug): Project

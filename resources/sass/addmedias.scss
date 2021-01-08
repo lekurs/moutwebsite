@@ -144,11 +144,14 @@
         position: relative;
     }
 
-    img.mini-img-project {
+    img.file-reader-img {
         position: relative;
         width: 100%;
-        max-height: 400px;
-        object-fit: contain;
+
+        &.mini-img-project {
+            max-height: 400px;
+            object-fit: contain;
+        }
 
         & + input {
             cursor: pointer;

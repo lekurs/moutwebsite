@@ -10,15 +10,14 @@ use App\UI\Responder\Pub\ProjectsResponder;
 
 class ProjectsAction
 {
-    private ProjectRepository $projectRepository;
+    private $projectRepository;
 
-    private ServiceRepository $serviceRepository;
+    private $serviceRepository;
 
     /**
      * ProjectsAction constructor.
      * @param ProjectRepository $projectRepository
      * @param ServiceRepository $serviceRepository
-     * @param SkillRepository $skillRepository
      */
     public function __construct(
         ProjectRepository $projectRepository,

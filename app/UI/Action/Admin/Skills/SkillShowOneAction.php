@@ -9,7 +9,7 @@ use App\UI\Responder\Admin\Skills\SkillShowOneResponder;
 
 class SkillShowOneAction
 {
-    private SkillRepository $skillRepository;
+    private $skillRepository;
 
     /**
      * SkillShowOneAction constructor.

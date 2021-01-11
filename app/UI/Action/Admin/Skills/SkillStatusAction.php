@@ -8,7 +8,7 @@ use App\Domain\Repository\SkillRepository;
 
 class SkillStatusAction
 {
-    private SkillRepository $skillRepository;
+    private $skillRepository;
 
     /**
      * SkillStatusAction constructor.

@@ -13,13 +13,13 @@ use Illuminate\Contracts\View\View;
 
 class ProjectsShowAction
 {
-    private ProjectRepository $projectRepository;
+    private $projectRepository;
 
-    private ClientRepository $clientRepository;
+    private $clientRepository;
 
-    private ServiceRepository $serviceRepository;
+    private $serviceRepository;
 
-    private SkillRepository $skillRepository;
+    private $skillRepository;
 
     /**
      * ProjectsShowAction constructor.

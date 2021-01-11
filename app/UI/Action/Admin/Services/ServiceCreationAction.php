@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ServiceCreationAction
 {
-    private ServiceRepository $serviceRepository;
+    private $serviceRepository;
 
     /**
      * ServiceCreationAction constructor.

@@ -13,11 +13,11 @@ use Illuminate\Support\Str;
 
 class ProjectMediaFileStore
 {
-    private ProjectRepository $projectRepository;
+    private $projectRepository;
 
-    private MediaProjectRepository $mediaProjectRepository;
+    private $mediaProjectRepository;
 
-    private UploadedFilesService $uploadedFilesService;
+    private $uploadedFilesService;
 
     /**
      * ProjectMediaFileStore constructor.

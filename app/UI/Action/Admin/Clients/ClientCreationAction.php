@@ -11,9 +11,9 @@ use Illuminate\Support\Str;
 
 class ClientCreationAction
 {
-    private ClientRepository $clientRepository;
-    private StoreClient $storeClient;
-    private UploadedFilesService $uploadedFilesService;
+    private $clientRepository;
+    private $storeClient;
+    private $uploadedFilesService;
 
     /**
      * ClientCreationAction constructor.

@@ -12,11 +12,11 @@ use Illuminate\Support\Str;
 
 class ProjectDeleteMediaAction
 {
-    private MediaProjectRepository $mediaProjectRepository;
+    private $mediaProjectRepository;
 
-    private ProjectRepository $projectRepository;
+    private $projectRepository;
 
-    private UploadedFilesService $uploadedFilesService;
+    private $uploadedFilesService;
 
     /**
      * ProjectDeleteMediaAction constructor.

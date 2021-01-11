@@ -8,7 +8,7 @@ use App\Domain\Repository\ProjectRepository;
 
 class ProjectDeleteAction
 {
-    private ProjectRepository $projectRepository;
+    private $projectRepository;
 
     /**
      * ProjectDeleteAction constructor.

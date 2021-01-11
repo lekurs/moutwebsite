@@ -10,9 +10,9 @@ use App\UI\Responder\Admin\Projects\ProjectEditFormResponder;
 
 class ProjectEditFormAction
 {
-    private ProjectRepository $projectRepository;
+    private $projectRepository;
 
-    private SkillRepository $skillRepository;
+    private $skillRepository;
 
     /**
      * ProjectEditFormAction constructor.

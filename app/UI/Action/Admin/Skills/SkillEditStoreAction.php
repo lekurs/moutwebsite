@@ -10,7 +10,7 @@ use App\UI\Responder\Admin\Skills\SkillEditStoreResponder;
 
 class SkillEditStoreAction
 {
-    private SkillRepository $skillRepository;
+    private $skillRepository;
 
     /**
      * SkillEditStoreAction constructor.

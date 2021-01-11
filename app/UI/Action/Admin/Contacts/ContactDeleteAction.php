@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ContactDeleteAction
 {
-    private ContactRepository $contactRepository;
+    private $contactRepository;
 
     /**
      * ContactDeleteAction constructor.

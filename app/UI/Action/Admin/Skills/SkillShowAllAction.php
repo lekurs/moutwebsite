@@ -10,7 +10,7 @@ use Illuminate\Contracts\View\View;
 
 class SkillShowAllAction
 {
-    private SkillRepository $skillRepository;
+    private $skillRepository;
 
     /**
      * SkillCreationAction constructor.

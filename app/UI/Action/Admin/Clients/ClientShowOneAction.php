@@ -12,13 +12,13 @@ use App\UI\Responder\Admin\Clients\ClientShowOneResponder;
 
 class ClientShowOneAction
 {
-    private ClientRepository $clientRepository;
+    private $clientRepository;
 
-    private ProjectRepository $projectRepository;
+    private $projectRepository;
 
-    private SkillRepository $skillRepository;
+    private $skillRepository;
 
-    private RandColorService $randColorService;
+    private $randColorService;
 
     /**
      * ClientShowOneAction constructor.

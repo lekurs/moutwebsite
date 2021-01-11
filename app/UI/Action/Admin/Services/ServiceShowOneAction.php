@@ -9,7 +9,7 @@ use App\UI\Responder\Admin\Services\ServiceShowOneResponder;
 
 class ServiceShowOneAction
 {
-    private ServiceRepository $serviceRepository;
+    private $serviceRepository;
 
     /**
      * ServiceShowOneAction constructor.

@@ -14,11 +14,11 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ProjectCreationAction
 {
-    private ProjectRepository $projectRepository;
+    private $projectRepository;
 
-    private UploadedFilesService $uploadedFilesService;
+    private $uploadedFilesService;
 
-    private ClientRepository $clientRepository;
+    private $clientRepository;
 
     /**
      * ProjectCreationAction constructor.

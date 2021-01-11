@@ -11,9 +11,9 @@ use Illuminate\Support\Str;
 
 class ProjectEditStoreAction
 {
-    private ProjectRepository $projectRepository;
+    private $projectRepository;
 
-    private UploadedFilesService $uploadeFilesService;
+    private $uploadeFilesService;
 
     /**
      * ProjectEditStoreAction constructor.

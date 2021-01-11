@@ -12,9 +12,9 @@ use Illuminate\Support\Str;
 
 class ClientEditStoreAction
 {
-    private ClientRepository $clientRepository;
+    private $clientRepository;
 
-    private UploadedFilesService $uploadedFilesService;
+    private $uploadedFilesService;
 
     /**
      * ClientEditStoreAction constructor.

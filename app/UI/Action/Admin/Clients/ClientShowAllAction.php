@@ -11,9 +11,9 @@ use Illuminate\Contracts\View\View;
 
 class ClientShowAllAction
 {
-    private ClientRepository $clientRepository;
+    private $clientRepository;
 
-    private SkillRepository $skillRepository;
+    private $skillRepository;
 
     /**
      * ClientsShowAction constructor.

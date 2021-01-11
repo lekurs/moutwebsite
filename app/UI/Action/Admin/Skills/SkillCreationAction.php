@@ -11,7 +11,7 @@ use Illuminate\Http\RedirectResponse;
 
 class SkillCreationAction
 {
-    private SkillRepository $skillRepository;
+    private $skillRepository;
 
     /**
      * SkillCreationAction constructor.

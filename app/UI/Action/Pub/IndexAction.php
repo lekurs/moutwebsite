@@ -10,9 +10,9 @@ use App\UI\Responder\Pub\IndexResponder;
 
 class IndexAction
 {
-    private ServiceRepository $serviceRepository;
+    private $serviceRepository;
 
-    private ProjectRepository $projectRepository;
+    private $projectRepository;
 
     /**
      * IndexAction constructor.

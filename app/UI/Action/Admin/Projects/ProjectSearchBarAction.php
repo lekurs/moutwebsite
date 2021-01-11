@@ -13,13 +13,13 @@ use Illuminate\Support\Str;
 
 class ProjectSearchBarAction
 {
-    private ProjectRepository $projectRepository;
+    private $projectRepository;
 
-    private ServiceRepository $serviceRepository;
+    private $serviceRepository;
 
-    private ClientRepository $clientRepository;
+    private $clientRepository;
 
-    private SkillRepository $skillRepository;
+    private $skillRepository;
 
     /**
      * ProjectSearchBarAction constructor.

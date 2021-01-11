@@ -10,7 +10,7 @@ use App\UI\Responder\Admin\Services\ServiceEditFormResponder;
 
 class ServiceEditFormAction
 {
-    private ServiceRepository $serviceRepository;
+    private $serviceRepository;
 
     /**
      * ServiceEditFormAction constructor.

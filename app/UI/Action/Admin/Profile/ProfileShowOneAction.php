@@ -9,7 +9,7 @@ use App\UI\Responder\Admin\Profile\ProfileShowOneResponder;
 
 class ProfileShowOneAction
 {
-    private RandColorService $randColorService;
+    private $randColorService;
 
     /**
      * ProfileShowOneAction constructor.

@@ -8,7 +8,7 @@ use App\Domain\Repository\ClientRepository;
 
 class ClientSearchBarAction
 {
-    private ClientRepository $clientRepository;
+    private $clientRepository;
 
     /**
      * ClientSearchBarAction constructor.

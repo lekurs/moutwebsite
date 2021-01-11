@@ -9,7 +9,7 @@ use App\UI\Responder\Pub\ProjectShowOneReponder;
 
 class ProjectShowOneAction
 {
-    private ProjectRepository $projectRepository;
+    private $projectRepository;
 
     /**
      * ProjectShowOneAction constructor.

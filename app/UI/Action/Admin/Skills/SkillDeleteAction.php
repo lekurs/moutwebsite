@@ -8,7 +8,7 @@ use App\Domain\Repository\SkillRepository;
 
 class SkillDeleteAction
 {
-    private SkillRepository $skillRepository;
+    private $skillRepository;
 
     /**
      * SkillDeleteAction constructor.

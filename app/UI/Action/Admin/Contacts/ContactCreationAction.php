@@ -15,11 +15,11 @@ use Illuminate\Support\Str;
 
 class ContactCreationAction
 {
-    private ContactRepository $contactRepository;
+    private $contactRepository;
 
-    private ClientRepository $clientRepository;
+    private $clientRepository;
 
-    private UploadedFilesService $uploadedFilesService;
+    private $uploadedFilesService;
 
     /**
      * ContactCreationAction constructor.

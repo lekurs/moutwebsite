@@ -7,13 +7,14 @@ namespace App\UI\Action\Admin\Contacts;
 use App\Domain\Repository\ContactRepository;
 use App\Http\Requests\EditContact;
 use App\Services\Uploads\UploadedFilesService;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
 
 class ContactEditStoreAction
 {
-    private ContactRepository $contactRepository;
+    private $contactRepository;
 
-    private UploadedFilesService $uploadedFilesService;
+    private $uploadedFilesService;
 
     /**
      * ContactEditStoreAction constructor.
@@ -27,7 +28,7 @@ class ContactEditStoreAction
     }
 
 
-    public function __invoke(EditContact $data)
+    public function __invoke(EditContact $data): RedirectResponse
     {
         $contact = $this->contactRepository->edit($data->all());
 

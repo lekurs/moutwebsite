@@ -10,7 +10,7 @@ use Illuminate\Contracts\View\View;
 
 class ClientEditFormAction
 {
-    private ClientRepository $clientRepository;
+    private $clientRepository;
 
     /**
      * ClientEditFormAction constructor.

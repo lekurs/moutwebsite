@@ -9,7 +9,7 @@ use App\UI\Responder\Admin\Contacts\ContactShowOneResponder;
 
 class ContactShowOneAction
 {
-    private ContactRepository $contactRepository;
+    private $contactRepository;
 
     /**
      * ContactShowOneAction constructor.

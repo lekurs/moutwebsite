@@ -11,7 +11,7 @@ use Illuminate\Http\RedirectResponse;
 
 class ServiceEditStoreAction
 {
-    private ServiceRepository $serviceRepository;
+    private $serviceRepository;
 
     /**
      * ServiceEditStoreAction constructor.

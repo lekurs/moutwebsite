@@ -10,9 +10,9 @@ use App\Services\Uploads\UploadedFilesService;
 
 class ProfileEditStoreAction
 {
-    private UserRepository $userRepository;
+    private $userRepository;
 
-    private UploadedFilesService $uploadedFilesService;
+    private $uploadedFilesService;
 
     /**
      * ProfileEditStoreAction constructor.

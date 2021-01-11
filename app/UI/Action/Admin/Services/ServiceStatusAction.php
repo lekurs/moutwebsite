@@ -8,7 +8,7 @@ use App\Domain\Repository\ServiceRepository;
 
 class ServiceStatusAction
 {
-    private ServiceRepository $serviceRepository;
+    private $serviceRepository;
 
     /**
      * ServiceStatusAction constructor.

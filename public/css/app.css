@@ -12289,7 +12289,7 @@ div.mout-public-login-container div.mout-public-login-right-panel h2 {
   }
 
   div.project-mission-content#result {
-    width: 80% !important;
+    width: 55% !important;
   }
 
   div.project-mission-content#skills {
@@ -13126,7 +13126,7 @@ section.mout-project-section div.project-description-container div.project-missi
   width: 60%;
   margin: 0 auto;
   padding: 50px;
-  background-color: #DBE2E5;
+  background-color: #F6F8F9;
 }
 
 section.mout-project-section div.project-description-container div.project-mission-content#skills {

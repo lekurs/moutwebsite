@@ -16,7 +16,7 @@
     </div>
 
     <section class="mout-project-section">
-        <div class="project-header" style="background: url('{{ asset('storage/images/uploads/' . $project->client->slug . '/projects/portfolio/' . $project->mediaPortfolioProjectPath) }}') center center no-repeat; background-size: cover;">
+        <div class="project-header" style="background: url('{{ asset('storage/images/uploads/' . $project->client->slug . '/projets/portfolio/' . $project->background_img_path) }}') center center no-repeat; background-size: cover;">
             <span class="background-opacity">
                 <img src="{{ asset('storage/images/uploads/' . $project->client->slug . '/logo/' . $project->client->logo) }}" alt="{{ $project->client->name }}">
                 <h1 class="title-project">{{ $project->title }}</h1>

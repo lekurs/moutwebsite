@@ -19,6 +19,7 @@ class CreateProjectsTable extends Migration
             $table->text('mission');
             $table->text('result');
             $table->string('mediaPortfolioProjectPath', 255);
+            $table->string('background_img_path', 255);
             $table->string('colorProject', 7);
             $table->string('slug', 255);
             $table->timestamp('endProject');

@@ -69,12 +69,14 @@ class ProjectRepository
 
     public function store(array $data): void
     {
+//        dd($data);
         $project = new Project();
         $project->title = $data['project-title'];
         $project->endProject = date('Y-m-d', strtotime($data['project-end']));
         $project->mission = $data['project-description-mission'];
         $project->result = $data['project-result-mission'];
         $project->mediaPortfolioProjectPath = $data['project-img-portfolio']->getClientOriginalName();
+        $project->background_img_path = $data['project-background-img']->getClientOriginalName();
         $project->colorProject = $data['project_color'];
         $project->slug = Str::slug($data['project-title']);
         $project->client_id = $data['client-id'];
@@ -128,6 +130,10 @@ class ProjectRepository
 
             if (isset($data['img-project-portfolio'])) {
                 $project->mediaPortfolioProjectPath = $data['img-project-portfolio']->getClientOriginalName();
+            }
+
+            if (isset($data['project-background-img'])) {
+                $project->background_img_path = $data['project-background-img']->getClientOriginalName();
             }
 
             $project->save();

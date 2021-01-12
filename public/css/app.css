@@ -12288,8 +12288,21 @@ div.mout-public-login-container div.mout-public-login-right-panel h2 {
     text-align: center;
   }
 
+  div.project-header span.background-opacity img {
+    width: 60% !important;
+  }
+
   div.project-mission-content#result {
     width: 80% !important;
+  }
+
+  div.project-mission-content#description H2 {
+    margin: 0 auto 0.5em !important;
+  }
+
+  div.project-mission-content#description div.mission-description {
+    width: 100% !important;
+    text-align: center;
   }
 
   div.project-mission-content#skills {
@@ -12399,7 +12412,7 @@ div.mout-public-login-container div.mout-public-login-right-panel h2 {
     top: 0;
     right: 10%;
     width: 20%;
-    height: 70%;
+    height: 60%;
   }
 }
 
@@ -13101,6 +13114,10 @@ section.mout-project-section div.project-header span.background-opacity H1.title
   margin-top: 0.7em;
 }
 
+section.mout-project-section div.project-header span.background-opacity img {
+  width: 20%;
+}
+
 section.mout-project-section div.project-description-container {
   position: relative;
   margin: 2em auto 0;
@@ -13122,11 +13139,15 @@ section.mout-project-section div.project-description-container div.project-missi
   box-shadow: inset 0px -14px 0px 0px #FFFE00 !important;
 }
 
+section.mout-project-section div.project-description-container div.project-mission-content#description div.mission-description {
+  width: 70%;
+}
+
 section.mout-project-section div.project-description-container div.project-mission-content#result {
   width: 60%;
   margin: 0 auto;
   padding: 50px;
-  background-color: #DBE2E5;
+  background-color: #F6F8F9;
 }
 
 section.mout-project-section div.project-description-container div.project-mission-content#skills {

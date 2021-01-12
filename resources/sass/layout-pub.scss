@@ -27,6 +27,10 @@
             & H1 {
                 text-align: center;
             }
+
+            & img {
+                width: 60% !important;
+            }
         }
     }
 
@@ -34,6 +38,18 @@
 
         &#result {
             width: 80% !important;
+        }
+
+        &#description {
+
+            & H2 {
+                margin: 0 auto .5em !important;
+            }
+
+            & div.mission-description {
+                width: 100% !important;
+                text-align: center;
+            }
         }
 
         &#skills {
@@ -152,7 +168,7 @@
             top: 0;
             right: 10%;
             width: 20%;
-            height: 70%;
+            height: 60%;
         }
     }
 }
@@ -907,6 +923,10 @@ section.mout-project-section {
                 color: #fff;
                 margin-top:  .7em;
             }
+
+            & img {
+                width: 20%;
+            }
         }
     }
 
@@ -928,13 +948,17 @@ section.mout-project-section {
                     -webkit-box-shadow: inset 0px -14px 0px 0px #FFFE00 !important;
                     box-shadow: inset 0px -14px 0px 0px #FFFE00 !important;
                 }
+
+                & div.mission-description {
+                    width: 70%;
+                }
             }
 
             &#result {
                 width: 60%;
                 margin: 0 auto;
                 padding: 50px;
-                background-color: #DBE2E5;
+                background-color: #F6F8F9;
             }
 
             &#skills {

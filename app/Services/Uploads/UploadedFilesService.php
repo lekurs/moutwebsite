@@ -16,7 +16,7 @@ class UploadedFilesService
 
         if ($file->getError() !== 0) {
 
-            return back()->with('error', request()->file()->getErrorMessage());
+            return back()->with('error', $file->getErrorMessage());
         }
 
         if (!in_array($file->getMimeType(), $mimeTypes)) {

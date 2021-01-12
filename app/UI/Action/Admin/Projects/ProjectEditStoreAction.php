@@ -36,6 +36,10 @@ class ProjectEditStoreAction
             $this->uploadeFilesService->moveFile($data['img-project-portfolio'], '/public/images/uploads/' . $project->client->slug . '/projets/portfolio');
         }
 
+        if (isset($data['project-background-img'])) {
+            $this->uploadeFilesService->moveFile($data['project-background-img'], '/public/images/uploads/' . $project->client->slug . '/projets/portfolio');
+        }
+
         return back()->with('success', 'Projet mis à jour');
     }
 }

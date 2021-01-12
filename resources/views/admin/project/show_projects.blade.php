@@ -105,6 +105,14 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
+                                <div class="form-group">
+                                    <label for="" class="relative-label">Image de fond</label>
+                                    <input type="file" class="form-control" name="project-background-img" id="project-background-img">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
                                 @foreach($services as $service)
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" name="project-service[]" type="checkbox" id="label-{{ $service->id }}" value="{{ $service->id }}">

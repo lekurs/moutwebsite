@@ -103,6 +103,18 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
+                        <h4 class="my-3">Image principale</h4>
+                        <div class="form-group">
+                            <img src="{{ asset('storage/images/uploads/' . $project->client->slug . '/projets/portfolio/' . $project->background_img_path) }}" alt="{{ $project->title }}" class="img-fluid file-reader-img mini-img-project" >
+                            <input type="file" name="project-background-img" id="project-background-img" class="file-reader-img file-reader-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <h4 class="my-3 col-12">Les compétences</h4>
+                </div>
+                <div class="row">
+                    <div class="col-12">
                         <div class="form-group form-focus select-focus focused">
                             <select class="skills-selection sources" multiple="multiple" tabindex="-1" name="skills[]" aria-hidden="true" id="skills">
                                 @foreach($skills as $skill)
@@ -112,6 +124,9 @@
                             <label class="focus-label-select">Compétences</label>
                         </div>
                     </div>
+                </div>
+                <div class="row">
+                    <h4 class="my-3 col-12">Le portfolio</h4>
                 </div>
                 <div class="row">
                     <div class="col-6">

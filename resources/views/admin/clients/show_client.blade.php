@@ -249,11 +249,19 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="" class="relative-label">Image de fond</label>
+                                <input type="file" class="form-control" name="project-background-img" id="project-background-img">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="project-color" class="relative-label">Couleur du portfolio</label>
                                 <div class="input-group">
-                                    <input class="color-picker" id="project-color" name="project-color">
+                                    <input class="color-picker" id="project_color" name="project_color">
                                 </div>
                             </div>
                         </div>

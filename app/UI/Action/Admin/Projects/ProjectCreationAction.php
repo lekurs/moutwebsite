@@ -52,6 +52,10 @@ class ProjectCreationAction
             $this->uploadedFilesService->moveFile($storeProject['project-img-portfolio'], '/public/images/uploads/' . $client->slug . '/projets/portfolio');
         }
 
+        if(isset($storeProject['project-background-img']) && !is_null($storeProject['project-background-img'])) {
+            $this->uploadedFilesService->moveFile($storeProject['project-background-img'], '/public/images/uploads/' . $client->slug . '/projets/portfolio');
+        }
+
         return $responder($client);
     }
 }

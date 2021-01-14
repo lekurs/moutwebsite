@@ -84,6 +84,7 @@
                         @else
                             <span class="profile-name randcolor">{{ substr(auth()->user()->lastname, 0, 1) . substr(auth()->user()->name, 0, 1) }}
                                 <div class="fileupload-filter">Edit</div>
+                                <input type="file" name="profile-img" id="profile-img" class="file-reader-input">
                             </span>
                         @endif
                     </div>

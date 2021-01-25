@@ -69,11 +69,11 @@
                             {!! $service->icon !!}
                         </div>
                         <h4>{{ $service->libelle }}</h4>
-                        {!! $service->expertise !!}
+                        {!! $service->description !!}
                     </div>
                     <div class="services-description-content-right">
                         <h4 class="service-description-title">Notre expertise</h4>
-                        <p>{!! $service->description !!}</p>
+                        <p>{!! $service->expertise !!}</p>
 
                         <div class="last-three-projects row mb-4">
                             @foreach($service->projects as $project)

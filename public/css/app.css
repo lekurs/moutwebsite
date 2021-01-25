@@ -735,6 +735,31 @@ table#skills td {
   text-align: center;
 }
 
+div.contact-estimation-container {
+  padding: 15px;
+  margin: 15px;
+  font-size: 14px;
+  background: #d2d8de;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+div.contact-estimation-container p {
+  margin-bottom: 0;
+}
+
+div.contact-estimation-container p:first-of-type {
+  font-weight: bold;
+}
+
+div.contact-estimation-container p.text-muted {
+  font-size: 12px;
+}
+
+div.contact-estimation-container.selected {
+  background: linear-gradient(to right, #ff9b44 0%, #fc6075 100%);
+}
+
 /*!
  * Bootstrap v4.5.2 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors

@@ -17,13 +17,13 @@ class CreateEstimationsTable extends Migration
             $table->increments('id');
             $table->string('number');
             $table->string('title', '255');
-            $table->text('body');
+//            $table->text('body');
             $table->decimal('price', 6, 2);
             $table->boolean('validation')->default(false);
             $table->integer('client_id')->unsigned();
             $table->integer('contact_id')->unsigned();
             $table->integer('invoice_id')->unsigned()->nullable();
-            $table->integer('service_id')->unsigned();
+//            $table->integer('service_id')->unsigned();
             $table->timestamps();
             $table->foreign('client_id')->references('id')->on('clients')
                 ->onDelete('cascade');

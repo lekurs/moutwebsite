@@ -7,15 +7,17 @@ namespace App\Domain\Entity;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Estimation extends Model
 {
     protected $fillable = [
-        'number',
+        'reference',
         'title',
         'body',
-        'price',
+        'total',
         'validation',
+        'year'
     ];
 
     public function client(): BelongsTo
@@ -36,6 +38,11 @@ class Estimation extends Model
     public function Service(): BelongsTo
     {
         return $this->belongsTo(Service::class, 'service_id');
+    }
+
+    public function EstimationsServices(): BelongsToMany
+    {
+        return $this->belongsToMany(Service::class, 'estimations_services');
     }
 
     public function downPaiementInvoice(): BelongsTo

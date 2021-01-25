@@ -25,5 +25,10 @@ class Service extends Model
     {
         return $this->belongsToMany(Project::class, 'projects_services');
     }
+
+    public function EstimationsServices(): BelongsToMany
+    {
+        return $this->belongsToMany(Estimation::class, 'estimations_services');
+    }
 }
 

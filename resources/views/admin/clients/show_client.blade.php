@@ -77,6 +77,7 @@
                 <li class="nav-item col-sm-3"><a class="nav-link active" data-toggle="tab" role="tab" aria-controls="myprojects" aria-selected="true" href="#myprojects">Projets</a></li>
                 <li class="nav-item col-sm-3"><a class="nav-link" data-toggle="tab" role="tab" aria-controls="contacts" aria-selected="false" href="#contacts">Contacts</a></li>
                 <li class="nav-item col-sm-3"><a class="nav-link" data-toggle="tab" role="tab" aria-controls="estimations" aria-selected="false" href="#estimations">Devis</a></li>
+                <li class="nav-item col-sm-3"><a class="nav-link" data-toggle="tab" role="tab" aria-controls="invoices" aria-selected="false" href="#invoices">Factures</a></li>
             </ul>
         </div>
     </div>
@@ -121,7 +122,25 @@
             </div>
             <!-- ESTIMATIONS -->
             <div class="tab-pane fade" id="estimations" role="tabpanel" aria-labelledby="estimations-tab">
-                3
+                <div class="row mb-3">
+                    <div class="col-auto float-right ml-auto">
+                        <a href="{{ route('estimationCreation', $client->slug) }}" class="btn add-btn">
+                            <i class="fal fa-plus"></i>
+                            Créer un devis
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- INVOICES -->
+            <div class="tab-pane fade" id="invoices" role="tabpanel" aria-labelledby="invoices-tab">
+                <div class="row mb-3">
+                    <div class="col-auto float-right ml-auto">
+                        <a href="#" class="btn add-btn">
+                            <i class="fal fa-plus"></i>
+                            Créer une facture
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

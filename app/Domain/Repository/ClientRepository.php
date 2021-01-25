@@ -6,6 +6,7 @@ namespace App\Domain\Repository;
 
 use App\Domain\Entity\Client;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -34,6 +35,11 @@ class ClientRepository
     public function search(string $clientName)
     {
         return Client::where('name', 'like', $clientName . '%')->paginate(12);
+    }
+
+    public function getOneWithContactsBySlug(string $clientSlug): Client
+    {
+        return Client::with('contacts')->whereSlug($clientSlug)->first();
     }
 
     public function getOneBySlugWithProjectsAndContacts(string $clientSlug): Client
@@ -76,5 +82,16 @@ class ClientRepository
 //        $client->logo = $imagePath->getClientOriginalName();
 
 //        $client->save();
+    }
+
+    public function testing()
+    {
+        $user = DB::table('client')
+            ->whereName('Jardiland')
+            ->where(function ($query) {
+                dd($query);
+            }) ;
+
+        return $user;
     }
 }

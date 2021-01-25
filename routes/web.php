@@ -10,6 +10,8 @@ use App\UI\Action\Admin\Contacts\ContactCreationAction;
 use App\UI\Action\Admin\Contacts\ContactDeleteAction;
 use App\UI\Action\Admin\Contacts\ContactEditStoreAction;
 use App\UI\Action\Admin\Contacts\ContactShowOneAction;
+use App\UI\Action\Admin\Estimations\EstimationCreationAction;
+use App\UI\Action\Admin\Estimations\EstimationStoreAction;
 use App\UI\Action\Admin\HomeAdminAction;
 use App\UI\Action\Admin\Profile\ProfileEditStoreAction;
 use App\UI\Action\Admin\Profile\ProfileShowOneAction;
@@ -91,13 +93,18 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'authorization']], f
        Route::post('/edit/{clientSlug}/store', ClientEditStoreAction::class)->name('clientEditStore');
        Route::post('/search', ClientSearchBarAction::class)->name('clientSearch');
 
-       Route::post('/{clientSlug}/contact/store', ContactCreationAction::class)->name('contactAdd');
 
        Route::group(['prefix' => 'contact'], function () {
           Route::get('/{contactSlug}', ContactShowOneAction::class)->name('contactShowOne');
           Route::post('/contact/edit', ContactEditStoreAction::class)->name('contactEditStore');
           Route::get('/contact/{contactSlug}/delete', ContactDeleteAction::class)->name('contactDelete');
+          Route::post('/{clientSlug}/store', ContactCreationAction::class)->name('contactAdd');
        });
+    });
+
+    Route::group(['prefix' => 'devis'], function () {
+        Route::get('/{clientSlug}/creer', EstimationCreationAction::class)->name('estimationCreation');
+        Route::post('/{clientSlug}/store', EstimationStoreAction::class)->name('estimationStore');
     });
 
     Route::group(['prefix' => 'services'], function() {

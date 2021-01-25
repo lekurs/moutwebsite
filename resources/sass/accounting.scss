@@ -1,0 +1,30 @@
+//contact estimation gestion
+div.contact-estimation-container {
+    padding: 15px;
+    margin: 15px;
+    font-size: 14px;
+    background: #d2d8de;
+    border-radius: 10px;
+    cursor: pointer;
+
+    input[type="radio"] {
+        //visibility: hidden;
+        //display: none;
+    }
+
+    & p {
+        margin-bottom: 0;
+
+        &:first-of-type {
+            font-weight: bold;
+        }
+
+        &.text-muted {
+            font-size: 12px;
+        }
+    }
+
+    &.selected {
+        background: linear-gradient(to right, #ff9b44 0%, #fc6075 100%);
+    }
+}

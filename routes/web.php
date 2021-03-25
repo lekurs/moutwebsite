@@ -10,7 +10,9 @@ use App\UI\Action\Admin\Contacts\ContactCreationAction;
 use App\UI\Action\Admin\Contacts\ContactDeleteAction;
 use App\UI\Action\Admin\Contacts\ContactEditStoreAction;
 use App\UI\Action\Admin\Contacts\ContactShowOneAction;
+use App\UI\Action\Admin\Estimations\EstimationCreatePDFAction;
 use App\UI\Action\Admin\Estimations\EstimationCreationAction;
+use App\UI\Action\Admin\Estimations\EstimationShowOneAction;
 use App\UI\Action\Admin\Estimations\EstimationStoreAction;
 use App\UI\Action\Admin\HomeAdminAction;
 use App\UI\Action\Admin\Profile\ProfileEditStoreAction;
@@ -36,6 +38,11 @@ use App\UI\Action\Admin\Skills\SkillEditStoreAction;
 use App\UI\Action\Admin\Skills\SkillShowAllAction;
 use App\UI\Action\Admin\Skills\SkillShowOneAction;
 use App\UI\Action\Admin\Skills\SkillStatusAction;
+use App\UI\Action\Admin\Taxes\TaxCreationAction;
+use App\UI\Action\Admin\Taxes\TaxDeleteAction;
+use App\UI\Action\Admin\Taxes\TaxEditAction;
+use App\UI\Action\Admin\Taxes\TaxShowAllAction;
+use App\UI\Action\Admin\Taxes\TaxShowOneAction;
 use App\UI\Action\Pub\IndexAction;
 use App\UI\Action\Pub\ProjectsAction;
 use App\UI\Action\Pub\SendContactMailAction;
@@ -105,6 +112,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'authorization']], f
     Route::group(['prefix' => 'devis'], function () {
         Route::get('/{clientSlug}/creer', EstimationCreationAction::class)->name('estimationCreation');
         Route::post('/{clientSlug}/store', EstimationStoreAction::class)->name('estimationStore');
+        Route::get('{clientSlug}/voir/{estimationId}/pdf', EstimationCreatePDFAction::class)->name('estimationCreationPDF');
+        Route::get('{clientSlug}/voir/{estimationId}', EstimationShowOneAction::class)->name('estimationShowOne');
     });
 
     Route::group(['prefix' => 'services'], function() {
@@ -114,6 +123,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'authorization']], f
         Route::get('/status/{serviceId}', ServiceStatusAction::class)->name('serviceStatus');
         Route::post('/ajouter', ServiceCreationAction::class)->name('serviceAdd');
         Route::post('/edit/{serviceId}/store', ServiceEditStoreAction::class)->name('serviceEditStore');
+    });
+
+    Route::group(['prefix' => 'taxes'], function () {
+       Route::get('/', TaxShowAllAction::class)->name('taxesShowAll');
+       Route::get('/{taxId}', TaxShowOneAction::class)->name('taxesShowOne');
+       Route::post('/store', TaxCreationAction::class)->name('taxAdd');
+       Route::post('/edit/{taxId}', TaxEditAction::class)->name('taxEdit');
+       Route::get('/trash/{taxId}', TaxDeleteAction::class)->name('taxDelete');
     });
 });
 

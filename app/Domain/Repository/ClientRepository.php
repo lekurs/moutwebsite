@@ -42,9 +42,16 @@ class ClientRepository
         return Client::with('contacts')->whereSlug($clientSlug)->first();
     }
 
-    public function getOneBySlugWithProjectsAndContacts(string $clientSlug): Client
+    public function getOneBySlugWithAllRelations(string $clientSlug): Client
     {
-        return Client::with('projects', 'contacts')->whereSlug($clientSlug)->first();
+        return Client::with(['projects', 'contacts', 'estimations' => function($q) {
+            $date1 = date("Y-m-d", strtotime("-1 years"));
+            $date2 = date("Y-m-d", strtotime("+1 day"));
+
+            $q
+                ->whereBetween('created_at', [$date1, $date2])
+                ->orderBy('created_at', 'DESC')->get();
+        }])->whereSlug($clientSlug)->first();
     }
 
     public function store(array $clientData, UploadedFile $imagePath = null): void

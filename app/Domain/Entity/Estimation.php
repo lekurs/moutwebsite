@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Estimation extends Model
 {
@@ -53,5 +54,10 @@ class Estimation extends Model
     public function scopeIsActive(Builder $query): Builder
     {
         return $query->where('validation', '=', 1);
+    }
+
+    public function estimationDetails(): HasMany
+    {
+        return $this->hasMany(EstimationDetail::class, 'estimation_id');
     }
 }

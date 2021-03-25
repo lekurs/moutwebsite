@@ -426,6 +426,12 @@ div.card-body div.img-portfolio-container img {
      object-fit: cover;
 }
 
+div.tab-pane#estimations,
+div.tab-pane#invoices {
+  background: #FFF;
+  padding: 10px 40px;
+}
+
 div.client-card-container {
   background-color: #fff;
   border: 1px solid #ededed;
@@ -720,6 +726,7 @@ table.table#services a,
 table#skills a {
   text-decoration: none;
   color: #333;
+  text-align: left;
 }
 
 table.table#services a.txt:hover,
@@ -758,6 +765,55 @@ div.contact-estimation-container p.text-muted {
 
 div.contact-estimation-container.selected {
   background: linear-gradient(to right, #ff9b44 0%, #fc6075 100%);
+}
+
+div.mout-accounting-client-informations p {
+  margin-bottom: 0;
+}
+
+div.mout-accounting-thead-details-container {
+  position: relative;
+  margin-bottom: 3em;
+}
+
+div.mout-accounting-thead-details-container::after {
+  content: "";
+  width: 98%;
+  position: absolute;
+  bottom: -10px;
+  left: 1%;
+  background-color: #FFFE00;
+  height: 2px;
+}
+
+div.mout-accounting-body-details-container {
+  margin-bottom: 3em;
+  position: relative;
+}
+
+div.mout-accounting-body-details-container H5.mout-accounting-title-description {
+  font-weight: 700;
+  margin-bottom: 1.5em;
+}
+
+div.mout-accounting-body-details-container div.mout-accounting-detail-description,
+div.mout-accounting-body-details-container div.mout-accounting-detail-quantity,
+div.mout-accounting-body-details-container div.mout-accounting-detail-total {
+  font-weight: 300;
+}
+
+div.mout-accounting-body-details-container::after {
+  content: "";
+  width: 98%;
+  position: absolute;
+  bottom: -10px;
+  left: 1%;
+  background-color: #FFFE00;
+  height: 2px;
+}
+
+div.mout-accounting-total-container p {
+  margin-bottom: 0;
 }
 
 /*!
@@ -11823,6 +11879,7 @@ div.mout-left-panel-profil span.profile-name {
   align-items: center;
   font-size: 1em;
   color: #fff;
+  text-transform: uppercase;
 }
 
 div.sidebar {

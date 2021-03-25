@@ -53,6 +53,6 @@ class EstimationStoreAction
 
         $this->estimationRepository->store($estimation, $client, $contact);
 
-        dd('end');
+        return back()->with('success', 'Devis créé');
     }
 }

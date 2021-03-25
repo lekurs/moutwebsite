@@ -18,13 +18,17 @@ class CreateEstimationsDetailsTable extends Migration
             $table->string('product', 255);
             $table->text('description');
             $table->unsignedInteger('quantity');
-            $table->decimal('unit_price', '8', '2');
-            $table->decimal('total_row', '8', '2');
+            $table->unsignedInteger('unit_price');
+            $table->unsignedInteger('total_row');
+            $table->unsignedInteger('total_row_notax');
+            $table->unsignedInteger('total_row_tax');
             $table->unsignedInteger('display_order');
             $table->unsignedInteger('estimation_id');
+            $table->unsignedInteger('taxe_id');
             $table->timestamps();
 
             $table->foreign('estimation_id')->references('id')->on('estimations');
+            $table->foreign('taxe_id')->references('id')->on('taxes');
         });
     }
 

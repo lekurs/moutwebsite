@@ -10,11 +10,10 @@ use Illuminate\Database\Eloquent\Collection;
 
 class ClientShowOneResponder
 {
-    public function __invoke(Client $client, string $color, Collection $skills): View
+    public function __invoke(Client $client, Collection $skills): View
     {
         return view('admin.clients.show_client', [
             'client' => $client,
-            'color' => $color,
             'skills' => $skills
         ]);
     }

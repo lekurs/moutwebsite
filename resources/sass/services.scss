@@ -2,6 +2,7 @@ table.table#services, table#skills {
     & a {
         text-decoration: none;
         color: #333;
+        text-align: left;
 
         &.txt {
             &:hover {

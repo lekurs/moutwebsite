@@ -85,6 +85,11 @@
                         Compétences
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('taxesShowAll') }}">
+                        Taxes
+                    </a>
+                </li>
             </ul>
         </li>
 

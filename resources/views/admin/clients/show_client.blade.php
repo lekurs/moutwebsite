@@ -130,6 +130,10 @@
                         </a>
                     </div>
                 </div>
+                <div class="row">
+                    <h3 class="estimations-title-table">Devis en cours sur les 12 mois glissants</h3>
+                    @include('layouts.cards.estimation_card')
+                </div>
             </div>
             <!-- INVOICES -->
             <div class="tab-pane fade" id="invoices" role="tabpanel" aria-labelledby="invoices-tab">

@@ -55,7 +55,7 @@
 
         <div class="services-icon-container">
             @foreach($services as $service)
-                <a href="#" id="{{$service->slug }}" data-service="{{ $service->slug }}" data-color="{{ $service->color_icon }}" class="service-link">
+                <a href="#" id="{{ $service->slug }}" data-service="{{ $service->slug }}" data-color="{{ $service->color_icon }}" class="service-link">
                     <p>{{$service->libelle}}</p>
                     <span class="service-icon" style="color: {{ $service->color_icon }}">{!! $service->icon !!}</span>
                 </a>

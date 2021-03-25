@@ -9,11 +9,13 @@ use Illuminate\Database\Eloquent\Collection;
 
 class EstimationCreationActionResponder
 {
-    public function __invoke(Client $client, Collection $services)
+    public function __invoke(Client $client, Collection $services, Collection $taxes, $number)
     {
         return view('admin.estimations.estimation_creation', [
             'client' => $client,
-            'services' => $services
+            'services' => $services,
+            'taxes' => $taxes,
+            'number' => $number
         ]);
     }
 }

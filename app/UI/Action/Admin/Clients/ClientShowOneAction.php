@@ -18,35 +18,30 @@ class ClientShowOneAction
 
     private $skillRepository;
 
-    private $randColorService;
-
     /**
      * ClientShowOneAction constructor.
      * @param ClientRepository $clientRepository
      * @param ProjectRepository $projectRepository
      * @param SkillRepository $skillRepository
-     * @param RandColorService $randColorService
      */
     public function __construct(
         ClientRepository $clientRepository,
         ProjectRepository $projectRepository,
-        SkillRepository $skillRepository,
-        RandColorService $randColorService
+        SkillRepository $skillRepository
     )
     {
         $this->clientRepository = $clientRepository;
         $this->projectRepository = $projectRepository;
         $this->skillRepository = $skillRepository;
-        $this->randColorService = $randColorService;
     }
 
     public function __invoke(ClientShowOneResponder $responder)
     {
-        $client = $this->clientRepository->getOneBySlugWithProjectsAndContacts(request('clientSlug'));
+        $client = $this->clientRepository->getOneBySlugWithAllRelations(request('clientSlug'));
         $skills = $this->skillRepository->getAll();
 
-        $color = $this->randColorService->randomColor();
+//        dd($client);
 
-        return $responder($client, $color, $skills);
+        return $responder($client, $skills);
     }
 }

@@ -28,7 +28,9 @@ class CreateClientsTable extends Migration
             $table->timestamps();
         });
 
-        DB::statement('ALTER TABLE clients CHANGE COLUMN zip zip INT(5) UNSIGNED ZEROFILL NULL ');
+        if (config('database.default') === 'mysql') {
+            DB::statement('ALTER TABLE clients CHANGE COLUMN zip zip INT(5) UNSIGNED ZEROFILL NULL ');
+        }
 
     }
 

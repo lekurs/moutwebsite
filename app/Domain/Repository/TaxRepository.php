@@ -29,6 +29,17 @@ class TaxRepository
         $tax->save();
     }
 
+    public function updateStatus(Taxe $taxe)
+    {
+        if($taxe->status === 1) {
+            $taxe->status = 0;
+            $taxe->save();
+        } else {
+            $taxe->status = 1;
+            $taxe->save();
+        }
+    }
+
     public function edit(int $id, array $data): void
     {
         $tax = Taxe::whereId($id)->first();
@@ -43,9 +54,8 @@ class TaxRepository
         $tax->save();
     }
 
-    public function delete(int $id)
+    public function delete(Taxe $taxe)
     {
-        $tax = Taxe::whereId($id)->first();
-        $tax->delete();
+        $taxe->delete();
     }
 }

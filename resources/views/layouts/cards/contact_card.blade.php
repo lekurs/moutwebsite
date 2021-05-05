@@ -1,7 +1,7 @@
 <div class="col-md-4 col-sm-6 col-12">
     <div class="contact-card-container">
         <div class="contact-img-container mb-2">
-            <a href="{{ route('contactShowOne', $contact->slug) }}">
+            <a href="{{ route('contacts.show', $contact->slug) }}">
                 @if(!is_null($contact->picture_path))
                 <img src="{{ asset('storage/images/uploads/' . $client->slug . '/' . $contact->slug . '/picture/' . $contact->picture_path) }}" alt="" class="img-fluid contact-img">
                 @else
@@ -14,20 +14,20 @@
                 <i class="fal fa-ellipsis-v" aria-hidden="true"></i>
             </div>
             <div class="dropdown-menu-mout">
-                <a class="dropdown-item" href="{{ route('contactShowOne', $contact->slug) }}" data-id="{{ $contact->id }}"><i class="fal fa-pen"></i> Modifier</a>
-                <a class="dropdown-item" href="{{ route('contactDelete', $contact->slug) }}" data-id=""><i class="fal fa-trash"></i> Supprimer</a>
+                <a class="dropdown-item" href="{{ route('contacts.show', $contact->slug) }}" data-id="{{ $contact->id }}"><i class="fal fa-pen"></i> Modifier</a>
+                <a class="dropdown-item" href="{{ route('contacts.destroy', $contact->slug) }}" data-id=""><i class="fal fa-trash"></i> Supprimer</a>
             </div>
         </div>
-        <a href="{{ route('contactShowOne', $contact->slug) }}">
+        <a href="{{ route('contacts.show', $contact->slug) }}">
             <h4 class="contact-name">{{ $contact->lastname . ' ' .$contact->name }}</h4>
         </a>
-        <a href="{{ route('contactShowOne', $contact->slug) }}">
+        <a href="{{ route('contacts.show', $contact->slug) }}">
             <h5 class="contact-total-projects">{{ $contact->email }}</h5>
         </a>
-        <a href="{{ route('contactShowOne', $contact->slug) }}">
+        <a href="{{ route('contacts.show', $contact->slug) }}">
             <div class="small text-muted client-total-ca">{{ $contact->contact_function }}</div>
         </a>
 
-        <a href="{{ route('contactShowOne', $contact->slug) }}" class="btn btn-white mt-3">Voir le contact</a>
+        <a href="{{ route('contacts.show', $contact->slug) }}" class="btn btn-white mt-3">Voir le contact</a>
     </div>
 </div>

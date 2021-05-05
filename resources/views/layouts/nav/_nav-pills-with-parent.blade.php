@@ -29,7 +29,7 @@
             </div>
             <ul class="nav-children">
                 <li>
-                    <a href="{{ route('clientShowAll') }}">
+                    <a href="{{ route('clients.index') }}">
                         Voir tous
                     </a>
                 </li>
@@ -57,7 +57,7 @@
             </div>
             <ul class="nav-children">
                 <li>
-                    <a href="{{ route('showProjects') }}">
+                    <a href="{{ route('projects.index') }}">
                         Voir tous
                     </a>
                 </li>
@@ -71,22 +71,22 @@
             </div>
             <ul class="nav-children">
                 <li>
-                    <a href="{{ route('profile') }}">
+                    <a href="{{ route('profiles.show') }}">
                         Compte utilisateur
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('serviceShowAll') }}">
-                        Services
+                    <a href="{{ route('services.index') }}">
+                        Prestations
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('skillShowAll') }}">
+                    <a href="{{ route('skills.index') }}">
                         Compétences
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('taxesShowAll') }}">
+                    <a href="{{ route('taxes.index') }}">
                         Taxes
                     </a>
                 </li>

@@ -75,7 +75,7 @@
                         <span>Admin</span>
                     </a>
                     <div class="dropdown-menu main-drop">
-                        <a href="{{ route('profile') }}" class="dropdown-item">
+                        <a href="{{ route('profiles.show') }}" class="dropdown-item">
                             <i class="fal fa-edit"></i> Profil
                         </a>
                         <a href="{{ route('logout') }}" class="dropdown-item">

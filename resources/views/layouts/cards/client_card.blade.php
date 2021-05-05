@@ -1,7 +1,7 @@
 <div class="col-md-4 col-sm-6 col-12">
     <div class="client-card-container">
         <div class="client-img-container">
-            <a href="{{ route('clientShowOne', $client->slug) }}">
+            <a href="{{ route('clients.show', $client->slug) }}">
                 <img src="{{ asset('storage/images/uploads/' . $client->slug . '/logo/' . $client->logo) }}" alt="" class="img-fluid client-img">
             </a>
         </div>
@@ -10,20 +10,20 @@
                 <i class="fal fa-ellipsis-v" aria-hidden="true"></i>
             </div>
             <div class="dropdown-menu-mout">
-                <a class="dropdown-item" href="{{ route('clientEditForm', $client->slug) }}" data-id=""><i class="fal fa-pen"></i> Modifier</a>
+                <a class="dropdown-item" href="{{ route('clients.edit', $client->slug) }}" data-id=""><i class="fal fa-pen"></i> Modifier</a>
                 <a class="dropdown-item" href="#" data-id=""><i class="fal fa-trash"></i> Supprimer</a>
             </div>
         </div>
-        <a href="{{ route('clientShowOne', $client->slug) }}">
+        <a href="{{ route('clients.show', $client->slug) }}">
             <h4 class="client-name">{{ $client->name }}</h4>
         </a>
-        <a href="{{ route('clientShowOne', $client->slug) }}">
+        <a href="{{ route('clients.show', $client->slug) }}">
             <h5 class="client-total-projects">{{ count($client->projects) }} @if(count($client->projects)>1)projets réalisés @else projet réalisé @endif</h5>
         </a>
-        <a href="{{ route('clientShowOne', $client->slug) }}">
+        <a href="{{ route('clients.show', $client->slug) }}">
             <div class="small text-muted client-total-ca">CA Total sur l'année</div>
         </a>
 
-        <a href="{{ route('clientShowOne', $client->slug) }}" class="btn btn-white">Voir le client</a>
+        <a href="{{ route('clients.show', $client->slug) }}" class="btn btn-white">Voir le client</a>
     </div>
 </div>

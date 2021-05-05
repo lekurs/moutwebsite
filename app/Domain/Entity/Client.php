@@ -8,6 +8,50 @@ namespace App\Domain\Entity;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * App\Domain\Entity\Client
+ *
+ * @property int $id
+ * @property string $name
+ * @property string|null $phone
+ * @property string|null $address
+ * @property int|null $zip
+ * @property string|null $city
+ * @property string|null $siren
+ * @property string $slug
+ * @property string|null $logo
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Domain\Entity\Contact[] $contacts
+ * @property-read int|null $contacts_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Domain\Entity\Estimation[] $estimations
+ * @property-read int|null $estimations_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Domain\Entity\Estimation[] $estimationsByOrder
+ * @property-read int|null $estimations_by_order_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Domain\Entity\Estimation[] $estimationsIsActive
+ * @property-read int|null $estimations_is_active_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Domain\Entity\Invoice[] $invoices
+ * @property-read int|null $invoices_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Domain\Entity\Invoice[] $invoicesNotPaid
+ * @property-read int|null $invoices_not_paid_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Domain\Entity\Project[] $projects
+ * @property-read int|null $projects_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Client newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Client newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Client query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Client whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Client whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Client whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Client whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Client whereLogo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Client whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Client wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Client whereSiren($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Client whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Client whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Client whereZip($value)
+ * @mixin \Eloquent
+ */
 class Client extends Model
 {
     protected $fillable = [

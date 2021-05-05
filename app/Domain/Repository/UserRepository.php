@@ -27,6 +27,7 @@ class UserRepository
             $user = $this->getOne($data['profile-id']);
             $name = $user->name;
             $lastname = $user->lastname;
+            $email = $user->email;
 
             if (!is_null($data['profile-name'])) {
                 if ($name != $data['profile-name']) {
@@ -40,6 +41,13 @@ class UserRepository
                     $lastname = $data['profile-lastname'];
                 }
                 $user->lastName = $data['profile-lastname'];
+            }
+
+            if (!is_null($data['profile-email'])) {
+                if ($email != $data['profile-email']) {
+                    $email = $data['profile-email'];
+                }
+                $user->email = $data['profile-email'];
             }
 
             if (!is_null($data['profile-password'])) {

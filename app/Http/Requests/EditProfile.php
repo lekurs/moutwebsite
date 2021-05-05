@@ -24,6 +24,7 @@ class EditProfile extends FormRequest
     public function rules()
     {
         return [
+            'profile-id' => '',
             'profile-name' => '',
             'profile-lastname' => '',
             'profile-img-input' => '',

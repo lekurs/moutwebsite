@@ -26,8 +26,6 @@ class CreateForeignkeyEstimationsDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::table('estimations-details', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('estimations-details');
     }
 }

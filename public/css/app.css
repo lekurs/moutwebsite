@@ -723,14 +723,16 @@ img.file-reader-img + input {
 }
 
 table.table#services a,
-table#skills a {
+table#skills a,
+table#taxes a {
   text-decoration: none;
   color: #333;
   text-align: left;
 }
 
 table.table#services a.txt:hover,
-table#skills a.txt:hover {
+table#skills a.txt:hover,
+table#taxes a.txt:hover {
   color: #000;
   font-size: 1.1em;
 }
@@ -738,7 +740,9 @@ table#skills a.txt:hover {
 table.table#services th,
 table.table#services td,
 table#skills th,
-table#skills td {
+table#skills td,
+table#taxes th,
+table#taxes td {
   text-align: center;
 }
 
@@ -800,6 +804,13 @@ div.mout-accounting-body-details-container div.mout-accounting-detail-descriptio
 div.mout-accounting-body-details-container div.mout-accounting-detail-quantity,
 div.mout-accounting-body-details-container div.mout-accounting-detail-total {
   font-weight: 300;
+}
+
+div.mout-accounting-body-details-container div.mout-accounting-detail-quantity,
+div.mout-accounting-body-details-container div.mout-accounting-detail-total {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 div.mout-accounting-body-details-container::after {

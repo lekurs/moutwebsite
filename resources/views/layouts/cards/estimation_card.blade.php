@@ -23,8 +23,8 @@
                         <i class="fa fa-dot-circle-o @if($estimation->validation == 1) text-success @else text-danger @endif"></i> @if($estimation->validation == 1)Validé @else En cours @endif
                     </a>
                     <div class="dropdown-menu-mout dropdown-menu-mout-table dropdown-mout-status" x-placement="bottom-end" style="position: absolute; transform: translate3d(-17px, 31px, 0px); top: 0px; left: 0px; will-change: transform;">
-                        <a class="dropdown-item" href="{{ route('skillStatus', $estimation->id) }}"><i class="fa fa-dot-circle-o text-success"></i> Validé</a>
-                        <a class="dropdown-item" href="{{ route('skillStatus', $estimation->id) }}"><i class="fa fa-dot-circle-o text-danger"></i> En cours</a>
+                        <a class="dropdown-item" href="{{ route('skills.status', $estimation->id) }}"><i class="fa fa-dot-circle-o text-success"></i> Validé</a>
+                        <a class="dropdown-item" href="{{ route('skills.status', $estimation->id) }}"><i class="fa fa-dot-circle-o text-danger"></i> En cours</a>
                     </div>
                 </div>
             </td>
@@ -34,11 +34,11 @@
                         <i class="fal fa-ellipsis-v" aria-hidden="true"></i>
                     </a>
                     <div class="dropdown-menu-mout dropdown-menu-mout-table">
-                        <a class="dropdown-item" href="{{ route('estimationShowOne', ['clientSlug' => $client->slug, 'estimationId' => $estimation->id]) }}" data-id="{{ $estimation->id }}"><i class="fal fa-eye"></i> Voir</a>
-                        <a class="dropdown-item" href="{{ route('skillShowOne', $estimation->id) }}" data-id="{{ $estimation->id }}"><i class="fal fa-pen"></i> Modifier</a>
-                        <a class="dropdown-item" href="{{ route('skillDelete', $estimation->id) }}" data-id=""><i class="fal fa-trash"></i> Supprimer</a>
+                        <a class="dropdown-item" href="{{ route('estimations.show', [$client->slug, $estimation->id]) }}" data-id="{{ $estimation->id }}"><i class="fal fa-eye"></i> Voir</a>
+                        <a class="dropdown-item" href="{{ route('skills.show', $estimation->id) }}" data-id="{{ $estimation->id }}"><i class="fal fa-pen"></i> Modifier</a>
+                        <a class="dropdown-item" href="{{ route('skills.destroy', $estimation->id) }}" data-id=""><i class="fal fa-trash"></i> Supprimer</a>
                         <a class="dropdown-item" href="{{ route('estimationCreationPDF', [$client->slug, $estimation->id]) }}" target="_blank" data-id=""><i class="fal fa-file-pdf"></i> Voir le PDF</a>
-                        <a class="dropdown-item" href="{{ route('skillDelete', $estimation->id) }}" data-id=""><i class="fal fa-envelope"></i> Envoyer par mail</a>
+                        <a class="dropdown-item" href="{{ route('skills.destroy', $estimation->id) }}" data-id=""><i class="fal fa-envelope"></i> Envoyer par mail</a>
                     </div>
                 </div>
             </td>

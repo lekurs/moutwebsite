@@ -18,7 +18,7 @@ class CreateMediaProjectsTable extends Migration
             $table->string('mediaProjectPath');
             $table->integer('displayOrder')->unsigned();
             $table->integer('project_id')->unsigned();
-            $table->foreign('project_id')->references('id')->on('projects');
+            $table->foreign('project_id')->references('id')->on('projects')->cascadeOnDelete();
             $table->timestamps();
         });
     }

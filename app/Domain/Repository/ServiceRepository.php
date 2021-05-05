@@ -56,4 +56,9 @@ class ServiceRepository
 
         $service->save();
     }
+
+    public function destroy(Service $service)
+    {
+        $service->delete();
+    }
 }

@@ -7,6 +7,7 @@ namespace App\Domain\Repository;
 use App\Domain\Entity\Skill;
 use App\Http\Requests\StoreSkill;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
 
 class SkillRepository
@@ -41,27 +42,27 @@ class SkillRepository
             $skill->skill = $datas['skill-libelle'];
             $skill->save();
         } else {
-            if(count($datas['skill-libelle']) > 1) {
-                foreach($datas['skill-libelle'] as $skillWording) {
+            if (is_array($datas['skill-libelle'])) {
+
+                foreach ($datas['skill-libelle'] as $skillWording) {
                     $skill = new Skill();
                     $skill->skill = $skillWording;
                     try {
                         $skill->save();
 
-                    }
-                    catch (QueryException $e) {
+                    } catch (QueryException $e) {
                         dd($e->getMessage());
                     }
                 }
             } else {
+
                 $skill = new Skill();
                 $skill->skill = $datas['skill-libelle'][0];
 
                 try {
                     $skill->save();
 
-                }
-                catch (QueryException $e) {
+                } catch (QueryException $e) {
                     dd($e->getMessage());
                 }
             }

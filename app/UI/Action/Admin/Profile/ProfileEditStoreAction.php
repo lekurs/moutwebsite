@@ -5,7 +5,7 @@ namespace App\UI\Action\Admin\Profile;
 
 
 use App\Domain\Repository\UserRepository;
-use App\Http\Requests\EditProfile;
+use App\Http\Requests\EditProfileRequest;
 use App\Services\Uploads\UploadedFilesService;
 
 class ProfileEditStoreAction
@@ -25,7 +25,7 @@ class ProfileEditStoreAction
         $this->uploadedFilesService = $uploadedFilesService;
     }
 
-    public function __invoke(EditProfile $data)
+    public function __invoke(EditProfileRequest $data)
     {
         $user = $this->userRepository->getOne($data['profile-id']);
 

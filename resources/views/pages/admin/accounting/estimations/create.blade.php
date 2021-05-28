@@ -9,7 +9,7 @@
                 <a href="{{ route('homeAdmin') }}">Dashboard</a>
             </li>
             <li class="breacrumb-item active">
-                <a href="{{ route('clientShowOne', $client->slug) }}">Client</a> / <a href="#">Devis</a> / Créer
+                <a href="{{ route('clients.show', $client->slug) }}">Client</a> / <a href="#">Devis</a> / Créer
             </li>
         </ul>
     </div>
@@ -17,7 +17,7 @@
 @section('body')
     <div class="row edit-client-form-container">
         <div class="col-12">
-            <form action="{{ route('estimationStore', $client->slug) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('estimations.store', $client->slug) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @include('layouts.form_errors.errors')
                 <input type="hidden" value="{{ $client->slug }}" name="client-slug" id="client-slug">
@@ -35,7 +35,7 @@
                                     <div class="input-group">
                                         <input class="form-control" type="text" disabled name="client-estimation" id="client-estimation" aria-label="Intitulé du devis" placeholder="Client" @isset($client) value="{{ $client->name }}" @endisset>
                                     </div>
-                                    <span class="text-muted edit-client-estimation-link"><a href="{{ route('clientEditForm', $client->slug) }}">Modifier le client</a></span>
+                                    <span class="text-muted edit-client-estimation-link"><a href="{{ route('clients.edit', $client->slug) }}">Modifier le client</a></span>
                                 </div>
                             </div>
                             <div class="col-4">

@@ -35,9 +35,9 @@
                     </a>
                     <div class="dropdown-menu-mout dropdown-menu-mout-table">
                         <a class="dropdown-item" href="{{ route('estimations.show', [$client->slug, $estimation->id]) }}" data-id="{{ $estimation->id }}"><i class="fal fa-eye"></i> Voir</a>
-                        <a class="dropdown-item" href="{{ route('skills.show', $estimation->id) }}" data-id="{{ $estimation->id }}"><i class="fal fa-pen"></i> Modifier</a>
-                        <a class="dropdown-item" href="{{ route('skills.destroy', $estimation->id) }}" data-id=""><i class="fal fa-trash"></i> Supprimer</a>
-                        <a class="dropdown-item" href="{{ route('estimationCreationPDF', [$client->slug, $estimation->id]) }}" target="_blank" data-id=""><i class="fal fa-file-pdf"></i> Voir le PDF</a>
+                        <a class="dropdown-item" href="{{ route('estimations.show', [$client->slug, $estimation->id]) }}" data-id="{{ $estimation->id }}"><i class="fal fa-pen"></i> Modifier</a>
+                        <a class="dropdown-item" href="{{ route('estimations.destroy', [$client->slug, $estimation->id]) }}" data-id=""><i class="fal fa-trash"></i> Supprimer</a>
+                        <a class="dropdown-item" href="{{ route('estimations.create.pdf', [$client->slug, $estimation->id]) }}" target="_blank" data-id=""><i class="fal fa-file-pdf"></i> Voir le PDF</a>
                         <a class="dropdown-item" href="{{ route('skills.destroy', $estimation->id) }}" data-id=""><i class="fal fa-envelope"></i> Envoyer par mail</a>
                     </div>
                 </div>

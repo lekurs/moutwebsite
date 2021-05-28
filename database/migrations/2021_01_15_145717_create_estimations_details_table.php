@@ -23,12 +23,10 @@ class CreateEstimationsDetailsTable extends Migration
             $table->unsignedInteger('total_row_notax');
             $table->unsignedInteger('total_row_tax');
             $table->unsignedInteger('display_order');
-            $table->unsignedInteger('estimation_id');
-//            $table->unsignedInteger('taxe_id');
+            $table->unsignedInteger('estimation_id')->onDelete('cascade');
+            $table->unsignedInteger('taxe_id');
+            $table->foreign('taxe_id')->references('id')->on('taxes');
             $table->timestamps();
-//
-//            $table->foreign('estimation_id')->references('id')->on('estimations');
-//            $table->foreign('taxe_id')->references('id')->on('taxes');
         });
     }
 

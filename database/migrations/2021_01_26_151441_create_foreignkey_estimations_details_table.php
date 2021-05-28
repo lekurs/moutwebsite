@@ -14,8 +14,8 @@ class CreateForeignkeyEstimationsDetailsTable extends Migration
     public function up()
     {
         Schema::table('estimations_details', function (Blueprint $table) {
-            $table->unsignedInteger('taxe_id');
-            $table->foreign('taxe_id')->references('id')->on('taxes');
+//            $table->unsignedInteger('taxe_id');
+//            $table->foreign('taxe_id')->references('id')->on('taxes');
         });
     }
 

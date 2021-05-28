@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EditProfile extends FormRequest
+class EditProfileRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,13 @@ class EditProfile extends FormRequest
     public function rules()
     {
         return [
-            'profile-id' => '',
-            'profile-name' => '',
-            'profile-lastname' => '',
-            'profile-img-input' => '',
-            'profile-email' => '',
-            'profile-password' => ''
+            'profile-id' => 'sometimes',
+            'profile-name' => 'sometimes',
+            'profile-lastname' => 'sometimes',
+            'profile-img-input' => 'sometimes',
+            'profile-email' => 'sometimes',
+            'profile-password' => 'sometimes',
+            'profile-img' => 'sometimes|image|mimes:png,jpeg,gif,svg+xml',
         ];
     }
 }

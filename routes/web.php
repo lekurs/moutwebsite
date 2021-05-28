@@ -1,18 +1,15 @@
 <?php
 
 use App\Http\Controllers\Admin\Accounting\EstimationController;
+use App\Http\Controllers\Admin\Accounting\EstimationCreatePDF;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SkillController;
-
 use App\Http\Controllers\Admin\TaxesController;
 use App\Http\Controllers\User\ProfileController;
-use App\UI\Action\Admin\Estimations\EstimationCreatePDFAction;
-use App\UI\Action\Admin\Estimations\EstimationCreationAction;
-use App\UI\Action\Admin\Estimations\EstimationShowOneAction;
-use App\UI\Action\Admin\Estimations\EstimationStoreAction;
+
 use App\UI\Action\Admin\HomeAdminAction;
 use App\UI\Action\Admin\Profile\ProfileEditStoreAction;
 use App\UI\Action\Admin\Profile\ProfileShowOneAction;
@@ -86,11 +83,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'authorization']], f
     });
 
     Route::group(['prefix' => 'devis'], function () {
-        Route::get('/{clientSlug}/creer', EstimationCreationAction::class)->name('estimationCreation');
-        Route::post('/{clientSlug}/store', EstimationStoreAction::class)->name('estimationStore');
-        Route::get('{clientSlug}/voir/{estimationId}/pdf', EstimationCreatePDFAction::class)->name('estimationCreationPDF');
-//        Route::get('{clientSlug}/voir/{estimationId}', EstimationShowOneAction::class)->name('estimationShowOne');
+        Route::get('/{client:slug}/creer', [EstimationController::class, 'create'])->name('estimations.create');
+        Route::post('/{client:slug}/store', [EstimationController::class, 'store'])->name('estimations.store');
+        Route::get('{client:slug}/voir/{estimation:id}/pdf', [EstimationCreatePDF::class, 'create'])->name('estimations.create.pdf');
         Route::get('{client:slug}/voir/{estimation:id}', [EstimationController::class, 'show'])->name('estimations.show');
+        Route::get('{client:slug}/destroy/{estimation:id}', [EstimationController::class, 'destroy'])->name('estimations.destroy');
     });
 
     Route::group(['prefix' => 'services'], function() {

@@ -14,7 +14,7 @@ class AddYearEstimationsTable extends Migration
     public function up()
     {
         Schema::table('estimations', function (Blueprint $table) {
-            $table->string('year', 4);
+//            $table->string('year', 4);
         });
     }
 

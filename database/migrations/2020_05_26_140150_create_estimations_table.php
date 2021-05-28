@@ -22,6 +22,7 @@ class CreateEstimationsTable extends Migration
             $table->unsignedInteger('total');
             $table->boolean('validation')->default(false);
             $table->date('validation_date')->nullable();
+            $table->string('year', 4);
             $table->unsignedInteger('contact_validator_id');
             $table->unsignedInteger('validation_duration');
             $table->unsignedInteger('month');

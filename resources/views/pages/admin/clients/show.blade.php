@@ -124,7 +124,7 @@
                 <div class="tab-pane fade" id="estimations" role="tabpanel" aria-labelledby="estimations-tab">
                     <div class="row mb-3">
                         <div class="col-auto float-right ml-auto">
-                            <a href="{{ route('estimationCreation', $client->slug) }}" class="btn add-btn">
+                            <a href="{{ route('estimations.create', $client->slug) }}" class="btn add-btn">
                                 <i class="fal fa-plus"></i>
                                 Créer un devis
                             </a>

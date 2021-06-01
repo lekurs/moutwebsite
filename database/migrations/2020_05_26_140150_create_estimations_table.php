@@ -14,7 +14,7 @@ class CreateEstimationsTable extends Migration
     public function up()
     {
         Schema::create('estimations', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->unsignedInteger('reference')->nullable();
             $table->string('title', '255');
             $table->unsignedInteger('totalnotax');
@@ -23,19 +23,15 @@ class CreateEstimationsTable extends Migration
             $table->boolean('validation')->default(false);
             $table->date('validation_date')->nullable();
             $table->string('year', 4);
-            $table->unsignedInteger('contact_validator_id');
             $table->unsignedInteger('validation_duration');
             $table->unsignedInteger('month');
-            $table->integer('client_id')->unsigned();
-            $table->integer('contact_id')->unsigned();
-            $table->integer('invoice_id')->unsigned()->nullable();
+//            $table->unsignedInteger('contact_validator_id');
+//            $table->unsignedInteger('client_id');
+//            $table->unsignedInteger('contact_id');
+            $table->foreignId('client_id')->constrained()->onDelete('cascade');
+            $table->foreignId('contact_id')->constrained();
+            $table->foreignId('contact_validator_id')->constrained('contacts');
             $table->timestamps();
-            $table->foreign('client_id')->references('id')->on('clients')
-                ->onDelete('cascade');
-            $table->foreign('contact_id')->references('id')->on('contacts')
-                ->onDelete('cascade');
-            $table->foreign('invoice_id')->references('id')->on('invoices');
-            $table->foreign('contact_validator_id')->references('id')->on('contacts');
         });
     }
 

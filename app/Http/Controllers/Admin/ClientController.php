@@ -47,7 +47,9 @@ class ClientController extends Controller
 
     public function create()
     {
+        return \view('pages.admin.clients.create', [
 
+        ]);
     }
 
     /**

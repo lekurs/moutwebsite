@@ -78,9 +78,9 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    @foreach($services as $service)
-                                        <input type="checkbox" value="{{ $service->id }}" name="estimation-service[]" id="estimation-service-{{ $service->slug }}">
-                                        <label for="estimation-service[]"  class="mr-2">{{ $service->libelle }}</label>
+                                    @foreach($skills as $skill)
+                                        <input type="checkbox" value="{{ $skill->id }}" name="estimation-service[]" id="estimation-service-{{ $skill->slug }}">
+                                        <label for="estimation-service[]"  class="mr-2">{{ $skill->libelle }}</label>
                                     @endforeach
                                 </div>
                             </div>
@@ -95,60 +95,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row product-line-container">
-                            <div class="col-12">
-                                <div class="row product-line">
-                                    <div class="col-4">
-                                        <div class="form-group">
-                                            <label for="estimation-product" class="relative-label text-muted">Produit / Service</label>
-                                            <input type="text" class="form-control" name="product-detail[product][]" id="estimation-product" placeholder="Produit">
-                                        </div>
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="form-group">
-                                            <label for="estimation-quantity" class="relative-label text-muted">Quantité</label>
-                                            <input type="number" class="form-control calculate-estimation estimation-quantity" name="product-detail[quantity][]" id="estimation-quantity" minlength="1">
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <div class="form-group">
-                                            <label for="estimation-price" class="relative-label text-muted">Prix unitaire</label>
-                                            <input type="text" class="form-control calculate-estimation estimation-price" name="product-detail[price][]" id="estimation-price" minlength="1">
-                                        </div>
-                                    </div>
-                                    <div class="col-1">
-                                        <div class="form-group">
-                                            <label for="estimation-tax" class="relative-label text-muted">Taux de TVA</label>
-                                            <select name="product-detail[taxe][]" id="estimation-tax" class="calculate-estimation calculate-estimation-select">
-                                                @foreach($taxes as $tax)
-                                                    <option value="{{ $tax->id }}">{{ $tax->tax }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-1">
-                                        <div class="form-group">
-                                            <input type="hidden" name="product-detail[total-no-tax][]" id="total-row-no-tax">
-                                            <input type="hidden" name="product-detail[total-tax][]" id="total-row-tax" class="total_row_tax">
-                                            <input type="hidden" name="product-detail[total][]" id="total-row">
-                                            <label for="estimation-total" class="relative-label text-muted">Total HT</label>
-                                            <p class="estimation-total-zone"></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-1 d-flex align-items-center justify-content-center">
-                                        <div class="input-group justify-content-center">
-                                            <i class="fal fa-trash fa-2x"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="project-description-mission" class="relative-label">Description du devis</label>
-                                    <div class="input-group">
-                                        <textarea name="product-detail[description][]" id="estimation-description" class="form-control estimation-description"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+                        <div style="display: none" class="exemple" data-id="0" data-form='<div class="row product-line-container" data-id="__increment__"><div class="col-12"><div class="row product-line"><div class="col-4"><div class="form-group"> <label for="estimation-product" class="relative-label text-muted">Produit / Service</label> <input type="text" class="form-control" name="product-detail[__increment__][product]" id="estimation-product" placeholder="Produit"></div></div><div class="col-2"><div class="form-group"> <label for="estimation-quantity" class="relative-label text-muted">Quantité</label> <input type="number" class="form-control calculate-estimation estimation-quantity" name="product-detail[__increment__][quantity]" id="estimation-quantity" minlength="1"></div></div><div class="col-3"><div class="form-group"> <label for="estimation-price" class="relative-label text-muted">Prix unitaire</label> <input type="text" class="form-control calculate-estimation estimation-price" name="product-detail[__increment__][price]" id="estimation-price" minlength="1"></div></div><div class="col-1"><div class="form-group"> <label for="estimation-tax" class="relative-label text-muted">Taux de TVA</label> <select name="product-detail[__increment__][taxe]" id="estimation-tax" class="calculate-estimation calculate-estimation-select"> @foreach($taxes as $tax)<option value="{{ $tax->id }}">{{ $tax->tax }}</option> @endforeach </select></div></div><div class="col-1"><div class="form-group"> <input type="hidden" name="product-detail[__increment__][total-no-tax]" id="total-row-no-tax"> <input type="hidden" name="product-detail[__increment__][total-tax]" id="total-row-tax" class="total_row_tax"> <input type="hidden" name="product-detail[__increment__][total]" id="total-row"> <label for="estimation-total" class="relative-label text-muted">Total HT</label><p class="estimation-total-zone"></p></div></div><div class="col-1 d-flex align-items-center justify-content-center"><div class="input-group justify-content-center"> <i class="fal fa-trash fa-2x"></i></div></div></div><div class="form-group"> <label for="project-description-mission" class="relative-label">Description du produit</label><div class="input-group"><textarea name="product-detail[__increment__][description]" id="estimation-description" class="form-control estimation-description"></textarea></div></div></div></div>'></div>
+                        <div class="container-form-widget"></div>
+
                         <div class="row">
                             <div class="col-12">
                                 Total HT : <input type="hidden" name="estimation-total-input" id="grandtotal"> <span id="grandtotal-txt"></span>
@@ -236,22 +186,15 @@
             });
 
             $('.add-product-line').on('click', function () {
-                let productLine = $('.product-line-container:first');
+                let productLine = $('.exemple');
+                let productLineContent = productLine.attr('data-form');
+                let productLineId = productLine.attr('data-id');
+                newcontent = productLineContent.replace(/__increment__/gm, productLineId);
+                productLine.attr('data-id', parseInt(productLineId)+1);
 
-                let newLine = $(productLine).clone().insertAfter('.product-line-container:last');
-
-                inputs = newLine.find('input');
-                textarea = newLine.find('textarea');
-                totalZone = newLine.find('p.estimation-total-zone');
-                inputs.val('');
-                textarea.val('');
-                totalZone.html('');
+                $('.container-form-widget').append(newcontent);
 
             });
-
-            // $('.calculate-estimation-select').select2({
-            //     width: 55,
-            // });
         });
     </script>
 @endsection

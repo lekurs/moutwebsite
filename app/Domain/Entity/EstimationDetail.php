@@ -59,4 +59,9 @@ class EstimationDetail extends Model
     {
         return $this->belongsTo(Estimation::class, 'estimation_id');
     }
+
+    public function taxe(): BelongsTo
+    {
+        return $this->belongsTo(Taxe::class);
+    }
 }

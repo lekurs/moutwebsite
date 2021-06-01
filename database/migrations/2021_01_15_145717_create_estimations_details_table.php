@@ -14,7 +14,7 @@ class CreateEstimationsDetailsTable extends Migration
     public function up()
     {
         Schema::create('estimations_details', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('product', 255);
             $table->text('description');
             $table->unsignedInteger('quantity');
@@ -23,9 +23,9 @@ class CreateEstimationsDetailsTable extends Migration
             $table->unsignedInteger('total_row_notax');
             $table->unsignedInteger('total_row_tax');
             $table->unsignedInteger('display_order');
-            $table->unsignedInteger('estimation_id')->onDelete('cascade');
-            $table->unsignedInteger('taxe_id');
-            $table->foreign('taxe_id')->references('id')->on('taxes');
+            $table->unsignedInteger('estimation_id');
+//            $table->unsignedInteger('taxe_id');
+            $table->foreignId('taxe_id')->constrained();
             $table->timestamps();
         });
     }

@@ -30,7 +30,8 @@ class StoreClient extends FormRequest
             'client-zip' => '',
             'client-city' => '',
             'client-logo' => '',
-            'client-slug' => ''
+            'client-slug' => '',
+            'client-siren' => 'sometimes'
         ];
     }
 }

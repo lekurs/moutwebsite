@@ -45,6 +45,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'authorization']], f
 
     Route::group(['prefix' => 'projets'], function () {
        Route::get('/', [ProjectController::class, 'index'])->name('projects.index');
+       Route::get('/creer/{client:slug}', [ProjectController::class, 'create'])->name('projects.create');
        Route::post('/ajouter', [ProjectController::class, 'store'])->name('projects.store');
        Route::get('/edit/{project:slug}', [ProjectController::class, 'edit'])->name('projects.edit');
        Route::post('/update', [ProjectController::class, 'update'])->name('projects.update');
@@ -67,6 +68,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'authorization']], f
 
     Route::group(['prefix' => 'clients'], function () {
        Route::get('/', [ClientController::class, 'index'])->name('clients.index');
+       Route::get('/creer', [ClientController::class, 'create'])->name('clients.create');
        Route::post('/ajouter', [ClientController::class, 'store'])->name('clients.store');
        Route::get('/voir/{client:slug}', [ClientController::class, 'show'])->name('clients.show');
        Route::get('/edit/{client:slug}', [ClientController::class, 'edit'])->name('clients.edit');
@@ -76,6 +78,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'authorization']], f
 
        Route::group(['prefix' => 'contact'], function () {
           Route::get('/{contact:slug}', [ContactController::class, 'show'])->name('contacts.show');
+          Route::get('/creer/{client:slug}', [ContactController::class, 'create'])->name('contacts.create');
           Route::post('/contact/edit', [ContactController::class, 'update'])->name('contacts.update');
           Route::get('/contact/{contactSlug}/delete', [ContactController::class, 'destroy'])->name('contacts.destroy');
           Route::post('/{client:slug}/store', [ContactController::class, 'store'])->name('contacts.store');
@@ -88,6 +91,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'authorization']], f
         Route::get('{client:slug}/voir/{estimation:id}/pdf', [EstimationCreatePDF::class, 'create'])->name('estimations.create.pdf');
         Route::get('{client:slug}/voir/{estimation:id}', [EstimationController::class, 'show'])->name('estimations.show');
         Route::get('{client:slug}/destroy/{estimation:id}', [EstimationController::class, 'destroy'])->name('estimations.destroy');
+        Route::post('/edit', [EstimationController::class, 'editDetail'])->name('estimations.details.update');
     });
 
     Route::group(['prefix' => 'services'], function() {

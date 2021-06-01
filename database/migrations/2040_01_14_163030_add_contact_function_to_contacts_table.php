@@ -14,7 +14,7 @@ class AddContactFunctionToContactsTable extends Migration
     public function up()
     {
         Schema::table('contacts', function (Blueprint $table) {
-            $table->string('contact_function', 255);
+//            $table->string('contact_function', 255);
         });
     }
 

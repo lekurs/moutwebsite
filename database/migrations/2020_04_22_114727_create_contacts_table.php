@@ -15,19 +15,20 @@ class CreateContactsTable extends Migration
     public function up()
     {
         Schema::create('contacts', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('name', 150);
             $table->string('lastname', 150);
             $table->string('email', 255)->unique();
             $table->string('phone', 20)->unique();
             $table->string('slug', 255)->unique();
-            $table->integer('client_id')->unsigned();
             $table->string('fonction', 255)->nullable();
             $table->string('picture_path', 255)->nullable();
+            $table->string('contact_function', 255);
             $table->timestamps();
-            $table->foreign('client_id')->references('id')->on('clients')
-
-                ->onDelete('cascade');
+//            $table->integer('client_id')->unsigned();
+//            $table->foreign('client_id')->references('id')->on('clients')
+//                ->onDelete('cascade');
+            $table->foreignId('client_id')->constrained()->onDelete('cascade');
         });
     }
 

@@ -74,6 +74,16 @@ class ProjectController extends Controller
         ]);
     }
 
+    public function create(Client $client): View
+    {
+        $skills = $this->skillRepository->getAll();
+
+        return \view('pages.admin.projects.create', [
+            'client' => $client,
+            'skills' => $skills
+        ]);
+    }
+
     public function store(StoreProject $storeProject)
     {
         $client = $this->clientRepository->getOneById($storeProject['client-id']);

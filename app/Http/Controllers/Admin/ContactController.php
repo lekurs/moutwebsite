@@ -50,6 +50,13 @@ class ContactController extends Controller
         ]);
     }
 
+    public function create(Client $client)
+    {
+        return \view('pages.admin.contacts.create', [
+            'client' => $client
+        ]);
+    }
+
     public function update(EditContact $data): RedirectResponse
     {
         $contact = $this->contactRepository->edit($data->all());

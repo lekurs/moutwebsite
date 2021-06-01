@@ -14,17 +14,19 @@ class CreateInvoicesTable extends Migration
     public function up()
     {
         Schema::create('invoices', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('title');
-            $table->string('number');
+            $table->id();
+            $table->string('reference');
             $table->decimal('amount', 6, 2);
             $table->boolean('paid')->default(false);
-            $table->integer('client_id')->unsigned();
-//            $table->integer('downpaiementinvoice_id')->unsigned()->nullable();
+            $table->string('month', '20');
+            $table->string('year', '4');
+            $table->text('description')->nullable();
+            $table->unsignedInteger('totalnotax');
+            $table->unsignedInteger('totaltax');
+            $table->unsignedInteger('total');
+            $table->date('paiment_date');
+            $table->boolean('advance')->default(false);
             $table->timestamps();
-            $table->string('year', 4);
-//            $table->foreign('downpaiementinvoice_id')->references('id')->on('down_paiement_invoices')
-//                ->onDelete('cascade');
         });
     }
 

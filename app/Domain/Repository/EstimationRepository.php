@@ -34,6 +34,7 @@ class EstimationRepository
 
     public function store(array $data, Client $client, Contact $contact)
     {
+        dump($data);
         $estimation = new Estimation();
         $estimation->reference = $data['estimation-reference'];
         $estimation->validation_duration = $data['estimation-validation-duration'];
@@ -55,21 +56,19 @@ class EstimationRepository
             $estimation->EstimationsServices()->sync($service, false);
         }
 
-        foreach($data['product-detail'] as $products) {
-            foreach ($products as $key => $product) {
-                $detail = new EstimationDetail();
-                $detail->estimation_id = $id;
-                $detail->product = $product;
-                $detail->description = $data['product-detail']['description'][$key];
-                $detail->quantity = $data['product-detail']['quantity'][$key];
-                $detail->unit_price = $data['product-detail']['price'][$key];
-                $detail->total_row_notax = $data['product-detail']['total-no-tax'][$key];
-                $detail->total_row_tax = $data['product-detail']['total-tax'][$key];
-                $detail->total_row = $data['product-detail']['total'][$key];
-                $detail->taxe_id = $data['product-detail']['taxe'][$key];
-                $detail->display_order = $key;
-                $detail->save();
-            }
+        foreach($data['product-detail'] as $key => $products) {
+            $detail = new EstimationDetail();
+            $detail->estimation_id = $id;
+            $detail->product = $products['product'];
+            $detail->description = $products['description'];
+            $detail->quantity = $products['quantity'];
+            $detail->unit_price = $products['price'];
+            $detail->total_row_notax = $products['total-no-tax'];
+            $detail->total_row_tax = $products['total-tax'];
+            $detail->total_row = $products['total'];
+            $detail->taxe_id = $products['taxe'];
+            $detail->display_order = $key;
+            $detail->save();
         }
     }
 

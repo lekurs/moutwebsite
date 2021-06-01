@@ -90,7 +90,7 @@
                 <div class="tab-pane fade active show" id="myprojects" role="tabpanel" aria-labelledby="myprojects-tab">
                     <div class="row mb-3">
                         <div class="col-auto float-right ml-auto">
-                            <a href="#" class="btn add-btn" data-toggle="modal" data-target="#create_project">
+                            <a href="{{ route('projects.create', [$client->slug]) }}" class="btn add-btn" data-toggle="" data-target="#create_project">
                                 <i class="fal fa-plus"></i>
                                 Créer un projet
                             </a>
@@ -106,7 +106,7 @@
                 <div class="tab-pane fade" id="contacts" role="tabpanel" aria-labelledby="estimations-tab">
                     <div class="row mb-3">
                         <div class="col-auto float-right ml-auto">
-                            <a href="#" class="btn add-btn" data-toggle="modal" data-target="#create_contact">
+                            <a href="{{ route('contacts.create', $client->slug) }}" class="btn add-btn" data-toggle="" data-target="#create_contact">
                                 <i class="fal fa-plus"></i>
                                 Créer un contact
                             </a>
@@ -150,262 +150,64 @@
         </div>
     </div>
 
-    <!-- Modal Contact -->
-    <div class="modal fade custom-modal" id="create_contact" tabindex="-1" aria-labelledby="create_contact" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title mout--regular" id="exampleModalLabel">Création d'un nouveau contact</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('contacts.store', $client->slug) }}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        @include('layouts.form_errors.errors')
-                        <div class="row">
-                            <div class="col-12 col-client">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label for="contact-firstname" class="relative-label">Nom</label>
-                                            <div class="input-group">
-                                                <input class="form-control" type="text" name="contact-firstname" id="contact-firstname" aria-label="Nom" placeholder="Nom">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label for="contact-lastname" class="relative-label">Prénom</label>
-                                            <div class="input-group">
-                                                <input class="form-control" type="text" name="contact-lastname" id="contact-lastname" aria-label="Prénom" placeholder="Prénom">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label for="contact-email" class="relative-label">Email</label>
-                                            <div class="input-group">
-                                                <input class="form-control" type="text" name="contact-email" id="contact-email" aria-label="Email" placeholder="Email">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label for="contact-phone" class="relative-label">Téléphone</label>
-                                            <div class="input-group">
-                                                <input class="form-control" type="text" name="contact-phone" id="contact-phone" aria-label="Téléphone" placeholder="Téléphone">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="contact-function" class="relative-label">Fonction</label>
-                                            <div class="input-group">
-                                                <input class="form-control" type="text" name="contact-function" id="contact-function">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="contact-picture" class="relative-label">Photo</label>
-                                            <div class="input-group">
-                                                <input class="form-control" type="file" name="contact-picture" id="contact-picture">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 d-flex justify-content-center">
-                                <button class="btn btn-primary add-btn">Enregistrer</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Project -->
-    <div class="modal fade custom-modal" id="create_project" tabindex="-1" aria-labelledby="create_project" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title mout--regular" id="exampleModalLabel">Création d'un nouveau projet</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('projects.store') }}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        @include('layouts.form_errors.errors')
-                        <input type="hidden" name="client-id" id=project-client-id" value="{{ $client->id }}">
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="project-title" class="relative-label">Titre du projet</label>
-                                    <div class="input-group">
-                                        <input class="form-control" type="text" name="project-title" id="project-title" aria-label="Titre du projet" placeholder="Titre du projet">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="project-end" class="relative-label">Fin du projet</label>
-                                    <div class="input-group">
-                                        <input class="form-control datetimepicker" name="project-end" id="project-end" aria-label="Fin du projet" placeholder="Fin du projet" type="text" aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" id="basic-addon2"><i class="fal fa-calendar"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <label for="" class="relative-label">Image de fond</label>
-                                    <input type="file" class="form-control" name="project-background-img" id="project-background-img">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="project-color" class="relative-label">Couleur du portfolio</label>
-                                    <div class="input-group">
-                                        <input class="color-picker" id="project_color" name="project_color">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="project-img-portfolio" class="relative-label">Image de présentation</label>
-                                    <div class="input-group">
-                                        <input type="file" class="form-control" name="project-img-portfolio" id="project-img-portfolio">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="form-group form-focus select-focus focused">
-                                    <select class="skills-selection sources" multiple="multiple" data-select2-id="1" tabindex="-1" name="skills[]" aria-hidden="true">
-                                        @foreach($skills as $skill)
-                                            <option data-select2-id="{{ $skill->id }}" value="{{ $skill->id }}">{{ $skill->skill }}</option>
-                                        @endforeach
-                                    </select>
-                                    <label class="focus-label-select">Compétences</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <label for="project-description-mission" class="relative-label">Description du projet</label>
-                                    <div class="input-group">
-                                        <textarea name="project-description-mission" id="project-description-mission" class="form-control"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <label for="project-result-mission" class="relative-label">Description du résultat du projet</label>
-                                    <div class="input-group">
-                                        <textarea name="project-result-mission" id="project-result-mission" class="form-control"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <label for="" class="relative-label">Images résultats</label>
-                                    <div class="images"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 d-flex justify-content-center">
-                                <button class="btn btn-primary add-btn">Enregistrer</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
 @endsection
 
 @section('js')
-    <script src="{{ asset('plugins/dropdown-mout/dropdown-mout.js') }}"></script>
-    <script src="{{ asset('plugins/addmedias/addmedias.js') }}"></script>
+{{--    <script src="{{ asset('plugins/dropdown-mout/dropdown-mout.js') }}"></script>--}}
+{{--    <script src="{{ asset('plugins/addmedias/addmedias.js') }}"></script>--}}
     <script src="{{asset('plugins/autocomplete/autocomplete.js')}}"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-    <script src="{{ asset('vendor/colorpicker/color-picker.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+{{--    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>--}}
+{{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>--}}
+{{--    <script src="{{ asset('vendor/colorpicker/color-picker.js') }}"></script>--}}
+{{--    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>--}}
+{{--    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>--}}
+{{--    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>--}}
     <script>
-        $(document).ready(function() {
-            $('.select-prestation').select2({
-                width: '100%'
-            });
-
-            $('.skills-selection').select2({
-                width: '100%'
-            });
-
-            var date_input=$('input[name="project-end"]');
-            var options={
-                format: 'mm/dd/yyyy',
-                todayHighlight: true,
-                autoclose: true,
-            };
-            date_input.datepicker(options);
-
-            $('#project-description-mission').summernote({
-                placeholder: 'Descriptif du projet',
-                height: 150,
-                width: '100%'
-            });
-
-            $('#project-result-mission').summernote({
-                placeholder: 'Descriptif du résultat du projet',
-                height: 150,
-                width: '100%'
-            })
-
-            $('.images').addMedia({
-                width: '150px',
-                height: '150px',
-                onDelete: function (url) {
-                    console.log(url);
-                    //Ici on fait l'ajax pour supprimer
-                }
-            });
-
-            $('#service-client').autocompletion({
-                width: 300,
-                placeholder:"recherchez vos clients",
-                multiple:false,
-                inputClass: 'floating-input',
-                resultClass: ''
-            });
-        });
+        // $(document).ready(function() {
+        //     $('.select-prestation').select2({
+        //         width: '100%'
+        //     });
+        //
+        //     $('.skills-selection').select2({
+        //         width: '100%'
+        //     });
+        //
+        //     var date_input=$('input[name="project-end"]');
+        //     var options={
+        //         format: 'mm/dd/yyyy',
+        //         todayHighlight: true,
+        //         autoclose: true,
+        //     };
+        //     date_input.datepicker(options);
+        //
+        //     $('#project-description-mission').summernote({
+        //         placeholder: 'Descriptif du projet',
+        //         height: 150,
+        //         width: '100%'
+        //     });
+        //
+        //     $('#project-result-mission').summernote({
+        //         placeholder: 'Descriptif du résultat du projet',
+        //         height: 150,
+        //         width: '100%'
+        //     })
+        //
+        //     $('.images').addMedia({
+        //         width: '150px',
+        //         height: '150px',
+        //         onDelete: function (url) {
+        //             console.log(url);
+        //             //Ici on fait l'ajax pour supprimer
+        //         }
+        //     });
+        //
+        //     $('#service-client').autocompletion({
+        //         width: 300,
+        //         placeholder:"recherchez vos clients",
+        //         multiple:false,
+        //         inputClass: 'floating-input',
+        //         resultClass: ''
+        //     });
+        // });
     </script>
 @endsection

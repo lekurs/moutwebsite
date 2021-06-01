@@ -23,9 +23,10 @@ class CreateProjectsTable extends Migration
             $table->string('colorProject', 7);
             $table->string('slug', 255);
             $table->timestamp('endProject');
-            $table->integer('client_id')->unsigned();
+//            $table->integer('client_id')->unsigned();
             $table->timestamps();
-            $table->foreign('client_id')->references('id')->on('clients');
+            $table->foreignId('client_id')->constrained();
+//            $table->foreign('client_id')->references('id')->on('clients');
         });
     }
 

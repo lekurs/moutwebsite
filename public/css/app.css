@@ -179,7 +179,7 @@ label.float {
 
 .relative-label {
   font-size: 0.85rem;
-  font-weight: bold;
+  font-weight: 200;
 }
 
 .datetimepicker {
@@ -813,11 +813,15 @@ div.mout-accounting-body-details-container div.mout-accounting-detail-total {
   align-items: center;
 }
 
-div.mout-accounting-body-details-container::after {
+div.estimation-title-container {
+  position: relative;
+}
+
+div.estimation-title-container::after {
   content: "";
   width: 98%;
   position: absolute;
-  bottom: -10px;
+  bottom: 40px;
   left: 1%;
   background-color: #FFFE00;
   height: 2px;
@@ -825,6 +829,22 @@ div.mout-accounting-body-details-container::after {
 
 div.mout-accounting-total-container p {
   margin-bottom: 0;
+}
+
+div.estimation-edit-pen {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 2px;
+  background-color: #000;
+  border-radius: 50%;
+  border: 1px solid #000;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+div.estimation-edit-pen i {
+  color: #fff;
 }
 
 /*!

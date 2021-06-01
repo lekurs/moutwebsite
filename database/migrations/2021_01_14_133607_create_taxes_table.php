@@ -14,7 +14,7 @@ class CreateTaxesTable extends Migration
     public function up()
     {
         Schema::create('taxes', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('tax', 255);
             $table->boolean('main')->default(false);
             $table->boolean('status')->default(true);

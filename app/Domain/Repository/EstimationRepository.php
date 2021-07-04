@@ -8,6 +8,7 @@ use App\Domain\Entity\Client;
 use App\Domain\Entity\Contact;
 use App\Domain\Entity\Estimation;
 use App\Domain\Entity\EstimationDetail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 
 class EstimationRepository
@@ -32,9 +33,31 @@ class EstimationRepository
         return Estimation::with(['client', 'contact', 'estimationDetails'])->whereId($id)->first();
     }
 
+    public function editTitle(array $data, Estimation $estimation): void
+    {
+        $estimation->title = $data['title'];
+        $estimation->save();
+    }
+
+    public function editContact(array $data, Estimation $estimation): void
+    {
+        $estimation->contact_id = $data['contact_id'];
+        $estimation->save();
+    }
+
+    public function getTotalEstimationDetails(Estimation $estimation)
+    {
+        $total = 0;
+
+        foreach ($estimation->estimationDetails as $detail) {
+            $total += $detail->total_row_notax;
+        }
+
+        return $total;
+    }
+
     public function store(array $data, Client $client, Contact $contact)
     {
-        dump($data);
         $estimation = new Estimation();
         $estimation->reference = $data['estimation-reference'];
         $estimation->validation_duration = $data['estimation-validation-duration'];
@@ -44,16 +67,13 @@ class EstimationRepository
         $estimation->month = date('m');
         $estimation->client_id = $client->id;
         $estimation->contact_validator_id = $contact->id;
-        $estimation->totalnotax = $data['estimation-total-input'];
-        $estimation->totaltax = $data['estimation-total-tax'];
-        $estimation->total = $data['estimation-total-with-taxes'];
 
         $estimation->save();
 
         $id = $estimation->id;
 
         foreach($data['estimation-service'] as $service) {
-            $estimation->EstimationsServices()->sync($service, false);
+            $estimation->EstimationsSkills()->sync($service, false);
         }
 
         foreach($data['product-detail'] as $key => $products) {
@@ -74,7 +94,6 @@ class EstimationRepository
 
     public function destroy(Estimation $estimation)
     {
-        //TODO => Tester le cascade après fresh DB
         $estimation->load('estimationDetails');
         $estimation->estimationDetails()->delete();
         $estimation->delete();

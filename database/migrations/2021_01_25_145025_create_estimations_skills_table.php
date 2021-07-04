@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEstimationsServicesTable extends Migration
+class CreateEstimationsSkillsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateEstimationsServicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('estimations_services', function (Blueprint $table) {
+        Schema::create('estimations_skills', function (Blueprint $table) {
             $table->unsignedInteger('estimation_id');
-            $table->unsignedInteger('service_id');
+            $table->unsignedInteger('skill_id');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateEstimationsServicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('estimations_services');
+        Schema::dropIfExists('estimations_skills');
     }
 }

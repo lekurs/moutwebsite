@@ -7,6 +7,7 @@ namespace App\Domain\Entity;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
@@ -54,14 +55,14 @@ class Invoice extends Model
         return $this->belongsTo(Client::class, 'client_id');
     }
 
-//    public function downPaiementInvoices(): BelongsTo
-//    {
-//        return $this->belongsTo(DownPaiementInvoice::class, 'downpaiementinvoice_id');
-//    }
-
-    public function estimations(): HasMany
+    public function estimation(): BelongsTo
     {
-        return $this->hasMany(Estimation::class);
+        return $this->belongsTo(Estimation::class);
+    }
+
+    public function scopeIsAdvance(Builder $query): Builder
+    {
+        return $query->where('advance', '=',true);
     }
 
     public function scopeNotPaid(Builder $query): Builder

@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\Accounting\AdvanceController;
 use App\Http\Controllers\Admin\Accounting\EstimationController;
 use App\Http\Controllers\Admin\Accounting\EstimationCreatePDF;
+use App\Http\Controllers\Admin\Accounting\InvoiceController;
+use App\Http\Controllers\Admin\Accounting\InvoiceCreatePDF;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ProjectController;
@@ -92,7 +95,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'authorization']], f
         Route::get('{client:slug}/voir/{estimation:id}', [EstimationController::class, 'show'])->name('estimations.show');
         Route::get('{client:slug}/destroy/{estimation:id}', [EstimationController::class, 'destroy'])->name('estimations.destroy');
         Route::post('/edit', [EstimationController::class, 'editDetail'])->name('estimations.details.update');
+        Route::post('/edit/{estimation:id}', [EstimationController::class, 'editTitle'])->name('estimations.title.update');
     });
+
+    Route::group(['prefix' => 'factures'], function() {
+        Route::get('/{estimation:id}/creer', [InvoiceController::class, 'create'])->name('invoices.create');
+        Route::get('/{estimation:id}/enregistrer', [InvoiceController::class, 'store'])->name('invoices.store');
+        Route::get('/{invoice:id}/voir/pdf', [InvoiceCreatePDF::class, 'create'])->name('invoices.create.pdf');
+    });
+
 
     Route::group(['prefix' => 'services'], function() {
         Route::get('/', [ServiceController::class, 'index'])->name('services.index');

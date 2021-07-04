@@ -13,7 +13,6 @@ $(document).ready(function() {
 
     $(dropdownMenuTable).on('click', function(e) {
         e.stopPropagation();
-        console.log('ok ???')
 
         let menu = $(this).find('.dropdown-menu-mout');
 

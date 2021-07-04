@@ -82,24 +82,24 @@ class Estimation extends Model
         return $this->belongsTo(Contact::class, 'contact_id');
     }
 
-    public function invoice(): BelongsTo
-    {
-        return $this->belongsTo(Invoice::class);
-    }
-
     public function Service(): BelongsTo
     {
         return $this->belongsTo(Service::class, 'service_id');
     }
 
-    public function EstimationsServices(): BelongsToMany
+    public function invoice(): HasMany
     {
-        return $this->belongsToMany(Service::class, 'estimations_services');
+        return $this->hasMany(Invoice::class);
     }
+//
+//    public function invoices()
+//    {
+//        return $this->belongsToMany(Invoice::class);
+//    }
 
-    public function downPaiementInvoice(): BelongsTo
+    public function estimationsSkills(): BelongsToMany
     {
-        return $this->belongsTo(DownPaiementInvoice::class, 'down_paiement_invoice_id');
+        return $this->belongsToMany(Skill::class, 'estimations_skills');
     }
 
     public function scopeIsActive(Builder $query): Builder

@@ -131,7 +131,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <h3 class="estimations-title-table">Devis en cours sur les 12 mois glissants</h3>
+                        <h3 class="estimations-title-table">Devis en cours sur les 12 mois glissants ({{ $sumEstimations['total_row'] }}€ HT)</h3>
                         @include('layouts.cards.estimation_card')
                     </div>
                 </div>
@@ -139,10 +139,7 @@
                 <div class="tab-pane fade" id="invoices" role="tabpanel" aria-labelledby="invoices-tab">
                     <div class="row mb-3">
                         <div class="col-auto float-right ml-auto">
-                            <a href="#" class="btn add-btn">
-                                <i class="fal fa-plus"></i>
-                                Créer une facture
-                            </a>
+
                         </div>
                     </div>
                 </div>
@@ -153,61 +150,5 @@
 @endsection
 
 @section('js')
-{{--    <script src="{{ asset('plugins/dropdown-mout/dropdown-mout.js') }}"></script>--}}
-{{--    <script src="{{ asset('plugins/addmedias/addmedias.js') }}"></script>--}}
     <script src="{{asset('plugins/autocomplete/autocomplete.js')}}"></script>
-{{--    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>--}}
-{{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>--}}
-{{--    <script src="{{ asset('vendor/colorpicker/color-picker.js') }}"></script>--}}
-{{--    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>--}}
-{{--    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>--}}
-{{--    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>--}}
-    <script>
-        // $(document).ready(function() {
-        //     $('.select-prestation').select2({
-        //         width: '100%'
-        //     });
-        //
-        //     $('.skills-selection').select2({
-        //         width: '100%'
-        //     });
-        //
-        //     var date_input=$('input[name="project-end"]');
-        //     var options={
-        //         format: 'mm/dd/yyyy',
-        //         todayHighlight: true,
-        //         autoclose: true,
-        //     };
-        //     date_input.datepicker(options);
-        //
-        //     $('#project-description-mission').summernote({
-        //         placeholder: 'Descriptif du projet',
-        //         height: 150,
-        //         width: '100%'
-        //     });
-        //
-        //     $('#project-result-mission').summernote({
-        //         placeholder: 'Descriptif du résultat du projet',
-        //         height: 150,
-        //         width: '100%'
-        //     })
-        //
-        //     $('.images').addMedia({
-        //         width: '150px',
-        //         height: '150px',
-        //         onDelete: function (url) {
-        //             console.log(url);
-        //             //Ici on fait l'ajax pour supprimer
-        //         }
-        //     });
-        //
-        //     $('#service-client').autocompletion({
-        //         width: 300,
-        //         placeholder:"recherchez vos clients",
-        //         multiple:false,
-        //         inputClass: 'floating-input',
-        //         resultClass: ''
-        //     });
-        // });
-    </script>
 @endsection

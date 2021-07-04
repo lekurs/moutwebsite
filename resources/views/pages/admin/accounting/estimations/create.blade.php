@@ -9,7 +9,7 @@
                 <a href="{{ route('homeAdmin') }}">Dashboard</a>
             </li>
             <li class="breacrumb-item active">
-                <a href="{{ route('clients.show', $client->slug) }}">Client</a> / <a href="#">Devis</a> / Créer
+                <a href="{{ route('clients.show', $client->slug) }}">{{ $client->name }}</a> / Devis / Créer
             </li>
         </ul>
     </div>
@@ -58,8 +58,9 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
+                                            <label class="relative-label mb-0">Contact</label>
                                     <div class="row">
-                                        @foreach($client->contacts as $contact)
+                                        @forelse($client->contacts as $contact)
                                             <div class="col-3 contact-estimation-container">
                                                 <input type="radio" value="{{ $contact->slug }}" name="estimation-contact" class="contact-radio-value">
                                                 <div class="contact-check-container"></div>
@@ -67,10 +68,13 @@
                                                     <p>{{ $contact->name }}  {{ $contact->lastname }}</p>
                                                     <p class="text-muted">{{ $contact->email }}</p>
                                                     <p class="text-muted">{{ $contact->contact_function }}</p>
-
                                                 </div>
                                             </div>
-                                        @endforeach
+                                            @empty
+                                            <div class="col-12">
+                                                <a href="{{ route('contacts.create', $client->slug) }}">Créer un contact</a>
+                                            </div>
+                                        @endforelse
                                     </div>
                                 </div>
                             </div>
@@ -79,7 +83,7 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     @foreach($skills as $skill)
-                                        <input type="checkbox" value="{{ $skill->id }}" name="estimation-service[]" id="estimation-service-{{ $skill->slug }}">
+                                        <input type="checkbox" value="{{ $skill->id }}" name="estimation-service[]" id="estimation-service-{{ $skill->libelle }}" class="service-checkbox">
                                         <label for="estimation-service[]"  class="mr-2">{{ $skill->libelle }}</label>
                                     @endforeach
                                 </div>
@@ -129,6 +133,12 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
     <script>
         $(document).ready(function() {
+            $('.btn.btn-primary.add-btn').prop('disabled', true);
+
+            $('.service-checkbox').on('click', function () {
+                $('.btn.btn-primary.add-btn').prop('disabled', false);
+            })
+
             $('.contact-estimation-container').on('click', function () {
                 let container = $(this);
                 let checkbox = $(this).find('input[type="radio"]');

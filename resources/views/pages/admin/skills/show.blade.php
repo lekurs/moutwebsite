@@ -27,7 +27,7 @@
                             <label for="service-libelle" class="relative-label">Compétence</label>
                             <div class="input-group">
                                 <input type="hidden" value="{{ $skill->id}}" name="skill_id" id="skill_id">
-                                <input class="form-control" type="text" value="{{ $skill->skill}}" name="skill-libelle">
+                                <input class="form-control" type="text" value="{{ $skill->libelle}}" name="skill-libelle">
                             </div>
                         </div>
                     </div>

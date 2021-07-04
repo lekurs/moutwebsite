@@ -831,7 +831,9 @@ div.mout-accounting-total-container p {
   margin-bottom: 0;
 }
 
-div.estimation-edit-pen {
+div.estimation-edit-pen,
+div.estimation-edit-pen-title,
+div.advance-edit-total-pen {
   width: 30px;
   height: 30px;
   text-align: center;
@@ -843,8 +845,14 @@ div.estimation-edit-pen {
   cursor: pointer;
 }
 
-div.estimation-edit-pen i {
+div.estimation-edit-pen i,
+div.estimation-edit-pen-title i,
+div.advance-edit-total-pen i {
   color: #fff;
+}
+
+div.advance-invoice-container {
+  display: none;
 }
 
 /*!

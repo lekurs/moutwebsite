@@ -46,7 +46,7 @@ class SkillRepository
 
                 foreach ($datas['skill-libelle'] as $skillWording) {
                     $skill = new Skill();
-                    $skill->skill = $skillWording;
+                    $skill->libelle = $skillWording;
                     try {
                         $skill->save();
 

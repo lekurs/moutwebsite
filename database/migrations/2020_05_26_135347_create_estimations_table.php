@@ -15,22 +15,18 @@ class CreateEstimationsTable extends Migration
     {
         Schema::create('estimations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('reference')->nullable();
+            $table->string('reference', '255')->nullable();
             $table->string('title', '255');
-            $table->unsignedInteger('totalnotax');
-            $table->unsignedInteger('totaltax');
-            $table->unsignedInteger('total');
             $table->boolean('validation')->default(false);
             $table->date('validation_date')->nullable();
+            $table->string('month', '2');
             $table->string('year', 4);
             $table->unsignedInteger('validation_duration');
-            $table->unsignedInteger('month');
-//            $table->unsignedInteger('contact_validator_id');
-//            $table->unsignedInteger('client_id');
-//            $table->unsignedInteger('contact_id');
-            $table->foreignId('client_id')->constrained()->onDelete('cascade');
+            $table->text('observation')->nullable();
+            $table->foreignId('client_id')->constrained();
             $table->foreignId('contact_id')->constrained();
             $table->foreignId('contact_validator_id')->constrained('contacts');
+//            $table->foreignId('invoice_id')->constrained()->nullable();
             $table->timestamps();
         });
     }

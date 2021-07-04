@@ -68,17 +68,17 @@ class EstimationController extends Controller
     {
         $oneEstimation = $this->estimationRepository->getOneWithAllRelationsById($estimation->id);
         $taxes = $this->taxRepository->getAll();
+        $total = $this->estimationDetailRepository->getTotal($estimation);
 
         return  \view('pages.admin.accounting.estimations.show', [
             'estimation' => $oneEstimation,
-            'taxes' => $taxes
+            'taxes' => $taxes,
+            'total' => $total
         ]);
     }
 
     public function create(Client $client)
     {
-        $oneClient = $this->clientRepository->getOneBySlug($client->slug);
-
         $skills = $this->skillRepository->getAll();
 
         $taxes = $this->taxRepository->getAll();
@@ -90,7 +90,7 @@ class EstimationController extends Controller
         }
 
         return view('pages.admin.accounting.estimations.create', [
-            'client' => $oneClient,
+            'client' => $client,
             'skills' => $skills,
             'taxes' => $taxes,
             'number' => $number
@@ -105,14 +105,14 @@ class EstimationController extends Controller
 
         $this->estimationRepository->store($estimation, $client, $contact);
 
-        return back()->with('success', 'Devis créé');
+        return redirect()->route('clients.show', $client->slug)->with('success', 'Devis créé');
     }
 
     public function destroy(Client $client, Estimation $estimation)
     {
         $this->estimationRepository->destroy($estimation);
 
-        return back()->with('success', 'Votre devis à bien été supprimé');
+        return redirect()->route('clients.show', $client->slug)->with('success', 'Votre devis à bien été supprimé');
     }
 
     public function editDetail()
@@ -121,9 +121,20 @@ class EstimationController extends Controller
 
         $this->estimationDetailRepository->update($data);
 
-
         return back()->with('success', 'Devis mis à jour');
+    }
 
-        dd($detail);
+    public function editTitle(Estimation $estimation)
+    {
+        $this->estimationRepository->editTitle(request()->all(), $estimation);
+
+        return back()->with('success', 'Intitulé du devis mis à jour');
+    }
+
+    public function editContact(Estimation $estimation)
+    {
+        $this->estimationRepository->editContact(request()->all(), $estimation);
+
+        return back()->with('success', 'Votre contact à été mis à jour');
     }
 }

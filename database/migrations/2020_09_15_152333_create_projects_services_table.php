@@ -14,8 +14,8 @@ class CreateProjectsServicesTable extends Migration
     public function up()
     {
         Schema::create('projects_services', function (Blueprint $table) {
-            $table->unsignedInteger('project_id');
-            $table->unsignedInteger('service_id');
+            $table->foreignId('project_id')->constrained();
+            $table->foreignId('service_id')->constrained();
         });
     }
 

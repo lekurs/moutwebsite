@@ -19,9 +19,9 @@ class CreateEstimationsDetailsTable extends Migration
             $table->text('description');
             $table->unsignedInteger('quantity');
             $table->unsignedInteger('unit_price');
-            $table->unsignedInteger('total_row');
-            $table->unsignedInteger('total_row_notax');
-            $table->unsignedInteger('total_row_tax');
+            $table->string('total_row', 100);
+            $table->string('total_row_notax', 100);
+            $table->string('total_row_tax', 100);
             $table->unsignedInteger('display_order');
             $table->unsignedInteger('estimation_id');
 //            $table->unsignedInteger('taxe_id');

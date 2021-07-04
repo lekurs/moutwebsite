@@ -16,16 +16,16 @@ class CreateInvoicesTable extends Migration
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
             $table->string('reference');
-            $table->decimal('amount', 6, 2);
-            $table->boolean('paid')->default(false);
-            $table->string('month', '20');
-            $table->string('year', '4');
-            $table->text('description')->nullable();
-            $table->unsignedInteger('totalnotax');
-            $table->unsignedInteger('totaltax');
-            $table->unsignedInteger('total');
-            $table->date('paiment_date');
             $table->boolean('advance')->default(false);
+            $table->string('amount', 100)->nullable();
+            $table->string('amount_no_tax', 100)->nullable();
+            $table->string('amount_tax', 100)->nullable();
+            $table->boolean('paid')->default(false);
+            $table->string('month', '2');
+            $table->string('year', '4');
+            $table->text('observation')->nullable();
+            $table->date('paiment_date')->nullable();
+            $table->foreignId('estimation_id')->constrained()->nullable();
             $table->timestamps();
         });
     }

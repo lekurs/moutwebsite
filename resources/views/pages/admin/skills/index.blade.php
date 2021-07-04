@@ -37,7 +37,7 @@
                 @foreach($skills as $skill)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td><a href="{{ route('skills.show', $skill->id) }}" class="txt">{{ $skill->skill }}</a></td>
+                        <td><a href="{{ route('skills.show', $skill->id) }}" class="txt">{{ $skill->libelle }}</a></td>
                         <td>
                             <div class="dropdown-mout dropdown-mout-table">
                                 <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">

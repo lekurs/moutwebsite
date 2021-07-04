@@ -69,7 +69,6 @@ class ProjectRepository
 
     public function store(array $data): void
     {
-//        dd($data);
         $project = new Project();
         $project->title = $data['project-title'];
         $project->endProject = date('Y-m-d', strtotime($data['project-end']));

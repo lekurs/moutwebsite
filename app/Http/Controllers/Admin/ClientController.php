@@ -6,6 +6,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Domain\Entity\Client;
 use App\Domain\Repository\ClientRepository;
+use App\Domain\Repository\EstimationDetailRepository;
+use App\Domain\Repository\InvoiceRepository;
 use App\Domain\Repository\SkillRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreClient;
@@ -19,16 +21,21 @@ class ClientController extends Controller
     private ClientRepository $clientRepository;
     private SkillRepository $skillRepository;
     private UploadedFilesService $uploadedFilesService;
+    private EstimationDetailRepository $estimationDetailRepository;
+    private InvoiceRepository $invoiceRepository;
 
     public function __construct(
         ClientRepository $clientRepository,
         SkillRepository $skillRepository,
-        UploadedFilesService $uploadedFilesService
-    )
-    {
+        UploadedFilesService $uploadedFilesService,
+        EstimationDetailRepository $estimationDetailRepository,
+        InvoiceRepository $invoiceRepository
+    ) {
         $this->clientRepository = $clientRepository;
         $this->skillRepository = $skillRepository;
         $this->uploadedFilesService = $uploadedFilesService;
+        $this->estimationDetailRepository = $estimationDetailRepository;
+        $this->invoiceRepository = $invoiceRepository;
     }
 
     /**
@@ -47,9 +54,7 @@ class ClientController extends Controller
 
     public function create()
     {
-        return \view('pages.admin.clients.create', [
-
-        ]);
+        return \view('pages.admin.clients.create');
     }
 
     /**
@@ -70,21 +75,36 @@ class ClientController extends Controller
 
         $this->uploadedFilesService->moveFile($file, '/public/images/uploads/' . Str::slug($dataClient['client-name']) . '/logo');
 
-        return back()->with('success', 'Client ajouté');
+        return redirect()->route('clients.index')->with('success', 'Client ajouté');
     }
 
+    /**
+     * @param Client $client
+     * @return View
+     */
     public function show(Client $client)
     {
-        $oneClient = $this->clientRepository->getOneBySlugWithAllRelations($client->slug);
         $skills = $this->skillRepository->getAll();
+        $estimations = [];
+
+        foreach($client->estimations()->get()->where('created_at', '>=', date('Y-m-d', strtotime('-1 years'))) as $estimation) {
+            $estimations[] = $this->estimationDetailRepository->getTotal($estimation);
+        }
+
+        $sumEstimations = $this->estimationDetailRepository->getTotalOnThisYear($client);
 
         return view('pages.admin.clients.show', [
-            'client' => $oneClient,
-            'skills' => $skills
+            'client' => $client,
+            'skills' => $skills,
+            'estimations'=> $estimations,
+            'sumEstimations' => $sumEstimations
         ]);
-
     }
 
+    /**
+     * @param Client $client
+     * @return View
+     */
     public function edit(Client $client)
     {
         $data = $this->clientRepository->getOneBySlug($client->slug);
@@ -94,6 +114,11 @@ class ClientController extends Controller
         ]);
     }
 
+    /**
+     * @param StoreClient $storeClient
+     * @param Client $client
+     * @return RedirectResponse
+     */
     public function update(StoreClient $storeClient, Client $client)
     {
         if (isset($storeClient['client-logo'])) {
@@ -114,6 +139,10 @@ class ClientController extends Controller
 
     }
 
+    /**
+     * @param Client $client
+     * @return View
+     */
     public function search(Client $client)
     {
         $clients = $this->clientRepository->search($client->name);

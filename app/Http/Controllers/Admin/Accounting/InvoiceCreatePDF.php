@@ -6,12 +6,14 @@ namespace App\Http\Controllers\Admin\Accounting;
 
 use App\Domain\Entity\Client;
 use App\Domain\Entity\Estimation;
+use App\Domain\Entity\Invoice;
 use App\Domain\Repository\ClientRepository;
 use App\Domain\Repository\EstimationDetailRepository;
 use App\Domain\Repository\EstimationRepository;
+use App\Domain\Repository\InvoiceRepository;
 use Fpdf\Fpdf;
 
-class EstimationCreatePDF extends Fpdf
+class InvoiceCreatePDF extends Fpdf
 {
     private EstimationRepository $estimationRepository;
 
@@ -19,11 +21,15 @@ class EstimationCreatePDF extends Fpdf
 
     private EstimationDetailRepository $estimationDetailRepository;
 
+    private InvoiceRepository $invoiceRepository;
+
     private $getClient;
 
     private $getEstimation;
 
     private $total;
+
+    private $getInvoice;
 
     /**
      * EstimationCreatePDFAction constructor.
@@ -31,27 +37,34 @@ class EstimationCreatePDF extends Fpdf
      * @param ClientRepository $clientRepository
      * @param EstimationRepository $estimationRepository
      * @param EstimationDetailRepository $estimationDetailRepository
+     * @param InvoiceRepository $invoiceRepository1
      */
     public function __construct(
         ClientRepository $clientRepository,
         EstimationRepository $estimationRepository,
-        EstimationDetailRepository $estimationDetailRepository
+        EstimationDetailRepository $estimationDetailRepository,
+        InvoiceRepository $invoiceRepository
     ) {
         parent::__construct('P', 'cm', 'A4');
         $this->estimationRepository = $estimationRepository;
         $this->clientRepository = $clientRepository;
         $this->estimationDetailRepository = $estimationDetailRepository;
+        $this->invoiceRepository = $invoiceRepository;
     }
 
     /**
      * @param $slug
      * @param $id
      */
-    private function getData($slug, $id): void
+    private function getData($invoiceId): void
     {
-        $this->getEstimation = $this->estimationRepository->getOneWithAllRelationsById($id);
-        $this->getClient = $this->clientRepository->getOneBySlugWithAllRelations($slug);
-        $this->total = $this->estimationDetailRepository->getTotalByIdEstimation($id);
+        $this->getInvoice = Invoice::whereId($invoiceId)->with(['estimation', 'estimation.client', 'estimation.estimationdetails', 'estimation.client.contacts'])->first();
+        $this->getEstimation = $this->estimationRepository->getOneWithAllRelationsById($this->getInvoice->estimation->id);
+        $this->total = $this->estimationDetailRepository->getTotalByIdEstimation($this->getEstimation->id);
+
+//        dd($this->getEstimation);
+
+//        dd($this->getInvoice);
     }
 
     private function newPage()
@@ -89,37 +102,37 @@ class EstimationCreatePDF extends Fpdf
         $this->AddPage();
         $this->SetFont('aristalight','',14);
         $this->imageHeader();
-        $this->Cell(3.5,1, utf8_decode('Devis référence : '));
+        $this->Cell(4,1, utf8_decode('Facture référence : '));
         $this->SetFont('aristabold', '', 14);
-        $this->Cell(3,1, utf8_decode($this->getEstimation->reference));
+        $this->Cell(3,1, utf8_decode($this->getInvoice->reference));
         $this->SetFont('aristalight', '', 14);
         $this->SetX(12);
-        $this->Cell(4, 1, utf8_decode('Fait à le Chesnay le ' . $this->getEstimation->created_at->format('d/m/Y')), 0, 2);
+        $this->Cell(4, 1, utf8_decode('Fait à le Chesnay le ' . $this->getInvoice->created_at->format('d/m/Y')), 0, 2);
         $y = $this->GetY();
         $this->SetXY(1, $y);
         $this->SetDrawColor(255, 254,0);
         $this->SetLineWidth(.07);
-        $this->Line(1.1, $y, 6.9, $y);
+        $this->Line(1.1, $y, 7.6, $y);
         $this->SetDrawColor(0, 0, 0);
         $y = $this->getY();
         $this->SetY(5.7);
         $this->SetFont('aristaregular', '', 14);
-        $this->Cell(4, 1, utf8_decode($this->getClient->name));
+        $this->Cell(4, 1, utf8_decode($this->getInvoice->estimation->client->name));
         $this->SetFont('aristalight');
         $y = $this->GetY();
         $this->SetXY(1, $y+$lineHeight);
-        $this->Cell(4, 1, utf8_decode($this->getClient->address));
+        $this->Cell(4, 1, utf8_decode($this->getInvoice->estimation->client->address));
         $this->SetXY(1, 6.9);
-        $this->Cell(10, 1, utf8_decode($this->getClient->zip . ' ' . $this->getClient->city));
+        $this->Cell(10, 1, utf8_decode($this->getInvoice->estimation->client->zip . ' ' . $this->getInvoice->estimation->client->city));
         $y = $this->GetY();
         $this->SetXY(1, $y+$lineHeight);
-        $this->Cell(10, 1, utf8_decode('N° SIRET : ' . $this->getClient->siret));
+        $this->Cell(10, 1, utf8_decode('N° SIRET : ' . $this->getInvoice->estimation->client->siret));
         $y = $this->GetY();
         $this->SetXY(1, $y+$lineHeight);
-        $this->Cell(14, 1, utf8_decode('N° TVA Intra-communautaire : ' . $this->getClient->tvaintracommunautaire));
+        $this->Cell(14, 1, utf8_decode('N° TVA Intra-communautaire : ' . $this->getInvoice->estimation->client->tvaintracommunautaire));
         $y = $this->GetY();
         $this->SetXY(1, $y+$lineHeight);
-        $this->Cell(10, 1, $this->getEstimation->contact->email);
+        $this->Cell(10, 1, $this->getInvoice->estimation->contact->email);
     }
 
     private function getDetails($estimation)
@@ -150,18 +163,18 @@ class EstimationCreatePDF extends Fpdf
         $this->SetDrawColor(0, 0, 0);
         $this->SetY($this->GetY()+.4);
         $this->SetFont('aristabold', '', 14);
-        $this->Cell(12, .7, utf8_decode('Conditions de paiement'));
+        $this->Cell(12, .7, utf8_decode('Observations :'));
         $this->Cell(3.5, .7, utf8_decode('Total HT'), '', 0, 'R');
-        $this->Cell(3.5, .7, utf8_decode($this->total['total_row_notax']).iconv('UTF-8', 'windows-1252', ' €'), '', 0, 'R');
+        $this->Cell(3.5, .7, utf8_decode($this->getInvoice['amount_no_tax']).iconv('UTF-8', 'windows-1252', ' €'), '', 0, 'R');
         $this->SetY($this->GetY()+.6);
         $this->SetFont('aristalight', '', 14);
-        $this->Cell(12, .7, utf8_decode('Date et signature :'));
+        $this->Cell(12, .7, utf8_decode($this->getInvoice->observation));
         $this->SetFont('aristabold', '', 14);
         $this->Cell(3.5, .7, utf8_decode('TVA'), '', 0, 'R');
-        $this->Cell(3.5, .7, utf8_decode($this->total['total_row_tax']).iconv('UTF-8', 'windows-1252', ' €'), '', 0, 'R');
+        $this->Cell(3.5, .7, utf8_decode($this->getInvoice['amount_tax']).iconv('UTF-8', 'windows-1252', ' €'), '', 0, 'R');
         $this->SetY($this->GetY()+.6);
         $this->Cell(15.5, .7, utf8_decode('Total TTC'), '', 0, 'R');
-        $this->Cell(3.5, .7, utf8_decode($this->total['total_row']).iconv('UTF-8', 'windows-1252', ' €'), '', 0, 'R');
+        $this->Cell(3.5, .7, utf8_decode($this->getInvoice['amount']).iconv('UTF-8', 'windows-1252', ' €'), '', 0, 'R');
     }
 
     function Footer()
@@ -182,9 +195,9 @@ class EstimationCreatePDF extends Fpdf
         $this->Cell(0,1, 'SAS au capital social de 2.000 '.iconv('UTF-8', 'windows-1252', '€'),0,0,'C');
     }
 
-    public function create(Client $client, Estimation $estimation)
+    public function create(Invoice $invoice)
     {
-        $this->getData($client->slug, $estimation->id);
+        $this->getData($invoice->id);
         $this->entete();
 
         //Body
@@ -203,11 +216,11 @@ class EstimationCreatePDF extends Fpdf
         $y = $this->getY();
         $this->SetY($y+.3);
         $this->SetFont('aristabold', '', 14);
-        $this->Cell(20, 1, utf8_decode($estimation->title));
+        $this->Cell(20, 1, utf8_decode($this->getEstimation->title));
 
-        $this->getDetails($estimation);
+        $this->getDetails($this->getEstimation);
 
-        $this->getTotal($estimation);
+        $this->getTotal($this->getEstimation);
 
         $response = response($this->Output('I'));
         $response->header('Content-Type', 'application/pdf');

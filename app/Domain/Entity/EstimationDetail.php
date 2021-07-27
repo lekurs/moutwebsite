@@ -41,6 +41,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|EstimationDetail whereUnitPrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|EstimationDetail whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Domain\Entity\Taxe $taxe
  */
 class EstimationDetail extends Model
 {

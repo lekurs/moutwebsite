@@ -79,15 +79,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="project-title" class="relative-label">Titre du projet</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="project-title" id="project-title" aria-label="Titre du projet" placeholder="Titre du projet">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
+                    <div class="col-12">
                         <div class="form-group">
                             <label for="project-end" class="relative-label">Fin du projet</label>
                             <div class="input-group">
@@ -130,7 +122,7 @@
                         <div class="form-group form-focus select-focus focused">
                             <select class="skills-selection sources" multiple="multiple" data-select2-id="1" tabindex="-1" name="skills[]" aria-hidden="true">
                                 @foreach($skills as $skill)
-                                    <option data-select2-id="{{ $skill->id }}" value="{{ $skill->id }}">{{ $skill->skill }}</option>
+                                    <option data-select2-id="{{ $skill->id }}" value="{{ $skill->id }}">{{ $skill->libelle }}</option>
                                 @endforeach
                             </select>
                             <label class="focus-label-select">Compétences</label>

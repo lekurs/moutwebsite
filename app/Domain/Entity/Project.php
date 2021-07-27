@@ -47,6 +47,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Project whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Project whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int $in_progress
+ * @method static \Illuminate\Database\Eloquent\Builder|Project whereInProgress($value)
  */
 class Project extends Model
 {

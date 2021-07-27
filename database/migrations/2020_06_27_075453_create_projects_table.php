@@ -22,11 +22,10 @@ class CreateProjectsTable extends Migration
             $table->string('background_img_path', 255);
             $table->string('colorProject', 7);
             $table->string('slug', 255);
+            $table->boolean('in_progress')->default(true);
             $table->timestamp('endProject');
-//            $table->integer('client_id')->unsigned();
             $table->timestamps();
             $table->foreignId('client_id')->constrained();
-//            $table->foreign('client_id')->references('id')->on('clients');
         });
     }
 

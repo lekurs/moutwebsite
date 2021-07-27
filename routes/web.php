@@ -7,7 +7,9 @@ use App\Http\Controllers\Admin\Accounting\InvoiceController;
 use App\Http\Controllers\Admin\Accounting\InvoiceCreatePDF;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\RecipeController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\TaxesController;
@@ -60,6 +62,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'authorization']], f
        Route::get('/delete/{project:slug}', [ProjectController::class, 'destroy'])->name('projects.destroy');
     });
 
+    Route::group(['prefix' => 'recettes'], function () {
+       Route::get('{project:slug}/creer', [RecipeController::class, 'create'])->name('recipes.create');
+       Route::post('{project:slug}/ajouter', [RecipeController::class, 'store'])->name('recipes.store');
+
+       Route::group(['prefix' => 'pages'], function () {
+           Route::get('{project:slug}/creer', [PageController::class, 'create'])->name('pages.create');
+           Route::post('{project:slug}/ajouter', [PageController::class, 'store'])->name('pages.store');
+       });
+    });
+
     Route::group(['prefix' => 'competences'], function () {
         Route::get('/', [SkillController::class, 'index'])->name('skills.index');
         Route::get('/voir/{skill:id}', [SkillController::class, 'show'])->name('skills.show');
@@ -100,6 +112,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'authorization']], f
 
     Route::group(['prefix' => 'factures'], function() {
         Route::get('/{estimation:id}/creer', [InvoiceController::class, 'create'])->name('invoices.create');
+        //TODO revoir le facture soldée ????
         Route::get('/{estimation:id}/enregistrer', [InvoiceController::class, 'store'])->name('invoices.store');
         Route::get('/{invoice:id}/voir/pdf', [InvoiceCreatePDF::class, 'create'])->name('invoices.create.pdf');
     });

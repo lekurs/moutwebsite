@@ -22,6 +22,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Skill whereSkill($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Skill whereStatus($value)
  * @mixin \Eloquent
+ * @property string $libelle
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Domain\Entity\Estimation[] $estimations
+ * @property-read int|null $estimations_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Skill whereLibelle($value)
  */
 class Skill extends Model
 {

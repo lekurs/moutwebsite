@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +15,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        User::factory()->create();
+
+        foreach(['Web', 'UX / UI', 'Print'] as $skill) {
+            DB::table('skills')->insert([
+                'libelle' => $skill,
+            ]);
+        }
     }
 }

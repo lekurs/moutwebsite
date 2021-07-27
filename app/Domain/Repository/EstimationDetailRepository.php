@@ -30,9 +30,11 @@ class EstimationDetailRepository
 
     public function getTotalOnThisYear(Client $client)
     {
-        dd(EstimationDetail::with(['estimation.client'], function ($q) use($client) {
-        $q->whereClientId($client->id);
-    })->get());
+        $test = $client->load('estimations.estimationDetails');
+//        dd($test);
+//        dd(EstimationDetail::with(['estimation.client'], function (Estimation $estimation) use($client) {
+//            $estimation->client()->whereClientId($client->id);
+//        })->get());
         return [
             'total_row' => EstimationDetail::with(['estimation'], function ($q) use($client) {
                 $q->whereClientId($client->id);

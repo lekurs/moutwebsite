@@ -39,6 +39,24 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static Builder|Invoice whereUpdatedAt($value)
  * @method static Builder|Invoice whereYear($value)
  * @mixin \Eloquent
+ * @property string $reference
+ * @property int $advance
+ * @property string|null $amount_no_tax
+ * @property string|null $amount_tax
+ * @property string $month
+ * @property string|null $observation
+ * @property string|null $paiment_date
+ * @property int $estimation_id
+ * @property-read \App\Domain\Entity\Estimation $estimation
+ * @method static Builder|Invoice isAdvance()
+ * @method static Builder|Invoice whereAdvance($value)
+ * @method static Builder|Invoice whereAmountNoTax($value)
+ * @method static Builder|Invoice whereAmountTax($value)
+ * @method static Builder|Invoice whereEstimationId($value)
+ * @method static Builder|Invoice whereMonth($value)
+ * @method static Builder|Invoice whereObservation($value)
+ * @method static Builder|Invoice wherePaimentDate($value)
+ * @method static Builder|Invoice whereReference($value)
  */
 class Invoice extends Model
 {

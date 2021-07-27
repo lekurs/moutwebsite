@@ -60,6 +60,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static Builder|Estimation whereValidationDuration($value)
  * @method static Builder|Estimation whereYear($value)
  * @mixin \Eloquent
+ * @property string|null $observation
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Domain\Entity\Skill[] $estimationsSkills
+ * @property-read int|null $estimations_skills_count
+ * @property-read int|null $invoice_count
+ * @method static Builder|Estimation whereObservation($value)
  */
 class Estimation extends Model
 {
@@ -91,11 +96,6 @@ class Estimation extends Model
     {
         return $this->hasMany(Invoice::class);
     }
-//
-//    public function invoices()
-//    {
-//        return $this->belongsToMany(Invoice::class);
-//    }
 
     public function estimationsSkills(): BelongsToMany
     {

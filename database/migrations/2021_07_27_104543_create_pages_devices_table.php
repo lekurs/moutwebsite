@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateForeignkeyEstimationsDetailsTable extends Migration
+class CreatePagesDevicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateForeignkeyEstimationsDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::table('estimations_details', function (Blueprint $table) {
-//            $table->unsignedInteger('taxe_id');
-//            $table->foreign('taxe_id')->references('id')->on('taxes');
+        Schema::create('pages_devices', function (Blueprint $table) {
+            $table->foreignId('page_id')->constrained();
+            $table->foreignId('device_id')->constrained();
         });
     }
 
@@ -26,6 +26,6 @@ class CreateForeignkeyEstimationsDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('estimations-details');
+        Schema::dropIfExists('pages_devices');
     }
 }

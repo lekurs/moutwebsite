@@ -53,6 +53,11 @@ class ProjectRepository
             ->first();
     }
 
+    public function getAllNoRecipe(): Collection
+    {
+        return Project::with(['client', 'mediaProjects'])->whereDoesntHave('recipe_id')->get();
+    }
+
     public function getAllBy4(): Paginator
     {
         return Project::with('client', 'mediaProjects')

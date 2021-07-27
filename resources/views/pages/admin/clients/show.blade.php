@@ -74,10 +74,11 @@
         <div class="row user-tabs">
             <div class="col-12 line-tabs">
                 <ul class="nav nav-tabs nav-tabs-bottom">
-                    <li class="nav-item col-sm-3"><a class="nav-link active" data-toggle="tab" role="tab" aria-controls="myprojects" aria-selected="true" href="#myprojects">Projets</a></li>
-                    <li class="nav-item col-sm-3"><a class="nav-link" data-toggle="tab" role="tab" aria-controls="contacts" aria-selected="false" href="#contacts">Contacts</a></li>
-                    <li class="nav-item col-sm-3"><a class="nav-link" data-toggle="tab" role="tab" aria-controls="estimations" aria-selected="false" href="#estimations">Devis</a></li>
-                    <li class="nav-item col-sm-3"><a class="nav-link" data-toggle="tab" role="tab" aria-controls="invoices" aria-selected="false" href="#invoices">Factures</a></li>
+                    <li class="nav-item col-sm-2"><a class="nav-link active" data-toggle="tab" role="tab" aria-controls="myprojects" aria-selected="true" href="#myprojects">Projets</a></li>
+                    <li class="nav-item col-sm-2"><a class="nav-link" data-toggle="tab" role="tab" aria-controls="myrecipes" aria-selected="false" href="#myrecipes">Recettes</a></li>
+                    <li class="nav-item col-sm-2"><a class="nav-link" data-toggle="tab" role="tab" aria-controls="contacts" aria-selected="false" href="#contacts">Contacts</a></li>
+                    <li class="nav-item col-sm-2"><a class="nav-link" data-toggle="tab" role="tab" aria-controls="estimations" aria-selected="false" href="#estimations">Devis</a></li>
+                    <li class="nav-item col-sm-2"><a class="nav-link" data-toggle="tab" role="tab" aria-controls="invoices" aria-selected="false" href="#invoices">Factures</a></li>
                 </ul>
             </div>
         </div>
@@ -100,6 +101,12 @@
                         @foreach($client->projects as $project)
                             @include('layouts.cards.project_card')
                         @endforeach
+                    </div>
+                </div>
+                <!-- RECETTES -->
+                <div class="tab-pane fade" id="myrecipes" role="tabpanel" aria-labelledby="myrecipes-tab">
+                    <div class="row">
+                        @include('layouts.cards.recipe_card')
                     </div>
                 </div>
                 <!-- CONTACTS -->

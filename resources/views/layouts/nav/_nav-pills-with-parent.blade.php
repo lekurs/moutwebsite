@@ -22,6 +22,8 @@
     </ul>
     <h5 class="mout-tab-title">Menus</h5>
     <ul class="nav nav-pills nav-stacked nav-quirk">
+
+        @can('clients.index')
         <li class="nav-parent">
             <div class="nav-parent-container">
                 <i class="far fa-user-crown"></i>
@@ -35,7 +37,9 @@
                 </li>
             </ul>
         </li>
+        @endcan
 
+        @can('devis.index')
         <li class="nav-parent">
             <div class="nav-parent-container">
                 <i class="fal fa-file-invoice-dollar"></i>
@@ -49,6 +53,7 @@
                 </li>
             </ul>
         </li>
+        @endcan
 
         <li class="nav-parent">
             <div class="nav-parent-container">

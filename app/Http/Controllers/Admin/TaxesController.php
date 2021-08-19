@@ -4,8 +4,8 @@
 namespace App\Http\Controllers\Admin;
 
 
-use App\Domain\Entity\Taxe;
-use App\Domain\Repository\TaxRepository;
+use App\Models\Taxe;
+use App\Repository\TaxRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EditTax;
 use App\Http\Requests\StoreTax;

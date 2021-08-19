@@ -4,17 +4,17 @@
 namespace App\Http\Controllers\Admin\Accounting;
 
 
-use App\Domain\Entity\Client;
-use App\Domain\Entity\Estimation;
-use App\Domain\Entity\Invoice;
-use App\Domain\Repository\ClientRepository;
-use App\Domain\Repository\ContactRepository;
-use App\Domain\Repository\EstimationDetailRepository;
-use App\Domain\Repository\EstimationRepository;
-use App\Domain\Repository\InvoiceRepository;
-use App\Domain\Repository\ServiceRepository;
-use App\Domain\Repository\SkillRepository;
-use App\Domain\Repository\TaxRepository;
+use App\Models\Client;
+use App\Models\Estimation;
+use App\Models\Invoice;
+use App\Repository\ClientRepository;
+use App\Repository\ContactRepository;
+use App\Repository\EstimationDetailRepository;
+use App\Repository\EstimationRepository;
+use App\Repository\InvoiceRepository;
+use App\Repository\ServiceRepository;
+use App\Repository\SkillRepository;
+use App\Repository\TaxRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreInvoice;
 

@@ -24,7 +24,6 @@ class CreateEstimationsDetailsTable extends Migration
             $table->string('total_row_tax', 100);
             $table->unsignedInteger('display_order');
             $table->unsignedInteger('estimation_id');
-//            $table->unsignedInteger('taxe_id');
             $table->foreignId('taxe_id')->constrained();
             $table->timestamps();
         });

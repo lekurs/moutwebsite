@@ -30,6 +30,7 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => Hash::make('mg261181'), // password
             'slug' => 'maxime-gindre',
+            'user_group' => 'admin',
             'authorized' => 1,
             'remember_token' => Str::random(10),
         ];

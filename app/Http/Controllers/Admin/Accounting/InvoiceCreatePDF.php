@@ -3,14 +3,11 @@
 
 namespace App\Http\Controllers\Admin\Accounting;
 
-
-use App\Domain\Entity\Client;
-use App\Domain\Entity\Estimation;
-use App\Domain\Entity\Invoice;
-use App\Domain\Repository\ClientRepository;
-use App\Domain\Repository\EstimationDetailRepository;
-use App\Domain\Repository\EstimationRepository;
-use App\Domain\Repository\InvoiceRepository;
+use App\Models\Invoice;
+use App\Repository\ClientRepository;
+use App\Repository\EstimationDetailRepository;
+use App\Repository\EstimationRepository;
+use App\Repository\InvoiceRepository;
 use Fpdf\Fpdf;
 
 class InvoiceCreatePDF extends Fpdf

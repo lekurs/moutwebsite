@@ -4,13 +4,13 @@
 namespace App\Http\Controllers\Admin;
 
 
-use App\Domain\Entity\Client;
-use App\Domain\Entity\Project;
-use App\Domain\Repository\ClientRepository;
-use App\Domain\Repository\MediaProjectRepository;
-use App\Domain\Repository\ProjectRepository;
-use App\Domain\Repository\ServiceRepository;
-use App\Domain\Repository\SkillRepository;
+use App\Models\Client;
+use App\Models\Project;
+use App\Repository\ClientRepository;
+use App\Repository\MediaProjectRepository;
+use App\Repository\ProjectRepository;
+use App\Repository\ServiceRepository;
+use App\Repository\SkillRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EditProject;
 use App\Http\Requests\StoreProject;
@@ -206,6 +206,12 @@ class ProjectController extends Controller
         $this->uploadedFilesService->removeFile('/public/images/uploads/' . $projectMedia->project->client->slug . '/projets/' . Str::slug($projectMedia->project->title) . '/' . $projectMedia->mediaProjectPath);
 
         return response()->json('success');
+    }
+
+    public function updateActive()
+    {
+        $project = Project::whereSlug(request('slug'))->first();
+        $this->projectRepository->changeActive($project);
     }
 
     private function addinarray(&$array,$after, $value, $position){

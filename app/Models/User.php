@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-//use App\Notifications\ContactMail;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Collection;
 
 /**
  * App\Models\User
@@ -44,6 +44,10 @@ use Illuminate\Notifications\Notifiable;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string|null $user_group
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Role[] $roles
+ * @property-read int|null $roles_count
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereUserGroup($value)
  */
 class User extends Authenticatable
 {
@@ -91,6 +95,24 @@ class User extends Authenticatable
      * @var array
      */
     protected $appends = [
-        'profile_photo_url',
+//        'profile_photo_url',
     ];
+
+    public function roles(): BelongsToMany
+    {
+        return  $this->belongsToMany(Role::class, 'roles_users');
+    }
+
+    public function hasRole(Collection $roles): bool
+    {
+        return (bool) $roles->intersect($this->roles)->count();
+    }
+
+    public function hasPermission($permission): bool
+    {
+        $find = Permission::where('key', $permission)->first();
+        if ($find) {
+            return $this->hasRole($find->roles);
+        }
+    }
 }

@@ -4,10 +4,10 @@
 namespace App\Http\Controllers\Admin;
 
 
-use App\Domain\Entity\Client;
-use App\Domain\Entity\Contact;
-use App\Domain\Repository\ClientRepository;
-use App\Domain\Repository\ContactRepository;
+use App\Models\Client;
+use App\Models\Contact;
+use App\Repository\ClientRepository;
+use App\Repository\ContactRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EditContact;
 use App\Http\Requests\StoreContact;

@@ -4,11 +4,11 @@
 namespace App\Http\Controllers\Admin;
 
 
-use App\Domain\Entity\Client;
-use App\Domain\Repository\ClientRepository;
-use App\Domain\Repository\EstimationDetailRepository;
-use App\Domain\Repository\InvoiceRepository;
-use App\Domain\Repository\SkillRepository;
+use App\Models\Client;
+use App\Repository\ClientRepository;
+use App\Repository\EstimationDetailRepository;
+use App\Repository\InvoiceRepository;
+use App\Repository\SkillRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreClient;
 use App\Services\Uploads\UploadedFilesService;

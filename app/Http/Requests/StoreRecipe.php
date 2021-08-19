@@ -26,7 +26,8 @@ class StoreRecipe extends FormRequest
         return [
             'recipe_label' => 'required',
             'recipe_image' => 'sometimes',
-            'recipe_page_id' => 'required'
+            'recipe_page_id' => 'required',
+            'device_id' => 'required'
         ];
     }
 }

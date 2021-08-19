@@ -1,27 +1,28 @@
 <?php
 
-use App\Http\Controllers\Admin\Accounting\AdvanceController;
 use App\Http\Controllers\Admin\Accounting\EstimationController;
 use App\Http\Controllers\Admin\Accounting\EstimationCreatePDF;
 use App\Http\Controllers\Admin\Accounting\InvoiceController;
 use App\Http\Controllers\Admin\Accounting\InvoiceCreatePDF;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\RecipeController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\TaxesController;
 use App\Http\Controllers\User\ProfileController;
 
-use App\UI\Action\Admin\HomeAdminAction;
-use App\UI\Action\Admin\Profile\ProfileEditStoreAction;
-use App\UI\Action\Admin\Profile\ProfileShowOneAction;
 use App\UI\Action\Admin\Projects\ProjectShowOneAction;
 use App\UI\Action\Pub\IndexAction;
 use App\UI\Action\Pub\ProjectsAction;
-use App\UI\Action\Pub\SendContactMailAction;
+//use App\UI\Action\Pub\SendContactMailAction;
+use Database\Seeders\CreateAdminUserSeeder;
+use Database\Seeders\PermissionSeeder;
+use Database\Seeders\RoleSeeder;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,12 +37,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', IndexAction::class)->name('index');
-Route::get('/realisations', ProjectsAction::class)->name('projets');
-Route::get('/realisation/{projectSlug}', ProjectShowOneAction::class)->name('project');
-Route::post('/contact-mail', SendContactMailAction::class)->middleware('throttle:1,60')->name('contactMail');
+//Route::get('/realisations', ProjectsAction::class)->name('projets');
+//Route::get('/realisation/{projectSlug}', ProjectShowOneAction::class)->name('project');
+//Route::post('/contact-mail', SendContactMailAction::class)->middleware('throttle:1,60')->name('contactMail');
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'authorization']], function () {
-    Route::get('/', HomeAdminAction::class)->name('homeAdmin');
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    Route::get('/', [AdminController::class, 'index'])->name('homeAdmin');
 
     Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
        Route::get('/', [ProfileController::class, 'show'])->name('profiles.show');
@@ -60,11 +61,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'authorization']], f
        Route::post('/find', [ProjectController::class, 'search'])->name('projects.search');
        Route::post('/store/deleteimg', [ProjectController::class, 'destroyMedia'])->name('projects.destroy.media');
        Route::get('/delete/{project:slug}', [ProjectController::class, 'destroy'])->name('projects.destroy');
+       Route::post('/progression', [ProjectController::class, 'updateActive'])->name('projects.update.active');
     });
 
     Route::group(['prefix' => 'recettes'], function () {
-       Route::get('{project:slug}/creer', [RecipeController::class, 'create'])->name('recipes.create');
+       Route::get('/administrer/{project:slug}/creer', [RecipeController::class, 'create'])->name('recipes.create');
        Route::post('{project:slug}/ajouter', [RecipeController::class, 'store'])->name('recipes.store');
+       Route::get('/creer/{project:slug}', [RecipeController::class, 'createRecipe'])->name('recipes.gerer.create');
+//       Route::get('/', function () {
+//           auth()->user()->notify(new RecipeEmailNotification(auth()->user()));
+//       });
 
        Route::group(['prefix' => 'pages'], function () {
            Route::get('{project:slug}/creer', [PageController::class, 'create'])->name('pages.create');
@@ -82,7 +88,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'authorization']], f
     });
 
     Route::group(['prefix' => 'clients'], function () {
-       Route::get('/', [ClientController::class, 'index'])->name('clients.index');
+       Route::get('/', [ClientController::class, 'index'])->middleware('can:clients.index')->name('clients.index');
        Route::get('/creer', [ClientController::class, 'create'])->name('clients.create');
        Route::post('/ajouter', [ClientController::class, 'store'])->name('clients.store');
        Route::get('/voir/{client:slug}', [ClientController::class, 'show'])->name('clients.show');
@@ -135,6 +141,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'authorization']], f
        Route::post('/edit/{taxe:id}', [TaxesController::class, 'update'])->name('taxes.update');
        Route::get('/trash/{taxe:id}', [TaxesController::class, 'destroy'])->name('taxes.delete');
        Route::get('/status/{taxe:id}', [TaxesController::class, 'status'])->name('taxes.status');
+    });
+
+    Route::group(['prefix' => 'roles'], function () {
+        if(app()->environment('local')) {
+            Route::get('/yolo', function () {
+                Artisan::call('db:seed', ['--class' => PermissionSeeder::class]);
+                Artisan::call('db:seed', ['--class' => RoleSeeder::class]);
+                Artisan::call('db:seed', ['--class' => CreateAdminUserSeeder::class]);
+            });
+        }
+        Route::get('/', [RoleController::class, 'index'])->middleware('can:roles.index')->name('roles.index');
     });
 });
 

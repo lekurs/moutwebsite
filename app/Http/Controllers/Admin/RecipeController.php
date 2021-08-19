@@ -4,11 +4,14 @@
 namespace App\Http\Controllers\Admin;
 
 
-use App\Domain\Entity\Page;
-use App\Domain\Entity\Project;
-use App\Domain\Repository\RecipeRepository;
+use App\Models\Device;
+use App\Models\Page;
+use App\Models\Project;
+use App\Repository\RecipeRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreRecipe;
+use App\Notifications\RecipeEmailNotification;
+use Illuminate\Contracts\View\View;
 
 class RecipeController extends Controller
 {
@@ -37,10 +40,24 @@ class RecipeController extends Controller
     public function create(Project $project)
     {
         $pages = Page::whereProjectId($project->id)->with('project')->get();
+        $devices = Device::all();
 
         return view('pages.admin.recipes.create', [
             'project' => $project,
-            'pages' => $pages
+            'pages' => $pages,
+            'devices' => $devices
+        ]);
+    }
+
+    public function createRecipe(Project $project)
+    {
+        $pages = Page::whereProjectId($project->id)->with('project')->get();
+        $devices = Device::all();
+
+        return view('pages.admin.recipes.create_recipe', [
+            'project' => $project,
+            'pages' => $pages,
+            'devices' => $devices
         ]);
     }
 

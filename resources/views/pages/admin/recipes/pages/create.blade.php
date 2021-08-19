@@ -50,6 +50,21 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-12">
+                        <H6 class="add-client-title">Sélectionnez les contacts concernés</H6>
+                    </div>
+                </div>
+                <div class="row">
+                    @foreach($project->client->contacts as $contact)
+                        <div class="col">
+                            <label for="contact_id">
+                                <input type="checkbox" name="contact_id" value="{{ $contact->id }}">
+                                {{ $contact->lastname }} {{ $contact->name }}
+                            </label>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="row">
                     <div class="col-12 d-flex justify-content-center">
                         <button class="btn btn-primary add-btn">Créer</button>
                     </div>

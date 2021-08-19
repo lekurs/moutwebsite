@@ -25,7 +25,8 @@ class StorePage extends FormRequest
     {
         return [
             'page_label' => 'required',
-            'page_url_path' => 'required'
+            'page_url_path' => 'required',
+            'contact_id' => 'sometimes',
         ];
     }
 }

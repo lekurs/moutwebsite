@@ -4,8 +4,8 @@
 namespace App\Http\Controllers\Admin;
 
 
-use App\Domain\Entity\Skill;
-use App\Domain\Repository\SkillRepository;
+use App\Models\Skill;
+use App\Repository\SkillRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSkill;
 use Illuminate\Contracts\View\View;

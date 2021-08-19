@@ -4,11 +4,11 @@
 namespace App\Http\Controllers\Admin\Accounting;
 
 
-use App\Domain\Entity\Client;
-use App\Domain\Entity\Estimation;
-use App\Domain\Repository\ClientRepository;
-use App\Domain\Repository\EstimationDetailRepository;
-use App\Domain\Repository\EstimationRepository;
+use App\Models\Client;
+use App\Models\Estimation;
+use App\Repository\ClientRepository;
+use App\Repository\EstimationDetailRepository;
+use App\Repository\EstimationRepository;
 use Fpdf\Fpdf;
 
 class EstimationCreatePDF extends Fpdf

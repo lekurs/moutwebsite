@@ -4,7 +4,7 @@
 namespace App\Http\Controllers\User;
 
 
-use App\Domain\Repository\UserRepository;
+use App\Repository\UserRepository;
 use App\Events\ResizeUploadedFile;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EditProfileRequest;

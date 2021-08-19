@@ -4,8 +4,8 @@
 namespace App\Http\Controllers\Admin;
 
 
-use App\Domain\Entity\Project;
-use App\Domain\Repository\PageRepository;
+use App\Models\Project;
+use App\Repository\PageRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePage;
 use Illuminate\Contracts\View\View;
@@ -36,7 +36,7 @@ class PageController extends Controller
     public function create(Project $project): View
     {
         return \view('pages.admin.recipes.pages.create', [
-            'project' => $project
+            'project' => $project,
         ]);
     }
 

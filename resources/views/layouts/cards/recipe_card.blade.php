@@ -13,15 +13,15 @@
                 <td>{{ $loop->iteration }}</td>
                 <td><img src="{{ asset('storage/images/uploads/'. $project->client->slug . '/projets/portfolio/' . $project->mediaPortfolioProjectPath) }}" alt="{{ $project->title }}" class="img-fluid" style="width: 80px; height: 80px; object-fit: cover;"></td>
                 <td>{{ $project->title }}</td>
-                <td><a href="{{ route('recipes.create', $project->slug) }}">Administrer</a> / <a href="">Gérer</a></td>
+                <td><a href="{{ route('recipes.create', $project->slug) }}">Administrer</a> / <a href="{{ route('recipes.gerer.create', $project->slug) }}">Gérer</a></td>
 
             </tr>
         @else
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td><img src="{{ asset('storage/images/uploads/'. $project->client->slug . '/projets/portfolio/' . $project->mediaPortfolioProjectPath) }}" alt="{{ $project->title }}" class="img-fluid w-25"></td>
+                <td><img src="{{ asset('storage/images/uploads/'. $project->client->slug . '/projets/portfolio/' . $project->mediaPortfolioProjectPath) }}" alt="{{ $project->title }}" class="img-fluid" style="width: 80px; height: 80px; object-fit: cover;"></td>
                 <td>{{ $project->title }}</td>
-                <td>Clos</td>
+                <td>Projet terminé / <a href="{{ route('recipes.create', $project->slug) }}">Administrer</a></td>
 
             </tr>
         @endif

@@ -25,12 +25,12 @@ class StoreClient extends FormRequest
     {
         return [
             'client-name' => 'required|max:255',
-            'client-phone' => '',
-            'client-address' => '',
-            'client-zip' => '',
-            'client-city' => '',
-            'client-logo' => '',
-            'client-slug' => '',
+            'client-phone' => 'sometimes',
+            'client-address' => 'required',
+            'client-zip' => 'required',
+            'client-city' => 'required',
+            'client-logo' => 'sometimes',
+            'client-slug' => 'sometimes',
             'client-siren' => 'sometimes'
         ];
     }

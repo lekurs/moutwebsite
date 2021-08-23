@@ -81,4 +81,9 @@ class Project extends Model
     {
         return $this->belongsToMany(Skill::class, 'projects_skills');
     }
+
+    public function recipes(): HasMany
+    {
+        return $this->hasMany(Recipe::class);
+    }
 }

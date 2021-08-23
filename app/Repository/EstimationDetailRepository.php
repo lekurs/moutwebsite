@@ -30,11 +30,8 @@ class EstimationDetailRepository
 
     public function getTotalOnThisYear(Client $client)
     {
-        $test = $client->load('estimations.estimationDetails');
-//        dd($test);
-//        dd(EstimationDetail::with(['estimation.client'], function (Estimation $estimation) use($client) {
-//            $estimation->client()->whereClientId($client->id);
-//        })->get());
+//        $test = $client->load('estimations.estimationDetails');
+
         return [
             'total_row' => EstimationDetail::with(['estimation'], function ($q) use($client) {
                 $q->whereClientId($client->id);
@@ -67,7 +64,6 @@ class EstimationDetailRepository
         $detail->total_row_notax = $data['quantity'] * $data['price'];
         $detail->total_row_tax = ($data['quantity'] * $data['price']) * ($tax->tax / 100);
         $detail->total_row = $detail->total_row_notax + $detail->total_row_tax;
-//        dd(($data['quantity'] * $data['price']) * ($tax->tax / 100));
 
         $detail->save();
 

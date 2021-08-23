@@ -10,12 +10,14 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\RecipeController;
+use App\Http\Controllers\Admin\RecipeDetailsController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\TaxesController;
 use App\Http\Controllers\User\ProfileController;
 
+use App\Models\RecipeDetails;
 use App\UI\Action\Admin\Projects\ProjectShowOneAction;
 use App\UI\Action\Pub\IndexAction;
 use App\UI\Action\Pub\ProjectsAction;
@@ -65,9 +67,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     });
 
     Route::group(['prefix' => 'recettes'], function () {
+       Route::get('/{project:slug}/voir', [RecipeController::class, 'index'])->name('recipes.index');
+       Route::get('/{recipe:slug}', [RecipeController::class, 'show'])->name('recipes.show');
        Route::get('/administrer/{project:slug}/creer', [RecipeController::class, 'create'])->name('recipes.create');
        Route::post('{project:slug}/ajouter', [RecipeController::class, 'store'])->name('recipes.store');
        Route::get('/creer/{project:slug}', [RecipeController::class, 'createRecipe'])->name('recipes.gerer.create');
+
+       Route::group(['prefix' => 'retours'], function () {
+           Route::get('/');
+           Route::post('/{recipe:slug}/store', [RecipeDetailsController::class, 'store'])->name('recipedetails.store');
+       });
 //       Route::get('/', function () {
 //           auth()->user()->notify(new RecipeEmailNotification(auth()->user()));
 //       });

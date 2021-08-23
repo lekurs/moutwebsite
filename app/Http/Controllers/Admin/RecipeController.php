@@ -4,9 +4,11 @@
 namespace App\Http\Controllers\Admin;
 
 
+use App\Http\Requests\StoreRecipeAnswer;
 use App\Models\Device;
 use App\Models\Page;
 use App\Models\Project;
+use App\Models\Recipe;
 use App\Repository\RecipeRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreRecipe;
@@ -27,14 +29,23 @@ class RecipeController extends Controller
     }
 
 
-    public function index()
+    public function index(Project $project)
     {
+        $recipes = $this->recipeRepository->getAllByProject($project);
 
+        return \view('pages.admin.recipes.index', [
+            'project' => $project,
+            'recipes' => $recipes
+        ]);
     }
 
-    public function show()
+    public function show(Recipe $recipe)
     {
+        $recipeOne = Recipe::with('recipeDetails')->whereId($recipe->id)->first();
 
+        return \view('pages.admin.recipes.show', [
+            'recipe' => $recipeOne
+        ]);
     }
 
     public function create(Project $project)

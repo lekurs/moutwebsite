@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * App\Models\Contact
@@ -46,6 +49,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Contact extends Model
 {
+
+    use Notifiable;
+
     protected $fillable = [
         'name',
         'lastname',

@@ -17,6 +17,7 @@ class CreateRecipesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('label', 255);
+            $table->text('description');
             $table->boolean('active')->default(true);
             $table->dateTime('start_date_recipe')->default(now());
             $table->string('slug', 255);
@@ -27,7 +28,7 @@ class CreateRecipesTable extends Migration
             $table->boolean('validation_customer')->default(false);
             $table->boolean('closed')->default(false);
             $table->dateTime('closed_date')->nullable();
-            $table->unsignedInteger('author')->nullable();//foreign User table
+            $table->foreignId('user_id')->constrained()->nullable();
             $table->foreignId('project_id')->constrained();
             $table->foreignId('client_id')->constrained();
             $table->foreignId('page_id')->constrained();

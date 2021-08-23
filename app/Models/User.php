@@ -64,8 +64,7 @@ class User extends Authenticatable
         'email',
         'password',
         'slug',
-        'lastname',
-        'authorized'
+        'lastname'
     ];
 
     /**
@@ -111,6 +110,8 @@ class User extends Authenticatable
     public function hasPermission($permission): bool
     {
         $find = Permission::where('key', $permission)->first();
+
+//        dd($find);
         if ($find) {
             return $this->hasRole($find->roles);
         }

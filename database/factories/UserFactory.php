@@ -31,7 +31,6 @@ class UserFactory extends Factory
             'password' => Hash::make('mg261181'), // password
             'slug' => 'maxime-gindre',
             'user_group' => 'admin',
-            'authorized' => 1,
             'remember_token' => Str::random(10),
         ];
     }

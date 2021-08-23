@@ -855,6 +855,60 @@ div.advance-invoice-container {
   display: none;
 }
 
+H3.recipe-label {
+  font-size: 18px;
+}
+
+span.recipe-author {
+  font-style: italic;
+  font-weight: bold;
+}
+
+div.recipe_container {
+  border-radius: 35px;
+  padding: 5px 20px;
+  width: 70%;
+  position: relative;
+}
+
+div.recipe_container.my_recipe {
+  background: #0091EB;
+  color: #fcfcfc;
+  left: 25%;
+}
+
+div.recipe_container.other_recipe {
+  background: #DCDCDC;
+  border: 1px solid #cccccc;
+  left: 5%;
+}
+
+div.recipe_container H6.recipe_author {
+  font-size: 18px;
+}
+
+div.recipe_container p {
+  margin-bottom: 0;
+}
+
+div.recipe_container button.recipe_show_img {
+  width: 100%;
+  text-align: center;
+  text-decoration: underline;
+}
+
+div.recipe_container button.recipe_show_img.own {
+  color: #fcfcfc;
+}
+
+div.recipe_container img.recipe_img {
+  display: none;
+}
+
+div.hide-response {
+  display: none;
+}
+
 /*!
  * Bootstrap v4.5.2 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors

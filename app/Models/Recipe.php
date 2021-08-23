@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * App\Models\Recipe
@@ -74,13 +75,33 @@ class Recipe extends Model
         return $this->belongsTo(Page::class, 'page_id');
     }
 
-    public function author(): BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
     public function devices(): BelongsToMany
     {
-        return $this->belongsToMany(Device::class, 'pages_devices');
+        return $this->belongsToMany(Device::class, 'recipes_devices');
+    }
+
+    public function contacts(): BelongsToMany
+    {
+        return $this->belongsToMany(Contact::class, 'recipes_contacts');
+    }
+
+    public function recipeDetails(): HasMany
+    {
+        return $this->hasMany(RecipeDetails::class);
+    }
+
+    public function project(): BelongsTo
+    {
+        return $this->belongsTo(Project::class);
+    }
+
+    public function client(): BelongsTo
+    {
+        return $this->belongsTo(Client::class);
     }
 }

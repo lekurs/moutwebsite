@@ -74,6 +74,15 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
+                                    <div class="input-group">
+                                        <textarea name="recipe_description" id="recipe_description" cols="30" rows="10"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
                                     <label for="recipe_image" class="relative-label">Insérer une image</label>
                                     <div class="input-group">
                                         <input class="form-control" type="file" name="recipe_image" id="recipe_image" aria-label="Téléphone" placeholder="Téléphone">
@@ -94,5 +103,13 @@
 @endsection
 
 @section('js')
-
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+    <script>
+        $('#recipe_description').summernote({
+            placeholder: 'Decrivez votre recette',
+            height: 150,
+            width: '100%'
+        });
+    </script>
 @endsection

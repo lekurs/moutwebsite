@@ -21,18 +21,72 @@ class CreateAdminUserSeeder extends Seeder
         DB::table('users')->truncate();
         \DB::statement('SET FOREIGN_KEY_CHECKS = 1');
 
-        $user = User::create([
-            'name' => 'Maxime',
-            'lastname' => 'Gindre',
-            'email' => 'gindre.maxime@gmail.com',
-            'email_verified_at' => now(),
-            'password' => Hash::make('mg261181'), // password
-            'slug' => 'maxime-gindre',
-            'user_group' => 'admin',
-            'authorized' => 1,
-            'remember_token' => Str::random(10),
-        ]);
+        $users = [
+            ['name' => 'Maxime',
+                'lastname' => 'Gindre',
+                'email' => 'gindre.maxime@gmail.com',
+                'email_verified_at' => now(),
+                'password' => Hash::make('mg261181'), // password
+                'slug' => 'maxime-gindre',
+                'user_group' => 'admin',
+                'remember_token' => Str::random(10),
+            ],
+            [
+                'name' => 'Bidule',
+                'lastname' => 'Truc',
+                'email' => 'bidule@gmail.com',
+                'email_verified_at' => now(),
+                'password' => Hash::make('mg261181'), // password
+                'slug' => 'bidule',
+                'user_group' => 'guest',
+                'remember_token' => Str::random(10),
+            ]
+        ];
 
-        $user->roles()->attach(2);
+//        $user1 = User::create(
+//            ['name' => 'Maxime',
+//                'lastname' => 'Gindre',
+//                'email' => 'gindre.maxime@gmail.com',
+//                'email_verified_at' => now(),
+//                'password' => Hash::make('mg261181'), // password
+//                'slug' => 'maxime-gindre',
+//                'user_group' => 'admin',
+//                'remember_token' => Str::random(10),
+//            ]);
+//            $user1->roles()->attach(2);
+//
+//            $user2 = User::create(
+//                [
+//                    'name' => 'Bidule',
+//                    'lastname' => 'Truc',
+//                    'email' => 'bidule@gmail.com',
+//                    'email_verified_at' => now(),
+//                    'password' => Hash::make('mg261181'), // password
+//                    'slug' => 'bidule',
+//                    'user_group' => 'guest',
+//                    'remember_token' => Str::random(10),
+//                ]
+//            );
+//            $user2->roles()->sync([1]);
+
+        foreach ($users as $user) {
+            $newUser = User::create($user);
+            $newUser->roles()->attach(1);
+        }
+        User::find(1)->roles()->attach(2);
+
+//        $user = User::create([
+//            'name' => 'Maxime',
+//            'lastname' => 'Gindre',
+//            'email' => 'gindre.maxime@gmail.com',
+//            'email_verified_at' => now(),
+//            'password' => Hash::make('mg261181'), // password
+//            'slug' => 'maxime-gindre',
+//            'user_group' => 'admin',
+//            'remember_token' => Str::random(10),
+//        ]);
+//
+//        $user->roles()->attach(2);
+
     }
 }

@@ -51,6 +51,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Client whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Client whereZip($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
+ * @property-read int|null $users_count
  */
 class Client extends Model
 {
@@ -97,5 +99,10 @@ class Client extends Model
     public function projects(): HasMany
     {
         return $this->hasMany(Project::class, 'client_id');
+    }
+
+    public function users(): HasMany
+    {
+        return $this->hasMany(User::class);
     }
 }

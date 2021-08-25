@@ -40,6 +40,18 @@ class CreateAdminUserSeeder extends Seeder
                 'slug' => 'bidule',
                 'user_group' => 'guest',
                 'remember_token' => Str::random(10),
+                'client_id' => 1
+            ],
+            [
+                'name' => 'Machin',
+                'lastname' => 'Bolobolo',
+                'email' => 'machin@gmail.com',
+                'email_verified_at' => now(),
+                'password' => Hash::make('mg261181'), // password
+                'slug' => 'machin',
+                'user_group' => 'client',
+                'remember_token' => Str::random(10),
+                'client_id' => 2
             ]
         ];
 

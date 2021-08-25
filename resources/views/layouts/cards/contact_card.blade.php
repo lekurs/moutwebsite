@@ -2,8 +2,8 @@
     <div class="contact-card-container">
         <div class="contact-img-container mb-2">
             <a href="{{ route('contacts.show', $contact->slug) }}">
-                @if(!is_null($contact->picture_path))
-                <img src="{{ asset('storage/images/uploads/' . $client->slug . '/' . $contact->slug . '/picture/' . $contact->picture_path) }}" alt="" class="img-fluid contact-img">
+                @if(!is_null($contact->profile_photo_path))
+                    <img src="{{ asset('storage/images/uploads/' . $contact->client->slug . '/users/' . $contact->slug . '/picture/' . $contact->profile_photo_path) }}" alt="{{ $contact->name }} - {{ $contact->lastname }}" class="img-fluid contact-img">
                 @else
                 <span class="contact-name randcolor">{{ substr($contact->lastname, 0, 1) . substr($contact->name, 0, 1) }}</span>
                     @endif

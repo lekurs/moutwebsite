@@ -24,10 +24,12 @@ class EditContact extends FormRequest
     public function rules()
     {
         return [
-            'contact-name' => 'required|max:255',
-            'contact-lastname' => 'required|max:255',
-            'contact-phone' => '',
-            'contact-email' => 'required|email:rfc',
+            'profile-name' => 'required|max:255',
+            'profile-lastname' => 'required|max:255',
+            'profile-phone' => 'sometimes',
+            'profile-email' => 'required|email:rfc',
+            'profile-password' => 'sometimes',
+            'profile-fonction' => 'sometimes'
         ];
     }
 }

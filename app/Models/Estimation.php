@@ -65,6 +65,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read int|null $estimations_skills_count
  * @property-read int|null $invoice_count
  * @method static Builder|Estimation whereObservation($value)
+ * @property int $user_id
+ * @property-read \App\Models\User $user
+ * @method static Builder|Estimation whereUserId($value)
  */
 class Estimation extends Model
 {
@@ -82,9 +85,9 @@ class Estimation extends Model
         return $this->belongsTo(Client::class, 'client_id');
     }
 
-    public function contact(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(Contact::class, 'contact_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function Service(): BelongsTo

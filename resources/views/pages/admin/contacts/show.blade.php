@@ -23,7 +23,7 @@
                     <div class="client-view">
                         <div class="client-img-wrap">
                             <div class="client-logo">
-                                <img src="{{ asset('storage/images/uploads/' . $contact->client->slug . '/' . $contact->slug . '/' . '/picture/' . $contact->picture_path) }}" alt="{{ $contact->name }}" class="img-fluid img-client-logo">
+                                <img src="{{ asset('storage/images/uploads/' . $contact->client->slug . '/users/' . $contact->slug . '/picture/' . $contact->profile_photo_path) }}" alt="{{ $contact->name }}" class="img-fluid img-client-logo">
                             </div>
                         </div>
                         <div class="client-informations">
@@ -46,7 +46,7 @@
                                         </li>
                                         <li>
                                             <span class="title">Fonction :</span>
-                                            <span class="text">{{ $contact->contact_function }}</span>
+                                            <span class="text">{{ $contact->post_fonction }}</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -64,6 +64,7 @@
                 @csrf
                 @include('layouts.form_errors.errors')
                 <input type="hidden" value="{{ $contact->slug }}" name="contact-slug" id="contact-slug">
+                <input type="hidden" value="{{ $contact->id }}" name="profile-id" id="profile-id">
                 <div class="row">
                     <div class="col-12 text-center">
                         <h5 class="add-client-title"><i class="fal fa-pen"></i> Mise à jour de : {{ $contact->lastname }} {{ $contact->name }}</h5>
@@ -76,15 +77,15 @@
                                 <div class="form-group">
                                     <label for="contact-lastname" class="relative-label">Prénom du contact</label>
                                     <div class="input-group">
-                                        <input class="form-control" type="text" name="contact-lastname" id="client-lastname" aria-label="Prénom du contact" placeholder="Prénom du contact" @isset($contact) value="{{ $contact->lastname }}" @endisset>
+                                        <input class="form-control" type="text" name="profile-lastname" id="profile-lastname" aria-label="Prénom du contact" placeholder="Prénom du contact" @isset($contact) value="{{ $contact->lastname }}" @endisset>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="contact-name" class="relative-label">Nom du contact</label>
+                                    <label for="profile-name" class="relative-label">Nom du contact</label>
                                     <div class="input-group">
-                                        <input class="form-control" type="text" name="contact-name" id="client-name" aria-label="Nom du contact" placeholder="Nom du contact" @isset($contact) value="{{ $contact->name }}" @endisset>
+                                        <input class="form-control" type="text" name="profile-name" id="profile-name" aria-label="Nom du contact" placeholder="Nom du contact" @isset($contact) value="{{ $contact->name }}" @endisset>
                                     </div>
                                 </div>
                             </div>
@@ -92,9 +93,9 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label for="contact-phone" class="relative-label">Téléphone</label>
+                                    <label for="profile-phone" class="relative-label">Téléphone</label>
                                     <div class="input-group">
-                                        <input class="form-control" type="text" name="contact-phone" id="contact-phone" aria-label="Téléphone" placeholder="Téléphone" @isset($contact) value="{{ $contact->phone }}" @endisset>
+                                        <input class="form-control" type="text" name="profile-phone" id="profile-phone" aria-label="Téléphone" placeholder="Téléphone" @isset($contact) value="{{ $contact->phone }}" @endisset>
                                     </div>
                                 </div>
                             </div>
@@ -102,9 +103,9 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label for="contact-email" class="relative-label">Email</label>
+                                    <label for="profile-email" class="relative-label">Email</label>
                                     <div class="input-group">
-                                        <input class="form-control" type="text" name="contact-email" id="contact-email" aria-label="Email du contact" placeholder="Email du contact" @isset($contact) value="{{ $contact->email }}" @endisset>
+                                        <input class="form-control" type="text" name="profile-email" id="profile-email" aria-label="Email du contact" placeholder="Email du contact" @isset($contact) value="{{ $contact->email }}" @endisset>
                                     </div>
                                 </div>
                             </div>
@@ -114,7 +115,7 @@
                                 <div class="form-group">
                                     <label for="contact-function" class="relative-label">Fonction</label>
                                     <div class="input-group">
-                                        <input class="form-control" type="text" name="contact-function" id="contact-function" aria-label="Fonction du contact" placeholder="Fonction du contact" @isset($contact) value="{{ $contact->contact_function }}" @endisset>
+                                        <input class="form-control" type="text" name="profile-fonction" id="profile-fonction" aria-label="Fonction du contact" placeholder="Fonction du contact" @isset($contact) value="{{ $contact->post_fonction }}" @endisset>
                                     </div>
                                 </div>
                             </div>
@@ -124,9 +125,9 @@
                                 <div class="form-group">
                                     <label for="client-logo" class="relative-label">Photo de profil</label>
                                     <div class="input-group">
-                                        @isset($contact)
-                                            <img src="{{ asset('storage/images/uploads/' . $contact->client->slug . '/' . \Illuminate\Support\Str::slug($contact->name . '-' . $contact->lastname) . '/picture/' . $contact->picture_path) }}" alt="{{ $contact->name }} {{ $contact->lastname }}" class="img-fluid logo-client">
-                                            <input class="form-control input-file-hidden" type="file" name="contact-picture" id="contact-picture" aria-label="Photo de profil" placeholder="Photo de profil">
+                                        @isset( $contact )
+                                            <img src="{{ asset('storage/images/uploads/' . $contact->client->slug . '/users/' . $contact->slug . '/picture/' . $contact->profile_photo_path) }}" alt="{{ $contact->name }} - {{ $contact->lastname }}" class="img-fluid logo-client">
+                                            <input class="form-control input-file-hidden" type="file" name="profile-img" id="profile-img" aria-label="Photo de profil" placeholder="Photo de profil">
                                         @else
                                             <input class="form-control" type="file" name="client-logo" id="client-logo" aria-label="Logo" placeholder="Logo">
                                         @endisset

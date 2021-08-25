@@ -120,7 +120,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        @forelse($client->contacts as $contact)
+                        @forelse($client->users as $contact)
                             @include('layouts.cards.contact_card')
                         @empty
                             <p class="contact-empty mt-4">Aucun contact enregistré</p>

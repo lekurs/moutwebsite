@@ -67,11 +67,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     });
 
     Route::group(['prefix' => 'recettes'], function () {
+
+       Route::get('/', [RecipeController::class, 'all'])->middleware('auth.client')->name('recipes.all.index');
+
        Route::get('/{project:slug}/voir', [RecipeController::class, 'index'])->name('recipes.index');
        Route::get('/{recipe:slug}', [RecipeController::class, 'show'])->name('recipes.show');
        Route::get('/administrer/{project:slug}/creer', [RecipeController::class, 'create'])->name('recipes.create');
        Route::post('{project:slug}/ajouter', [RecipeController::class, 'store'])->name('recipes.store');
        Route::get('/creer/{project:slug}', [RecipeController::class, 'createRecipe'])->name('recipes.gerer.create');
+       Route::get('/{recipe:slug}/status', [RecipeController::class, 'updateStatus'])->name('recipes.update.status');
+
 
        Route::group(['prefix' => 'retours'], function () {
            Route::get('/');
@@ -107,10 +112,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
 
        Route::group(['prefix' => 'contact'], function () {
-          Route::get('/{contact:slug}', [ContactController::class, 'show'])->name('contacts.show');
+          Route::get('/{user:slug}', [ContactController::class, 'show'])->name('contacts.show');
           Route::get('/creer/{client:slug}', [ContactController::class, 'create'])->name('contacts.create');
           Route::post('/contact/edit', [ContactController::class, 'update'])->name('contacts.update');
-          Route::get('/contact/{contactSlug}/delete', [ContactController::class, 'destroy'])->name('contacts.destroy');
+          Route::get('/contact/{user:slug}/delete', [ContactController::class, 'destroy'])->name('contacts.destroy');
           Route::post('/{client:slug}/store', [ContactController::class, 'store'])->name('contacts.store');
        });
     });

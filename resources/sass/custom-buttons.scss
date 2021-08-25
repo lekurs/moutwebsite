@@ -6,6 +6,16 @@
     float: right;
     font-weight: 500 !important;
     min-width: 140px;
+
+    &.close-btn {
+        background-color: $red !important;
+        border: 1px solid $red !important;
+    }
+
+    &.in-progress-btn {
+        background-color: $green !important;
+        border: 1px solid $green !important;
+    }
 }
 
 .btn-success.add-skill {

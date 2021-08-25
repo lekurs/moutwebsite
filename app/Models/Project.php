@@ -49,6 +49,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @mixin \Eloquent
  * @property int $in_progress
  * @method static \Illuminate\Database\Eloquent\Builder|Project whereInProgress($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Recipe[] $recipes
+ * @property-read int|null $recipes_count
  */
 class Project extends Model
 {

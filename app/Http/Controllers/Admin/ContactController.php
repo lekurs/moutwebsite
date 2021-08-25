@@ -6,11 +6,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Client;
 use App\Models\Contact;
+use App\Models\User;
 use App\Repository\ClientRepository;
 use App\Repository\ContactRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EditContact;
 use App\Http\Requests\StoreContact;
+use App\Repository\UserRepository;
 use App\Services\Uploads\UploadedFilesService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -25,28 +27,31 @@ class ContactController extends Controller
 
     private ClientRepository $clientRepository;
 
+    private UserRepository $userRepository;
+
     /**
      * ContactController constructor.
      * @param ContactRepository $contactRepository
      * @param UploadedFilesService $uploadedFilesService
      * @param ClientRepository $clientRepository
+     * @param UserRepository $userRepository
      */
     public function __construct(
-        ContactRepository $contactRepository,
+        ContactRepository    $contactRepository,
         UploadedFilesService $uploadedFilesService,
-        ClientRepository $clientRepository
+        ClientRepository     $clientRepository,
+        UserRepository $userRepository
     ) {
         $this->contactRepository = $contactRepository;
         $this->uploadedFilesService = $uploadedFilesService;
         $this->clientRepository = $clientRepository;
+        $this->userRepository = $userRepository;
     }
 
-    public function show(Contact $contact): View
+    public function show(User $user): View
     {
-        $oneContact = $this->contactRepository->getOneBySlug($contact->slug);
-
         return \view('pages.admin.contacts.show', [
-           'contact' => $oneContact
+           'contact' => $user
         ]);
     }
 
@@ -59,15 +64,20 @@ class ContactController extends Controller
 
     public function update(EditContact $data): RedirectResponse
     {
-        $contact = $this->contactRepository->edit($data->all());
+        $user = $this->userRepository->update($data->all());
 
-        if (isset($data['contact-picture'])) {
-            $this->uploadedFilesService->moveFile($data['contact-picture'], 'public/images/uploads/' . $contact->client->slug . '/' . $contact->slug . '/picture');
+        if (isset($data['profile-img'])) {
+            $this->uploadedFilesService->moveFile($data['profile-img'], 'public/images/uploads/' . $user->client->slug . '/users/' . $user->slug . '/picture');
         }
 
-        return redirect()->route('clients.show', $contact->client->slug);
+        return redirect()->route('clients.show', $user->client->slug);
     }
 
+    /**
+     * @param StoreContact $storeContact
+     * @param Client $client
+     * @return RedirectResponse
+     */
     public function store(StoreContact $storeContact, Client $client): RedirectResponse
     {
         $oneClient = $this->clientRepository->getOneBySlug($client->slug);
@@ -75,25 +85,28 @@ class ContactController extends Controller
         if(isset($storeContact['contact-picture']) && !is_null($storeContact['contact-picture'])) {
             $file = $storeContact['contact-picture'];
 
-            $this->contactRepository->store($storeContact->all(), $oneClient, $file);
+            $this->userRepository->store($storeContact->all(), $oneClient, $file);
 
             $this->uploadedFilesService->moveFile($file, '/public/images/uploads/' . $oneClient->slug . '/' . Str::slug($storeContact['contact-firstname'] . '-' . $storeContact['contact-lastname']) . '/picture');
         } else {
-            $this->contactRepository->store($storeContact->all(), $oneClient, null);
+            $this->userRepository->store($storeContact->all(), $oneClient, null);
 
         }
 
         return redirect()->route('clients.show', $oneClient->slug)->with('success', 'Le contact a été ajouté');
     }
 
-    public function destroy(Contact $contact): RedirectResponse
+    /**
+     * @param User $user
+     * @return RedirectResponse
+     */
+    public function destroy(User $user): RedirectResponse
     {
-        $oneClient = $this->contactRepository->getOneBySlug($contact->slug);
 
-        $this->contactRepository->delete($oneClient);
+        $this->userRepository->destroy($user);
 
-        Storage::delete('public/images/uploads/' . $oneClient->client->slug . '/' . $oneClient->slug . '/picture');
+        Storage::delete('public/images/uploads/' . $user->client->slug . '/' . $user->slug . '/picture');
 
-        return redirect()->route('clients.show', $oneClient->client->slug)->with('success', 'Contact supprimé');
+        return redirect()->route('clients.show', $user->client->slug)->with('success', 'Contact supprimé');
     }
 }

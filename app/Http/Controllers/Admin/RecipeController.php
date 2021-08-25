@@ -39,6 +39,15 @@ class RecipeController extends Controller
         ]);
     }
 
+    public function all()
+    {
+        $recipes = Recipe::all()->whereStatus(1);
+
+        return \view('pages.admin.recipes.index', [
+            'recipes' => $recipes
+        ]);
+    }
+
     public function show(Recipe $recipe)
     {
         $recipeOne = Recipe::with('recipeDetails')->whereId($recipe->id)->first();
@@ -88,6 +97,17 @@ class RecipeController extends Controller
     public function update()
     {
 
+    }
+
+    public function updateStatus(Recipe $recipe)
+    {
+        $status = $this->recipeRepository->updateStatus($recipe);
+
+        if($status === true) {
+            return back()->with('success', 'La recette est à présent terminée');
+        } else {
+            return back()->with('success', 'La recette est à présent en cours');
+        }
     }
 
     public function destroy()

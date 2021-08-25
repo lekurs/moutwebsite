@@ -46,6 +46,8 @@ use Illuminate\Notifications\Notifiable;
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Page[] $pages
  * @property-read int|null $pages_count
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read int|null $notifications_count
  */
 class Contact extends Model
 {

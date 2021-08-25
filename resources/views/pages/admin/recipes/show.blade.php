@@ -50,7 +50,7 @@
     </div>
     <div class="row edit-client-form-container">
         <div class="col-12 mb-4">
-            <button type="button" class="btn add-btn recipe_response">Répondre</button>
+            <button type="button" class="btn add-btn recipe_response" @if($recipe->status == 0)disabled @endif>Répondre</button>
         </div>
         <div class="col-12 hide-response my-3">
             <form action="{{ route('recipedetails.store', $recipe->slug) }}" method="post" enctype="multipart/form-data">
@@ -71,6 +71,12 @@
                 </div>
                 <button type="submit" class="btn add-btn">Enregistrer</button>
             </form>
+        </div>
+    </div>
+
+    <div class="row edit-client-form-container">
+        <div class="col-12">
+                <a href="{{ route('recipes.update.status', $recipe->slug) }}" class="btn w-100 add-btn @if($recipe->status > 0)close-btn @else in-progress-btn @endif">@if($recipe->status > 0)Déclarer la recette comme terminée @else Activer la recette clôturée ? @endif</a>
         </div>
     </div>
 @endsection

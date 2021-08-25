@@ -20,10 +20,22 @@ class RecipeRepository
         return Recipe::with('pages')->whereProjectId($project->id)->get();
     }
 
-//    public function getOne(int $id): Recipe
-//    {
-//        return Recipe::find($id)->whereNotNull('parent')->get();
-//    }
+    public function updateStatus(Recipe $recipe)
+    {
+        if($recipe->status === 1) {
+            $recipe->status = 0;
+            $recipe->closed_date = new \DateTime('now');
+            $recipe->save();
+
+            return true;
+        } else {
+            $recipe->status = 1;
+            $recipe->closed_date = null;
+            $recipe->save();
+
+            return false;
+        }
+    }
 
     public function store(array $data, Project $project, $parent = null)
     {

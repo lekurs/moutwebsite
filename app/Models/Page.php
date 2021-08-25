@@ -35,6 +35,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Page whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Page whereUrlPath($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
+ * @property-read int|null $users_count
  */
 class Page extends Model
 {
@@ -54,8 +56,8 @@ class Page extends Model
         return $this->belongsTo(Project::class, 'project_id');
     }
 
-    public function contacts(): BelongsToMany
+    public function users(): BelongsToMany
     {
-        return $this->belongsToMany(Contact::class, 'pages_contacts');
+        return $this->belongsToMany(User::class, 'pages_users');
     }
 }

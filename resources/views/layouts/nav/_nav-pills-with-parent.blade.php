@@ -19,6 +19,14 @@
                 <span>Navigation</span>
             </a>
         </li>
+        @can('recipes.public.index')
+        <li>
+            <a href="">
+                <i class="fas fa-cog"></i>
+                <span>Mes recettes</span>
+            </a>
+        </li>
+        @endcan
     </ul>
     <h5 class="mout-tab-title">Menus</h5>
     <ul class="nav nav-pills nav-stacked nav-quirk">
@@ -37,6 +45,22 @@
                 </li>
             </ul>
         </li>
+        @endcan
+
+        @can('recipes.index')
+            <li class="nav-parent">
+                <div class="nav-parent-container">
+                    <i class="fal fa-file-invoice-dollar"></i>
+                    <span>Recettes</span>
+                </div>
+                <ul class="nav-children">
+                    <li>
+                        <a href="{{ route('projects.index') }}">
+                            Voir toutes
+                        </a>
+                    </li>
+                </ul>
+            </li>
         @endcan
 
         @can('devis.index')

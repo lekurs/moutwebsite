@@ -24,9 +24,8 @@ class CreateEstimationsTable extends Migration
             $table->unsignedInteger('validation_duration');
             $table->text('observation')->nullable();
             $table->foreignId('client_id')->constrained();
-            $table->foreignId('contact_id')->constrained();
-            $table->foreignId('contact_validator_id')->constrained('contacts');
-//            $table->foreignId('invoice_id')->constrained()->nullable();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('contact_validator_id')->constrained('users');
             $table->timestamps();
         });
     }

@@ -56,6 +56,19 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Recipe whereUpdateDev($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Recipe whereValidationCustomer($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Recipe whereValidationDev($value)
+ * @property string $description
+ * @property int $status
+ * @property int $user_id
+ * @property-read \App\Models\Client $client
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Contact[] $contacts
+ * @property-read int|null $contacts_count
+ * @property-read \App\Models\Project $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\RecipeDetails[] $recipeDetails
+ * @property-read int|null $recipe_details_count
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|Recipe whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Recipe whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Recipe whereUserId($value)
  */
 class Recipe extends Model
 {

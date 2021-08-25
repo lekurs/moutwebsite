@@ -13,7 +13,7 @@
                 <td>{{ $loop->iteration }}</td>
                 <td><img src="{{ asset('storage/images/uploads/'. $project->client->slug . '/projets/portfolio/' . $project->mediaPortfolioProjectPath) }}" alt="{{ $project->title }}" class="img-fluid" style="width: 80px; height: 80px; object-fit: cover;"></td>
                 <td>{{ $project->title }}</td>
-                <td><a href="{{ route('recipes.create', $project->slug) }}">Administrer</a> / <a href="{{ route('recipes.index', $project->slug) }}">Gérer</a></td>
+                <td><a href="{{ route('recipes.create', $project->slug) }}"><i class="fal fa-pen"></i> Administrer</a> / <a href="{{ route('recipes.index', $project->slug) }}"><i class="fas fa-eye"></i> Voir</a></td>
 
             </tr>
         @else

@@ -24,6 +24,7 @@
                     <th>Intitulé</th>
                     <th>Enregistré par</th>
                     <th>Date de création</th>
+                    <th>Nombre de commentaires</th>
                     <th>Mise à jour Dev</th>
                     <th>Mise à jour Client</th>
                     <th>Validée Client</th>
@@ -36,25 +37,26 @@
                         <td>{{ $loop->iteration }}</td>
                         <td><a href="{{ route('recipes.show', $recipe->slug) }}">{{ $recipe->label }}</a></td>
                         <td>{{ $recipe->user->name }}</td>
-                        <td><a href="{{ route('recipes.show', $recipe->slug) }}">{{ $recipe->created_at }}</a></td>
-                        <td><a href="{{ route('recipes.show', $recipe->slug) }}">{{ $recipe->update_dev }}</a></td>
-                        <td><a href="{{ route('recipes.show', $recipe->slug) }}">{{ $recipe->update_customer }}</a></td>
+                        <td><a href="{{ route('recipes.show', $recipe->slug) }}">{{ $recipe->created_at->format('d/m/Y') }}</a></td>
+                        <td>{{ count($recipe->recipeDetails) }}</td>
+                        <td><a href="{{ route('recipes.show', $recipe->slug) }}">@if(!is_null($recipe->update_dev)){{ date('d/m/Y', strtotime($recipe->update_dev)) }}@endif</a></td>
+                        <td><a href="{{ route('recipes.show', $recipe->slug) }}">@if(!is_null($recipe->update_customer)){{ date('d/m/Y', strtotime($recipe->update_customer)) }}@endif</a></td>
                         <td>{{ $recipe->validation_customer }}</td>
                         <td>{{ $recipe->validation_dev }}</td>
                         <td>
                             <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input project_progression" id="project_active" name="project_active" data-slug="{{ $project->slug }}" value="{{ $project->in_progress }}" @if($project->in_progress > 0) checked @endif>
-                                <label class="custom-control-label" for="project_active">Projet @if($project->in_progress > 0)actif @else inactif @endif</label>
+                                <input type="checkbox" class="custom-control-input project_progression" id="project_active" name="project_active" data-slug="{{ $project->slug }}" value="{{ $recipe->status }}" @if( $recipe->status > 0) checked @endif>
+                                <label class="custom-control-label" for="project_active">@if($recipe->status > 0)<span class="font-weight-bold">En cours</span> @else Terminée @endif</label>
                             </div>
                         </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="9">Aucune recette créée</td>
+                        <td colspan="10">Aucune recette créée</td>
                     </tr>
                 @endforelse
                 <tr>
-                    <td colspan="9"><a href="{{ route('recipes.gerer.create', $project->slug) }}" class="btn add-btn">Créer une recette</a></td>
+                    <td colspan="10"><a href="{{ route('recipes.gerer.create', $project->slug) }}" class="btn add-btn">Créer une recette</a></td>
                 </tr>
             </table>
         </div>

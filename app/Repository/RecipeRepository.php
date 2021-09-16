@@ -55,6 +55,6 @@ class RecipeRepository
         $recipe->save();
 
         $recipe->devices()->attach([$data['device_id']]);
-        $recipe->contacts()->attach([auth()->user()->id]);
+        $recipe->users()->attach([auth()->user()->id]);
     }
 }

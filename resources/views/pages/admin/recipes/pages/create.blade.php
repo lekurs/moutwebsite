@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    @foreach($project->client->contacts as $contact)
+                    @foreach($project->client->users as $contact)
                         <div class="col">
                             <label for="contact_id">
                                 <input type="checkbox" name="contact_id" value="{{ $contact->id }}">

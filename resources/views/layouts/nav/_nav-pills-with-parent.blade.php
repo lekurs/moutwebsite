@@ -21,7 +21,7 @@
         </li>
         @can('recipes.public.index')
         <li>
-            <a href="">
+            <a href="{{ route('recipes.all.index') }}">
                 <i class="fas fa-cog"></i>
                 <span>Mes recettes</span>
             </a>

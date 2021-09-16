@@ -33,7 +33,15 @@ return [
             'name' => 'Recipe',
             'slug' => 'guest-recipe',
             'description' => 'Rôle invité pour les recettes',
-            'permissions' => ['recipes.show', 'recipes.update', 'recipes.store', 'recipes.destroy', 'recipes.index'],
+            'permissions' => [
+//                'recipes.show',
+//                'recipes.update',
+//                'recipes.store',
+//                'recipes.destroy',
+//                'recipes.index',
+                'recipes.public.index',
+                'recipes.public.show',
+            ],
         ]
     ],
     'permissions' => [
@@ -96,6 +104,16 @@ return [
             'key' => 'recipes.destroy',
             'name' => 'Suppression d\'une recette client',
             'description' => "Donne l'accès à la suppression d'une recette"
+        ],
+        [
+            'key' => 'recipes.public.index',
+            'name' => 'Accès aux recettes du client',
+            'description' => "Donne l'accès aux recettes du client"
+        ],
+        [
+            'key' => 'recipes.public.show',
+            'name' => 'Accès à la recette du client',
+            'description' => "Donne l'accès à une recette du client"
         ]
     ],
 ];

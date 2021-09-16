@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * App\Models\Recipe
@@ -73,6 +74,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Recipe extends Model
 {
     use HasFactory;
+    use Notifiable;
 
     protected $fillable= [
         'label',
@@ -98,9 +100,9 @@ class Recipe extends Model
         return $this->belongsToMany(Device::class, 'recipes_devices');
     }
 
-    public function contacts(): BelongsToMany
+    public function users(): BelongsToMany
     {
-        return $this->belongsToMany(Contact::class, 'recipes_contacts');
+        return $this->belongsToMany(User::class, 'recipes_users');
     }
 
     public function recipeDetails(): HasMany

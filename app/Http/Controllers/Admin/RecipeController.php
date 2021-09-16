@@ -41,10 +41,12 @@ class RecipeController extends Controller
 
     public function all()
     {
-        $recipes = Recipe::all()->whereStatus(1);
+        $recipes = Recipe::whereClientId(auth()->user()->client_id)->get();
 
-        return \view('pages.admin.recipes.index', [
-            'recipes' => $recipes
+//        dd($recipes);
+
+        return \view('pages.admin.recipes.pub.index', [
+            'recipes' => $recipes,
         ]);
     }
 

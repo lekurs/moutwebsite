@@ -67,8 +67,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     });
 
     Route::group(['prefix' => 'recettes'], function () {
-
-       Route::get('/', [RecipeController::class, 'all'])->middleware('auth.client')->name('recipes.all.index');
+        Route::get('/', [RecipeController::class, 'all'])->name('recipes.all.index');
 
        Route::get('/{project:slug}/voir', [RecipeController::class, 'index'])->name('recipes.index');
        Route::get('/{recipe:slug}', [RecipeController::class, 'show'])->name('recipes.show');

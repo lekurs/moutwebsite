@@ -50,8 +50,9 @@ class RecipeDetailsController extends Controller
 
         $this->recipeDetailRepository->store($data, $recipe);
 
-        foreach($recipe->contacts as $contact) {
-            $contact->notify(new RecipeEmailNotification());
+        foreach($recipe->users as $contact) {
+
+            $contact->notify(new RecipeEmailNotification($recipe, $data['recipe_description']));
         }
 
         return back()->with('success', 'Votre message à été ajouté');

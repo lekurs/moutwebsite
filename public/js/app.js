@@ -37799,6 +37799,16 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! randomcolor */ "./node_modules/randomcolor/randomColor.js");
 
+$(document).ready(function () {
+  setTimeout(function () {
+    var alertMessage = $('.alert');
+    alertMessage.hide(500);
+  }, 3000);
+}); // setTimeout(() => {
+//     let alertMessage = document.getElementsByClassName('alert');
+//          alertMessage[0].style.display="none";
+// }, 5000);
+
 var randomColor = __webpack_require__(/*! randomcolor */ "./node_modules/randomcolor/randomColor.js"); // import the script
 
 

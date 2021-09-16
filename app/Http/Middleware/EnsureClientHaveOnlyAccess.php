@@ -17,8 +17,12 @@ class EnsureClientHaveOnlyAccess
     public function handle(Request $request, Closure $next)
     {
         if (auth()->user()->user_group === 'admin') {
-            dd('ici');
+//            dd('ici ?');
+
+//                auth()->user()->user_group === 'client'
         }
+
+//            dd('ici');
         return $next($request);
     }
 }

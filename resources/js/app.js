@@ -8,6 +8,18 @@ require('./bootstrap');
 
 require('randomcolor');
 
+$(document).ready( () => {
+    setTimeout( () => {
+        let alertMessage = $('.alert');
+        alertMessage.hide(500);
+    }, 3000)
+})
+
+// setTimeout(() => {
+//     let alertMessage = document.getElementsByClassName('alert');
+//          alertMessage[0].style.display="none";
+// }, 5000);
+
 var randomColor = require('randomcolor'); // import the script
 var color = randomColor();
 

@@ -126,7 +126,6 @@ class User extends Authenticatable
     {
         $find = Permission::where('key', $permission)->first();
 
-//        dd($find);
         if ($find) {
             return $this->hasRole($find->roles);
         }
@@ -135,5 +134,10 @@ class User extends Authenticatable
     public function client(): BelongsTo
     {
         return $this->belongsTo(Client::class);
+    }
+
+    public function recipes(): BelongsToMany
+    {
+        return $this->belongsToMany(Recipe::class, 'recipes_users');
     }
 }

@@ -4,7 +4,6 @@
 namespace App\Http\Controllers\Admin\Accounting;
 
 
-use App\Models\Client;
 use App\Models\Estimation;
 use App\Models\Invoice;
 use App\Repository\ClientRepository;
@@ -47,7 +46,7 @@ class InvoiceController extends Controller
      * @param EstimationDetailRepository $estimationDetailRepository
      * @param InvoiceRepository $invoiceRepository
      */
-    public function __construct(EstimationRepository $estimationRepository, ClientRepository $clientRepository, ServiceRepository $serviceRepository, TaxRepository $taxRepository, ContactRepository $contactRepository, SkillRepository $skillRepository, EstimationDetailRepository $estimationDetailRepository, \App\Domain\Repository\InvoiceRepository $invoiceRepository)
+    public function __construct(EstimationRepository $estimationRepository, ClientRepository $clientRepository, ServiceRepository $serviceRepository, TaxRepository $taxRepository, ContactRepository $contactRepository, SkillRepository $skillRepository, EstimationDetailRepository $estimationDetailRepository, InvoiceRepository $invoiceRepository)
     {
         $this->estimationRepository = $estimationRepository;
         $this->clientRepository = $clientRepository;

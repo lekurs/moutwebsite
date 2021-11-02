@@ -43,8 +43,6 @@ class RecipeController extends Controller
     {
         $recipes = Recipe::whereClientId(auth()->user()->client_id)->get();
 
-//        dd($recipes);
-
         return \view('pages.admin.recipes.pub.index', [
             'recipes' => $recipes,
         ]);

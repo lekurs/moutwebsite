@@ -60,7 +60,7 @@
                                 <div class="form-group">
                                             <label class="relative-label mb-0">Contact</label>
                                     <div class="row">
-                                        @forelse($client->contacts as $contact)
+                                        @forelse($client->users as $contact)
                                             <div class="col-3 contact-estimation-container">
                                                 <input type="radio" value="{{ $contact->slug }}" name="estimation-contact" class="contact-radio-value">
                                                 <div class="contact-check-container"></div>

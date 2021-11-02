@@ -40,7 +40,7 @@
                             <p class="font-weight-light">{{ $estimation->client->zip }} {{ $estimation->client->city }}</p>
                             <p class="font-weight-light">N° SIRET : {{ $estimation->client->siren}}</p>
                             <p class="font-weight-light">N° TVA Intracommunautaire : {{ $estimation->client->siren}}</p>
-                            <p class="font-weight-light">{{ $estimation->contact->email }}</p>
+                            <p class="font-weight-light">{{ $estimation->user->email }}</p>
                         </div>
                     </div>
                     <div class="row mt-4 mout-accounting-thead-details-container">

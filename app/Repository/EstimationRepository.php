@@ -8,6 +8,7 @@ use App\Models\Client;
 use App\Models\Contact;
 use App\Models\Estimation;
 use App\Models\EstimationDetail;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -30,7 +31,7 @@ class EstimationRepository
 
     public function getOneWithAllRelationsById(string $id): ?Estimation
     {
-        return Estimation::with(['client', 'contact', 'estimationDetails'])->whereId($id)->first();
+        return Estimation::with(['client', 'user', 'estimationDetails'])->whereId($id)->first();
     }
 
     public function editTitle(array $data, Estimation $estimation): void
@@ -56,12 +57,12 @@ class EstimationRepository
         return $total;
     }
 
-    public function store(array $data, Client $client, Contact $contact)
+    public function store(array $data, Client $client, User $contact)
     {
         $estimation = new Estimation();
         $estimation->reference = $data['estimation-reference'];
         $estimation->validation_duration = $data['estimation-validation-duration'];
-        $estimation->contact_id = $contact->id;
+        $estimation->user_id = $contact->id;
         $estimation->title = $data['estimation-title'];
         $estimation->year = date('Y');
         $estimation->month = date('m');

@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Admin\Accounting;
 use App\Models\Client;
 use App\Models\Estimation;
 use App\Models\EstimationDetail;
+use App\Models\User;
 use App\Repository\ClientRepository;
 use App\Repository\ContactRepository;
 use App\Repository\EstimationDetailRepository;
@@ -101,7 +102,7 @@ class EstimationController extends Controller
     {
         $estimation = $storeEstimation->all();
         $client = $this->clientRepository->getOneBySlug($estimation['client-slug']);
-        $contact = $this->contactRepository->getOneBySlug($estimation['estimation-contact']);
+        $contact = User::whereSlug($estimation['estimation-contact'])->first();
 
         $this->estimationRepository->store($estimation, $client, $contact);
 

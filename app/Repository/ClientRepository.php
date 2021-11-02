@@ -44,7 +44,7 @@ class ClientRepository
 
     public function getOneBySlugWithAllRelations(string $clientSlug): Client
     {
-        return Client::with(['projects', 'contacts', 'estimations' => function($q) {
+        return Client::with(['projects', 'users', 'estimations' => function($q) {
             $date1 = date("Y-m-d", strtotime("-1 years"));
             $date2 = date("Y-m-d", strtotime("+1 day"));
 
